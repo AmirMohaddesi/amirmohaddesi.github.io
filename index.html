@@ -1,514 +1,478 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="en">
 <head>
+  <meta charset="utf-8">
+  <title>I'm Amirhosein Mohaddesi</title>
+  <meta name="description" content="Robotics • Multi-Agent Navigation • ML">
+  <meta name="author" content="Amirhosein Mohaddesi">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-   <!--- basic page needs
-   ================================================== -->
-   <meta charset="utf-8">
-	<title>I'm Amirhosein Mohaddesi</title>
-	<meta name="description" content="">  
-	<meta name="author" content="">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/vendor.css">
 
-   <!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style>
+    /* --- Hero polish --- */
+    .hero-divider { margin: 2rem auto 0; opacity:.15; width:140px; height:3px; background:#fff; border-radius:4px; }
 
- 	<!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/base.css">  
-   <link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/vendor.css">
+    /* --- DEMO section stays tidy and light --- */
+    #hf-space .section-intro { padding-bottom: 0; }
+    #hf-space .col-twelve { max-width: 1100px; margin: 0 auto; }
 
-   <!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
+    /* ===========================
+       Floating Chat Assistant
+       =========================== */
+    :root{
+      --chat-width: 360px;     /* tweak size here */
+      --chat-height: 520px;    /* tweak size here */
+      --chat-radius: 14px;
+      --chat-shadow: 0 18px 50px rgba(0,0,0,.22);
+      --accent: #0057ff;
+    }
 
-   <!-- favicons
-	================================================== -->
-	<link rel="icon" type="image/png" href="favicon.png">
+    .chat-launcher {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .chat-launcher svg{ width: 26px; height: 26px; }
 
+    .chat-widget {
+      position: fixed;
+      right: 22px;
+      bottom: 86px; /* above launcher */
+      width: var(--chat-width);
+      height: var(--chat-height);
+      background: #fff;
+      border-radius: var(--chat-radius);
+      overflow: hidden;
+      box-shadow: var(--chat-shadow);
+      display: none;           /* toggled by JS */
+      z-index: 1001;
+    }
+    .chat-header {
+      height: 44px;
+      background: #0f172a;     /* slate-900 */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px 0 12px;
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+    .chat-header .actions{
+      display:flex; gap:6px; align-items:center;
+    }
+    .chat-header button {
+      background: transparent; border: 0; color: #fff; cursor: pointer;
+      width: 34px; height: 34px; border-radius: 8px;
+    }
+    .chat-header button:hover { background: rgba(255,255,255,.12); }
 
+    .chat-body {
+      width: 100%;
+      height: calc(100% - 44px);
+      background: #000; /* Space handles its own UI; black to avoid flashes */
+    }
+    .chat-body iframe{
+      width: 100%; height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Small helper tooltip for the launcher (optional) */
+    .chat-launcher[data-tip]:hover::after{
+      content: attr(data-tip);
+      position: absolute;
+      right: 64px;
+      bottom: 8px;
+      background: #0f172a;
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 12px;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px){
+      :root{
+        --chat-width: 92vw;
+        --chat-height: 72vh;
+      }
+      .chat-widget { right: 4vw; bottom: 88px; }
+    }
+  </style>
+
+  <!-- scripts -->
+  <script src="js/modernizr.js" defer></script>
+  <script src="js/pace.min.js" defer></script>
+
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body id="top">
 
-		<!-- start navigation -->
-		<nav class="navbar navbar-default templatemo-nav" role="navigation">
-			<div class="container">
-        	<div class="navbar-header">
-          		<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            		<span class="icon icon-bar"></span>
-            		<span class="icon icon-bar"></span>
-            		<span class="icon icon-bar"></span>
-          		</button>
-          		<a href="#" class="navbar-brand">Amirhosein Mohaddesi</a>
-        	</div>
-        	<div class="collapse navbar-collapse">
-          		<ul class="nav navbar-nav navbar-right">
-            		<li><a href="#top">INTRO</a></li>
-            		<li><a href="#about">ABOUT</a></li>
-            		<li><a href="#resume">CV</a></li>
-					<li><a href="#hf-space">DEMO</a></li>
-            		<li><a href="#contact">CONTACT</a></li>
-          		</ul>
-        	</div>
-      	</div>
-    </nav>
-    <!-- end navigation -->
-
-	<!-- intro section
-   ================================================== -->
-   <section id="intro">   
-
-   	<div class="intro-overlay"></div>	
-
-   	<div class="intro-content">
-   		<div class="row">
-
-   			<div class="col-twelve">
-
-	   			<h5>Hey, I'm</h5>
-	   			<h1>Amirhosein</h1>
-
-	   			<p class="intro-position">
-	   				<span>Ph.D. candidate at UC Irvine Cognitive Robotics Lab (CARL)</span>
-	   				<span>Multi-Agent Navigation</span>
-	   				<span>Robotics</span>
-	   				<span>Machine Learning/ Neuromorphic Computing</span>
-	   				<span>Pacakge/Software Developement</span>
-	   			</p>
-
-	   			<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
-
-	   		</div>  
-   			
-   		</div>   		 		
-   	</div> <!-- /intro-content --> 
-
-   	<ul class="intro-social">
-         <li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
-         <!--  <li><a href=""><i class="fa fa-skype"></i></a></li> --> 
-         <li><a href="https://www.linkedin.com/in/amohaddesi/"><i class="fa fa-linkedin"></i></a></li>
-         <li><a href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ"><i class="fa fa-graduation-cap"></i></a></li>
-         <li><a href="https://github.com/Amirmohaddesi"><i class="fa fa-github"></i></a></li>
-         <!--  <li><a href=""><i class="fa fa-orcid"></i></a></li> --> 
-      </ul> <!-- /intro-social -->      	
-
-   </section> <!-- /intro -->
-
-
-   <!-- about section
-   ================================================== -->
-   <section id="about">  
-
-   	<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>About</h5>
-   			<h1>Let me introduce myself.</h1>
-
-   			<div class="intro-info">
-
-   				<img src="images/Profile-Pic.jpg" alt="Profile Picture">
-
-   				<p class="lead">I began my academic journey by winning a silver medal in the National Physics Olympiad Contest in Iran during my high school years. This achievement inspired me to pursue higher education at Sharif University of Technology, where I graduated in 2019 with a B.S. in Computer Engineering and a cumulative GPA of 3.95.<br>
-   				I then joined the University of California, Irvine, for my Ph.D. in Information & Computer Science, maintaining a cumulative GPA of 3.93.<br>
-   				My research has significantly contributed to the field of autonomous systems and robot navigation. My initial project involved improving the autonomous navigation of the Toyota Human Support Robot (HSR) by mapping the entire floor of a building using SLAM in ROS. <br>
-   				This research also led to the development of a Python QT graphical user interface (GUI) that remarkably reduced cognitive load for human operators, experimented with 22 human subjects during a scavenger hunt task. <br>
-   				I progressed to investigating cognitive load in telepresence robots, where my study 'Navigation and Cognitive Load in Telepresence Robots' revealed	that autonomous features in telepresence robots could significantly reduce cognitive load and facilitate user operation. <br>
-   				Further advancing my research, my publication 'Benefit of Varying Navigation Strategies in Robot Teams' explores the impact of mixed navigation strategies on task completion time, environment exploration, and system effectiveness in multi-robot systems.<br> 
-   				Utilizing the Webots simulation environment, we demonstrated substantial improvements in robot coordination and efficiency. My current focus involves evaluating decentralized mapping techniques and their robustness against communication loss, aiming to enhance the reliability and effectiveness of autonomous systems in dynamic and unpredictable environments<br>
-
-				Out of work, I love to spend time with our kittens, go camping, hike and play video games!
-				</div>   			
-
-   		</div>   		
-   	</div> <!-- /section-intro -->
-
-   	<div class="row about-content">
-
-   		<div class="col-six tab-full">
-
-   			<h3>Profile</h3>
-
-   			<ul class="info-list">
-   				<li>
-   					<strong>Fullname:</strong>
-   					<span>Amirhosein Mohaddesi</span>
-   				</li>
-   				<li>
-   					<strong>Job:</strong>
-   					<span>Graduate Student Researcher</span>
-   				</li>
-   				<li>
-   					<strong>Website:</strong>
-   					<span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL(Cognitive Anteater Robotics Laboratory)</a></span>
-   				</li>
-   				<li>
-   					<strong>Email:</strong>
-   					<span><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span>
-   					<span><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span>
-   				</li>
-
-   			</ul> <!-- /info-list -->
-
-   		</div>
-
-   		<div class="col-six tab-full">
-
-   			<h3>Selected Skills</h3>
-   			<p>For more informations download 
-   			<a href="CV_Amirhosein.pdf" download>my CV</a>.</p>
-
-				<ul class="skill-bars">
-					<li>
-				   	<div class="progress percent100"><span>100%</span></div>
-				   	<strong>C++</strong>
-				   </li>
-					<li>
-				   	<div class="progress percent100"><span>100%</span></div>
-				   	<strong>Python</strong>
-				   </li>
-					<li>
-				   	<div class="progress percent100"><span>70%</span></div>
-				   	<strong>Rust</strong>
-				   </li>
-					<li>
-				   	<div class="progress percent90"><span>85%</span></div>
-				   	<strong>ROS</strong>
-				   </li>
-					<li>
-				   	<div class="progress percent80"><span>100%</span></div>
-				   	<strong>MATLAB</strong>
-				   </li>
-      
-				</ul> <!-- /skill-bars -->		
-
-   		</div>
-
-   	</div>
-
-   	<div class="row button-section">
-   		<div class="col-twelve">
-   			<a href="#contact" title="Contact Me" class="button stroke smoothscroll">Contact Me</a>
-   			<a href="CV_Amirhosein.pdf" download title="Download CV" class="button button-primary">Download CV</a>
-   		</div>   		
-   	</div>
-
-   </section> <!-- /process-->    
-
-
-   <!-- resume Section
-   ================================================== -->
-	<section id="resume" class="grey-section">
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h1>More of my experiences.</h1>
-
-   		</div>   		
-   	</div> <!-- /section-intro--> 
-
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2>Education</h2>
-
-   		</div> <!-- /resume-header -->
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-
-   				<div class="timeline-block">
-					
-					<div class="timeline-block">
-						
-						<div class="timeline-ico">
-	   						<i class="fa fa-graduation-cap"></i>
-	   					</div>
-
-	   					<div class="timeline-header">
-	   						<h3>Direct PhD</h3>
-	   						<p>2019-Present</p>
-	   					</div>
-
-	   					<div class="timeline-content">
-	   						<h4><a href="https://ics.uci.edu/academics/graduate-programs/phd-cs/">University of California, Irvine</a></h4>
-	   						<p>In Computer Science, Donal Bren School of Information & Computer Sciences<br />
-	   						Gpa: 3.93/4<br />
-	   					</div>
-
-	   			</div> <!-- /timeline-block -->
-					
-				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Bachelor's Degree</h3>
-	   					<p>2014-2018</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4><a href="http://www.sharif.ir/home">Sharif university of technology</a></h4>
-	   					<p>In Hardware Engineering, Computer Engineering<br />
-	   					Gpa: 18.24/20<br />
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Diploma</h3>
-	   					<p>2010-2014</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>Shahid Soltani 1 high school, National Organization for Development of Exceptional Talents(NODET)</h4>
-	   					<p>In Mathematics<br />
-	   					Gpa: 19.8/20</p>
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-   			</div> <!-- /timeline-wrap -->   			
-
-   		</div> <!-- /col-twelve -->
-   		
-   	</div> <!-- /resume-timeline -->
-   	
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2>Research Experience</h2>
-
-   		</div> <!-- /resume-header -->
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-				
-				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Graduate Research Assistant</h3>
-	   					<h4><a href="https://sites.socsci.uci.edu/						~jkrichma/CARL/">CARL Lab</a></h4>
-	   					<p>2021-present</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4><a >Benefits of Varying Navigation 							Strategies in Robot Teams</a></h4>
-						<p>Established a Webots simulation of a maze-shaped art exhibition with multi-agent Clearpath PR2
-robots and investigated the benefits of employing varying cognitive navigation strategies inspired by human studies. A robust
-multi-agent simulation was achieved using unique obstacle avoidance C++ controllers with pairwise robot communications.
-Explored strategies including Route, Survey, and mixed approaches, highlighting the advantages of variability in navigation
-strategies for improved task completion time and environment coverage. Presented at <a href="https://link.springer.com/chapter/10.1007/978-3-031-71533-4_5">From animals to animats 17, SAB2024</a>.</p>
-
-				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-content">
-	   					<h4>Navigation and Cognitive Load in Telepresence Robots</h4>
-	   					<p>Telepresence robots have become integrated into educational, medical, and workplace settings as the capabilities of remote technologies progress. Considering the recent pandemic, the deployment of telepresence robots to digitally represent individuals in remote environments has become more important. The goal of this study was to investigate if implementing autonomous features, such as navigation, in telepresence robots could reduce cognitive load and facilitate operation for the user. While many studies involving telepresence robots examine navigation, there has been little research on how different types of navigation affect cognitive load and user experience. The present study measured differences between autonomous and manual navigation on cognitive load, spatial awareness, presence, and user experience during a scavenger hunt task using a telepresence robot. We found that in the autonomous navigation condition, participants moved around their environment more efficiently, performed better in a learning and memory task, and had lower cognitive load assessments than those in the manual navigation condition. These results suggest that incorporating autonomous navigation functions into telepresence robots may lessen cognitive load, enabling individuals to attend to more stimuli in their environment and improve learning in educational settings. Presented at <a href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL24</a>.</p>
-	   				</div>
-
-	   				   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-
-   				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Research Assistant</h3>
-	   					<h4><a href="https://nmi-lab.org/"><h4>NMI Lab</a></h4>
-	   					<p>2020 - 2021</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>DCLL 8 bit quantizer</h4>
-						<p>Implemented an 8-bit spiking neural network optimized for embedded computing, and designed an 8-bit quantization technique to enhance efficiency. Our technique reduced power consumption by 12%-18% for MNIST, CIFAR10, CIFAR20 benchmarks by only reducing test accuracy by 3%-7%.</p>
-						</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			
-
-   			</div> <!-- /timeline-wrap -->   			
-
-   		</div> <!-- /col-twelve -->
-   		
-   	</div> <!-- /resume-timeline -->
-		
-	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2>Publication</h2>
-
-   		</div> <!-- /resume-header -->
-
-   		<h4>Look at <a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en">my Google scholar</a> and <a href="https://orcid.org/0009-0008-5021-5954">my ORCiD</a>.</h4>
-   		
-   	</div> <!-- /resume-timeline -->
-		
-	</section> <!-- /features -->
-
-	<section id="hf-space" class="grey-section">
-		<div class="row section-intro">
-		  <div class="col-twelve">
-				<h5>Interactive Demo</h5>
-				<h1>Career Conversation (Hugging Face Space)</h1>
-				<p>Try my HF Space directly on this page.</p>
-		  </div>
-		</div>
-
-		<div class="row">
-		  <div class="col-twelve">
-				<iframe
-				  class="hf-embed"
-				  src="https://amixxm-career-conversation.hf.space"
-				  title="Career Conversation – Hugging Face Space"
-				  loading="lazy"
-				  allow="clipboard-read; clipboard-write; microphone; camera; fullscreen"
-				  referrerpolicy="no-referrer"
-				></iframe>
-
-				<noscript>
-				  <p>JavaScript is disabled. Open the demo here:
-						<a href="https://amixxm-career-conversation.hf.space" rel="noopener">amixxm-career-conversation.hf.space</a>
-				  </p>
-				</noscript>
-		  </div>
-		</div>
-  </section> ```
-
-	
-   <!-- contact
-   ================================================== -->
-	<section id="contact">
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Contact</h5>
-   		</div> 
-   	</div> <!-- /section-intro -->
-
-   	<div class="row contact-form">
-   		
-   	</div> <!-- /contact-form -->
-
-   	<div class="row contact-info">
-
-   		<div class="col-four tab-full">
-
-   			<div class="icon">
-   				<i class="icon-pin"></i>
-   			</div>
-
-   			<h5>Where to find me</h5>
-
-   			<p>
-	            2328 Social & Behavioral Sciences Gateway,<br>
-				University of California Irvine,<br>
-				Irvine, CA 92697-5100
-            </p>
-
-   		</div>
-
-   		<div class="col-four tab-full">
-
-   			<div class="icon">
-   				<i class="icon-mail"></i>
-   			</div>
-
-   			<h5>Email Me At</h5>
-
-   			<p><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a><br>
-			</p>
-
-   		</div>
-
-   		<div class="col-four tab-full">
-
-   			<div class="icon">
-   				<i class="icon-phone"></i>
-   			</div>
-
-   			<h5>Call Me At</h5>
-
-   			<p>(949) 426-8113</p>
-
-   		</div>
-   		
-   	</div> <!-- /contact-info -->
-		
-	</section> <!-- /contact -->
-
-
-   <!-- footer
-   ================================================== -->
-
-   <footer>
-     	<div class="row">
-
-     		<div class="col-six tab-full pull-right social">
-
-     			<ul class="footer-social">
-     				<li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
-     				<li><a href="https://www.linkedin.com/in/amohaddesi"><i class="fa fa-linkedin"></i></a></li>
-     				<li><a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en"><i class="fa fa-graduation-cap"></i></a></li>
-     				<li><a href="https://github.com/AmirMohaddesi"><i class="fa fa-github"></i></a></li>
-     				<!--<li><a href="https://twitter.com/NargesRezaie10"><i class="fa fa-twitter"></i></a></li>-->
-			   </ul> 
-	      		
-	      </div>
-	      
-	      <div class="col-six tab-full">
-	      	<div id="go-top">
-	      		<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-	      	</div>
-	      </div>	
-    	
-   </footer>  
-
-   <div id="preloader"> 
-    	<div id="loader"></div>
-   </div> 
-
-   <!-- Java Script
-   ================================================== --> 
-   <script src="js/jquery-2.1.3.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/main.js"></script>
-
+  <!-- start navigation -->
+  <nav class="navbar navbar-default templatemo-nav" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon icon-bar"></span>
+          <span class="icon icon-bar"></span>
+          <span class="icon icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">Amirhosein Mohaddesi</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#top">INTRO</a></li>
+          <li><a href="#hf-space">DEMO</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#resume">CV</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end navigation -->
+
+  <!-- intro section -->
+  <section id="intro">
+    <div class="intro-overlay"></div>
+    <div class="intro-content">
+      <div class="row">
+        <div class="col-twelve">
+          <h5>Hey, I'm</h5>
+          <h1>Amirhosein</h1>
+          <p class="intro-position">
+            <span>AI/ML Engineer • Robotics & Agentic AI</span>
+            <span>Ph.D. (2025) – UC Irvine, CARL</span>
+            <span>ROS2 • PyTorch • LangChain • Hugging Face</span>
+            <span>Multi-Agent Navigation & Simulation</span>
+            <span>Open to full-time or contract roles</span>
+          </p>
+          <a class="button stroke smoothscroll" href="#about" title="More About Me">More About Me</a>
+          <a class="button button-primary smoothscroll" href="#hf-space" title="See Live Demo">See Live Demo</a>
+          <div class="hero-divider"></div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="intro-social">
+      <li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/amohaddesi/"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ"><i class="fa fa-graduation-cap"></i></a></li>
+      <li><a href="https://github.com/AmirMohaddesi"><i class="fa fa-github"></i></a></li>
+    </ul>
+  </section>
+
+  <!-- HF demo section — light, with launch links instead of heavy embed -->
+  <section id="hf-space" class="grey-section">
+    <div class="row section-intro">
+      <div class="col-twelve">
+        <h5>Interactive Demo</h5>
+        <h1>Career Conversation (Hugging Face Space)</h1>
+        <p>Use the floating <strong>chat launcher</strong> (bottom-right) to open the assistant. Prefer a new window? <a href="#" id="open-popup">Open assistant in a small window</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- about section -->
+  <section id="about">
+    <div class="row section-intro">
+      <div class="col-twelve">
+        <h5>About</h5>
+        <h1>Let me introduce myself.</h1>
+        <div class="intro-info">
+          <img src="images/Profile-Pic.jpg" alt="Profile Picture">
+          <p class="lead">
+            I’m an AI/Robotics engineer with a Ph.D. from UC Irvine (CARL). I build learning-driven, multi-robot systems in ROS2 and increasingly integrate Agentic AI—LLM-powered planners and tools—for language-guided autonomy. Recent work includes a ROS2 platform that trains navigation agents with human data (PyTorch), distributed simulation for multi-agent exploration, and Webots/Gazebo experiments for sim-to-real.<br>
+            Publications span telepresence navigation and cognitive load (IEEE ICDL 2024) and strategy diversity in robot teams (SAB 2024). Current focus: communication-aware, agentic multi-robot coordination with transformers and tool-use. Outside work I enjoy hiking, camping, gaming, and cat time.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row about-content">
+      <div class="col-six tab-full">
+        <h3>Profile</h3>
+        <ul class="info-list">
+          <li><strong>Full name:</strong> <span>Amirhosein Mohaddesi</span></li>
+          <li><strong>Role:</strong> <span>AI/ML Engineer • Robotics</span></li>
+          <li><strong>Website:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL (Cognitive Anteater Robotics Laboratory)</a></span></li>
+          <li><strong>Email:</strong> <span><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> <span><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
+        </ul>
+      </div>
+      <div class="col-six tab-full">
+        <h3>Selected Skills</h3>
+        <p>For more information download <a href="CV_Amirhosein.pdf" download>my CV</a>.</p>
+        <ul class="skill-bars">
+          <li><div class="progress percent95"><span>95%</span></div><strong>Python</strong></li>
+          <li><div class="progress percent90"><span>90%</span></div><strong>C++</strong></li>
+          <li><div class="progress percent85"><span>85%</span></div><strong>ROS2</strong></li>
+          <li><div class="progress percent85"><span>85%</span></div><strong>PyTorch</strong></li>
+          <li><div class="progress percent80"><span>80%</span></div><strong>LangChain / Hugging Face</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row button-section">
+      <div class="col-twelve">
+        <a href="#contact" title="Contact Me" class="button stroke smoothscroll">Contact Me</a>
+        <a href="CV_Amirhosein.pdf" download title="Download CV" class="button button-primary">Download CV</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- resume Section -->
+  <section id="resume" class="grey-section">
+    <div class="row section-intro">
+      <div class="col-twelve">
+        <h1>More of my experiences.</h1>
+      </div>
+    </div>
+
+    <div class="row resume-timeline">
+      <div class="col-twelve resume-header"><h2>Education</h2></div>
+      <div class="col-twelve">
+        <div class="timeline-wrap">
+
+          <div class="timeline-block">
+            <div class="timeline-ico"><i class="fa fa-graduation-cap"></i></div>
+            <div class="timeline-header">
+              <h3>Direct PhD</h3>
+              <p>2019–2025</p>
+            </div>
+            <div class="timeline-content">
+              <h4><a href="https://ics.uci.edu/academics/graduate-programs/phd-cs/">University of California, Irvine</a></h4>
+              <p>Computer Science, Donald Bren School of Information &amp; Computer Sciences<br>GPA: 3.93/4</p>
+            </div>
+          </div>
+
+          <div class="timeline-block">
+            <div class="timeline-ico"><i class="fa fa-graduation-cap"></i></div>
+            <div class="timeline-header">
+              <h3>Bachelor's Degree</h3>
+              <p>2014–2018</p>
+            </div>
+            <div class="timeline-content">
+              <h4><a href="http://www.sharif.ir/home">Sharif University of Technology</a></h4>
+              <p>Hardware Engineering, Computer Engineering<br>GPA: 18.24/20</p>
+            </div>
+          </div>
+
+          <div class="timeline-block">
+            <div class="timeline-ico"><i class="fa fa-graduation-cap"></i></div>
+            <div class="timeline-header">
+              <h3>Diploma</h3>
+              <p>2010–2014</p>
+            </div>
+            <div class="timeline-content">
+              <h4>Shahid Soltani 1 High School, NODET</h4>
+              <p>Mathematics<br>GPA: 19.8/20</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row resume-timeline">
+      <div class="col-twelve resume-header"><h2>Research Experience</h2></div>
+      <div class="col-twelve">
+        <div class="timeline-wrap">
+
+          <div class="timeline-block">
+            <div class="timeline-ico"><i class="fa fa-briefcase"></i></div>
+            <div class="timeline-header">
+              <h3>Graduate Research Assistant</h3>
+              <h4><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL Lab</a></h4>
+              <p>2021–present</p>
+            </div>
+            <div class="timeline-content">
+              <h4><a>Graduate Research – Agentic Multi-Robot Navigation Platform</a></h4>
+              <p>Built a realistic ROS2 platform to study human-inspired navigation in multi-agent systems; integrated human navigation data for training (PyTorch); added Agentic AI (LLM-driven planning, memory, tool-use) enabling language-guided decision-making and multi-robot coordination; prepared distributed training workflows (DDP-ready); ran Webots/Gazebo simulations with visual/sequence models. Manuscript under review; poster/papers at SAB 2024 and IEEE ICDL 2024.</p>
+            </div>
+          </div>
+
+          <div class="timeline-block">
+            <div class="timeline-content">
+              <h4>Navigation and Cognitive Load in Telepresence Robots</h4>
+              <p>We investigated whether autonomous features in telepresence robots reduce cognitive load and improve efficiency. In the autonomous condition, participants navigated more efficiently, performed better in a learning/memory task, and reported lower cognitive load than manual. Presented at <a href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL 2024</a>.</p>
+            </div>
+          </div>
+
+          <div class="timeline-block">
+            <div class="timeline-ico"><i class="fa fa-briefcase"></i></div>
+            <div class="timeline-header">
+              <h3>Research Assistant</h3>
+              <h4><a href="https://nmi-lab.org/">NMI Lab</a></h4>
+              <p>2020–2021</p>
+            </div>
+            <div class="timeline-content">
+              <h4>DCLL 8-bit quantizer</h4>
+              <p>Implemented an 8-bit spiking neural network for embedded targets and designed an 8-bit quantization technique that reduced power by 12%–18% on MNIST/CIFAR10/20 with only 3%–7% accuracy drop.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row resume-timeline">
+      <div class="col-twelve resume-header"><h2>Publications</h2></div>
+      <h4>See <a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en">Google Scholar</a> and <a href="https://orcid.org/0009-0008-5021-5954">ORCiD</a>.</h4>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section id="contact">
+    <div class="row section-intro">
+      <div class="col-twelve"><h5>Contact</h5></div>
+    </div>
+    <div class="row contact-form"></div>
+    <div class="row contact-info">
+      <div class="col-four tab-full">
+        <div class="icon"><i class="icon-pin"></i></div>
+        <h5>Where to find me</h5>
+        <p>San Mateo, CA</p>
+      </div>
+      <div class="col-four tab-full">
+        <div class="icon"><i class="icon-mail"></i></div>
+        <h5>Email Me At</h5>
+        <p><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></p>
+      </div>
+      <div class="col-four tab-full">
+        <div class="icon"><i class="icon-phone"></i></div>
+        <h5>Call Me At</h5>
+        <p>(949) 426-8113</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="row">
+      <div class="col-six tab-full pull-right social">
+        <ul class="footer-social">
+          <li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/amohaddesi"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en"><i class="fa fa-graduation-cap"></i></a></li>
+          <li><a href="https://github.com/AmirMohaddesi"><i class="fa fa-github"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-six tab-full">
+        <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="preloader"><div id="loader"></div></div>
+
+  <!-- Floating Chat Assistant (widget + launcher) -->
+  <div class="chat-widget" id="chatWidget" aria-hidden="true">
+    <div class="chat-header">
+      <span>Career Assistant</span>
+      <div class="actions">
+        <button id="openNewWindow" title="Open in new window" aria-label="Open in new window">↗</button>
+        <button id="closeChat" title="Close" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div class="chat-body">
+      <iframe
+        id="chatFrame"
+        src="https://amixxm-career-conversation.hf.space?embed=true"
+        title="Career Conversation – Hugging Face Space"
+        allow="clipboard-read; clipboard-write; microphone; camera; fullscreen"
+        referrerpolicy="no-referrer">
+      </iframe>
+    </div>
+  </div>
+
+  <button class="chat-launcher" id="chatLauncher" data-tip="Chat">
+    <!-- chat icon -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 12c0 4.418-4.03 8-9 8-1.036 0-2.03-.15-2.95-.43-.27-.08-.56-.06-.81.06l-3.25 1.62c-.76.38-1.64-.33-1.43-1.16l.83-3.24c.07-.27.03-.56-.1-.81C3.47 14.66 3 13.37 3 12c0-4.42 4.03-8 9-8s9 3.58 9 8Z" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="9" cy="12" r="1" fill="currentColor"/>
+      <circle cx="12" cy="12" r="1" fill="currentColor"/>
+      <circle cx="15" cy="12" r="1" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    (function(){
+      const launcher = document.getElementById('chatLauncher');
+      const widget   = document.getElementById('chatWidget');
+      const closeBtn = document.getElementById('closeChat');
+      const popBtn   = document.getElementById('openNewWindow');
+      const popupLink = document.getElementById('open-popup');
+
+      function openWidget(){
+        widget.style.display = 'block';
+        widget.setAttribute('aria-hidden', 'false');
+      }
+      function closeWidget(){
+        widget.style.display = 'none';
+        widget.setAttribute('aria-hidden', 'true');
+      }
+      function openPopup(e){
+        if (e) e.preventDefault();
+        const w = 420, h = 720;
+        const y = Math.max(0, (window.outerHeight - h) / 2);
+        const x = Math.max(0, (window.outerWidth  - w) / 2);
+        window.open(
+          'https://amixxm-career-conversation.hf.space?embed=true',
+          'hf_assistant',
+          `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`
+        );
+      }
+
+      launcher.addEventListener('click', openWidget);
+      closeBtn.addEventListener('click', closeWidget);
+      popBtn.addEventListener('click', openPopup);
+      if (popupLink) popupLink.addEventListener('click', openPopup);
+
+      // Optional: close on outside click
+      document.addEventListener('click', (ev) => {
+        if (!widget.contains(ev.target) && ev.target !== launcher && widget.getAttribute('aria-hidden') === 'false') {
+          const rect = widget.getBoundingClientRect();
+          // ignore clicks on launcher area
+          const lRect = launcher.getBoundingClientRect();
+          const nearLauncher = ev.clientX >= lRect.left && ev.clientX <= lRect.right &&
+                               ev.clientY >= lRect.top  && ev.clientY <= lRect.bottom;
+          if (!nearLauncher &&
+              (ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
+            closeWidget();
+          }
+        }
+      });
+
+      // ESC to close
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape') closeWidget();
+      });
+    })();
+  </script>
 </body>
-
 </html>
