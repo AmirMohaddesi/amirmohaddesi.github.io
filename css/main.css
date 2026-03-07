@@ -1650,16 +1650,26 @@ header .logo a {
 	.intro-info {
 		text-align: center;
 		margin-top: 3rem;
+		margin-left: 0;
+		margin-right: 0;
 	}
+
 	.intro-info img {
-		height: 6.6rem;
-		width: 6.6rem;
+		height: 8.5rem;
+		width: 8.5rem;
 		float: none;
-		display: inline-block;
+		display: block;
+		margin: 0 auto 1.8rem auto;
 	}
+
 	.intro-info .lead {
 		padding-left: 0;
-		text-align: center;
+		padding-right: 0;
+		margin: 0 auto;
+		max-width: 92%;
+		text-align: left;
+		font-size: 1.7rem;
+		line-height: 1.8;
 	}
 }
 
