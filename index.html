@@ -5,28 +5,45 @@
   <title>I'm Amirhosein Mohaddesi</title>
   <meta name="description" content="Robotics • Multi-Agent Navigation • ML">
   <meta name="author" content="Amirhosein Mohaddesi">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/vendor.css">
 
   <style>
-    /* --- Hero polish --- */
-    .hero-divider { margin: 2rem auto 0; opacity:.15; width:140px; height:3px; background:#fff; border-radius:4px; }
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
 
-    /* --- DEMO section stays tidy and light --- */
-    #hf-space .section-intro { padding-bottom: 0; }
-    #hf-space .col-twelve { max-width: 1100px; margin: 0 auto; }
+    img, iframe {
+      max-width: 100%;
+      height: auto;
+    }
 
-    /* ===========================
-       Floating Chat Assistant
-       =========================== */
-    :root{
-      --chat-width: 360px;     /* tweak size here */
-      --chat-height: 520px;    /* tweak size here */
+    .hero-divider {
+      margin: 2rem auto 0;
+      opacity: .15;
+      width: 140px;
+      height: 3px;
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    #hf-space .section-intro {
+      padding-bottom: 0;
+    }
+
+    #hf-space .col-twelve {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    :root {
+      --chat-width: 360px;
+      --chat-height: 520px;
       --chat-radius: 14px;
       --chat-shadow: 0 18px 50px rgba(0,0,0,.22);
       --accent: #0057ff;
@@ -48,24 +65,29 @@
       place-items: center;
       cursor: pointer;
     }
-    .chat-launcher svg{ width: 26px; height: 26px; }
+
+    .chat-launcher svg {
+      width: 26px;
+      height: 26px;
+    }
 
     .chat-widget {
       position: fixed;
       right: 22px;
-      bottom: 86px; /* above launcher */
+      bottom: 86px;
       width: var(--chat-width);
       height: var(--chat-height);
       background: #fff;
       border-radius: var(--chat-radius);
       overflow: hidden;
       box-shadow: var(--chat-shadow);
-      display: none;           /* toggled by JS */
+      display: none;
       z-index: 1001;
     }
+
     .chat-header {
       height: 44px;
-      background: #0f172a;     /* slate-900 */
+      background: #0f172a;
       color: #fff;
       display: flex;
       align-items: center;
@@ -74,28 +96,41 @@
       font-weight: 600;
       letter-spacing: .2px;
     }
-    .chat-header .actions{
-      display:flex; gap:6px; align-items:center;
+
+    .chat-header .actions {
+      display: flex;
+      gap: 6px;
+      align-items: center;
     }
+
     .chat-header button {
-      background: transparent; border: 0; color: #fff; cursor: pointer;
-      width: 34px; height: 34px; border-radius: 8px;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
     }
-    .chat-header button:hover { background: rgba(255,255,255,.12); }
+
+    .chat-header button:hover {
+      background: rgba(255,255,255,.12);
+    }
 
     .chat-body {
       width: 100%;
       height: calc(100% - 44px);
-      background: #000; /* Space handles its own UI; black to avoid flashes */
+      background: #000;
     }
-    .chat-body iframe{
-      width: 100%; height: 100%;
+
+    .chat-body iframe {
+      width: 100%;
+      height: 100%;
       border: 0;
       display: block;
     }
 
-    /* Small helper tooltip for the launcher (optional) */
-    .chat-launcher[data-tip]:hover::after{
+    .chat-launcher[data-tip]:hover::after {
       content: attr(data-tip);
       position: absolute;
       right: 64px;
@@ -109,26 +144,132 @@
       box-shadow: 0 8px 20px rgba(0,0,0,.25);
     }
 
-    /* Mobile adjustments */
-    @media (max-width: 480px){
-      :root{
-        --chat-width: 92vw;
-        --chat-height: 72vh;
+    /* Better mobile behavior */
+    @media (max-width: 768px) {
+      #intro h1 {
+        font-size: 3.6rem;
+        line-height: 1.2;
       }
-      .chat-widget { right: 4vw; bottom: 88px; }
+
+      #intro h5 {
+        font-size: 1.6rem;
+      }
+
+      #intro .intro-position span {
+        display: block;
+        font-size: 1.4rem;
+        line-height: 1.6;
+      }
+
+      #about .section-intro h1,
+      #resume .section-intro h1 {
+        font-size: 2.8rem;
+        line-height: 1.25;
+        padding: 0 12px;
+      }
+
+      #about .intro-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      #about .intro-info img {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 0 16px 0;
+      }
+
+      #about .intro-info .lead {
+        font-size: 1.8rem;
+        line-height: 1.7;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 12px;
+        text-align: center;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+
+      #about .info-list li,
+      #contact p,
+      #contact a,
+      .timeline-content p,
+      .timeline-header p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      .button,
+      button,
+      input[type="submit"],
+      input[type="button"] {
+        white-space: normal;
+      }
+
+      .chat-launcher[data-tip]:hover::after {
+        display: none;
+      }
+
+      .chat-launcher {
+        right: 16px;
+        bottom: 16px;
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --chat-width: 100vw;
+        --chat-height: 100vh;
+        --chat-radius: 0px;
+      }
+
+      .chat-widget {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      #intro h1 {
+        font-size: 3rem;
+      }
+
+      #about .section-intro h1,
+      #resume .section-intro h1 {
+        font-size: 2.4rem;
+      }
+
+      #about .intro-info .lead {
+        font-size: 1.65rem;
+        line-height: 1.65;
+        padding: 0 10px;
+      }
+
+      .navbar-brand {
+        max-width: calc(100vw - 90px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
   </style>
 
-  <!-- scripts -->
   <script src="js/modernizr.js" defer></script>
   <script src="js/pace.min.js" defer></script>
-
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
-
 <body id="top">
 
-  <!-- start navigation -->
   <nav class="navbar navbar-default templatemo-nav" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -150,9 +291,7 @@
       </div>
     </div>
   </nav>
-  <!-- end navigation -->
 
-  <!-- intro section -->
   <section id="intro">
     <div class="intro-overlay"></div>
     <div class="intro-content">
@@ -182,7 +321,6 @@
     </ul>
   </section>
 
-  <!-- HF demo section — light, with launch links instead of heavy embed -->
   <section id="hf-space" class="grey-section">
     <div class="row section-intro">
       <div class="col-twelve">
@@ -193,7 +331,6 @@
     </div>
   </section>
 
-  <!-- about section -->
   <section id="about">
     <div class="row section-intro">
       <div class="col-twelve">
@@ -240,7 +377,6 @@
     </div>
   </section>
 
-  <!-- resume Section -->
   <section id="resume" class="grey-section">
     <div class="row section-intro">
       <div class="col-twelve">
@@ -252,7 +388,6 @@
       <div class="col-twelve resume-header"><h2>Education</h2></div>
       <div class="col-twelve">
         <div class="timeline-wrap">
-
           <div class="timeline-block">
             <div class="timeline-ico"><i class="fa fa-graduation-cap"></i></div>
             <div class="timeline-header">
@@ -288,7 +423,6 @@
               <p>Mathematics<br>GPA: 19.8/20</p>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -297,7 +431,6 @@
       <div class="col-twelve resume-header"><h2>Research Experience</h2></div>
       <div class="col-twelve">
         <div class="timeline-wrap">
-
           <div class="timeline-block">
             <div class="timeline-ico"><i class="fa fa-briefcase"></i></div>
             <div class="timeline-header">
@@ -306,7 +439,7 @@
               <p>2021–present</p>
             </div>
             <div class="timeline-content">
-              <h4><a>Graduate Research – Agentic Multi-Robot Navigation Platform</a></h4>
+              <h4>Graduate Research – Agentic Multi-Robot Navigation Platform</h4>
               <p>Built a realistic ROS2 platform to study human-inspired navigation in multi-agent systems; integrated human navigation data for training (PyTorch); added Agentic AI (LLM-driven planning, memory, tool-use) enabling language-guided decision-making and multi-robot coordination; prepared distributed training workflows (DDP-ready); ran Webots/Gazebo simulations with visual/sequence models. Manuscript under review; poster/papers at SAB 2024 and IEEE ICDL 2024.</p>
             </div>
           </div>
@@ -330,7 +463,6 @@
               <p>Implemented an 8-bit spiking neural network for embedded targets and designed an 8-bit quantization technique that reduced power by 12%–18% on MNIST/CIFAR10/20 with only 3%–7% accuracy drop.</p>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -341,7 +473,6 @@
     </div>
   </section>
 
-  <!-- contact -->
   <section id="contact">
     <div class="row section-intro">
       <div class="col-twelve"><h5>Contact</h5></div>
@@ -366,7 +497,6 @@
     </div>
   </section>
 
-  <!-- footer -->
   <footer>
     <div class="row">
       <div class="col-six tab-full pull-right social">
@@ -385,7 +515,6 @@
 
   <div id="preloader"><div id="loader"></div></div>
 
-  <!-- Floating Chat Assistant (widget + launcher) -->
   <div class="chat-widget" id="chatWidget" aria-hidden="true">
     <div class="chat-header">
       <span>Career Assistant</span>
@@ -406,7 +535,6 @@
   </div>
 
   <button class="chat-launcher" id="chatLauncher" data-tip="Chat">
-    <!-- chat icon -->
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M21 12c0 4.418-4.03 8-9 8-1.036 0-2.03-.15-2.95-.43-.27-.08-.56-.06-.81.06l-3.25 1.62c-.76.38-1.64-.33-1.43-1.16l.83-3.24c.07-.27.03-.56-.1-.81C3.47 14.66 3 13.37 3 12c0-4.42 4.03-8 9-8s9 3.58 9 8Z" stroke="currentColor" stroke-width="1.6"/>
       <circle cx="9" cy="12" r="1" fill="currentColor"/>
@@ -415,7 +543,6 @@
     </svg>
   </button>
 
-  <!-- JavaScript -->
   <script src="js/jquery-2.1.3.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
@@ -423,24 +550,26 @@
   <script>
     (function(){
       const launcher = document.getElementById('chatLauncher');
-      const widget   = document.getElementById('chatWidget');
+      const widget = document.getElementById('chatWidget');
       const closeBtn = document.getElementById('closeChat');
-      const popBtn   = document.getElementById('openNewWindow');
+      const popBtn = document.getElementById('openNewWindow');
       const popupLink = document.getElementById('open-popup');
 
       function openWidget(){
         widget.style.display = 'block';
         widget.setAttribute('aria-hidden', 'false');
       }
+
       function closeWidget(){
         widget.style.display = 'none';
         widget.setAttribute('aria-hidden', 'true');
       }
+
       function openPopup(e){
         if (e) e.preventDefault();
         const w = 420, h = 720;
         const y = Math.max(0, (window.outerHeight - h) / 2);
-        const x = Math.max(0, (window.outerWidth  - w) / 2);
+        const x = Math.max(0, (window.outerWidth - w) / 2);
         window.open(
           'https://amixxm-career-conversation.hf.space?embed=true',
           'hf_assistant',
@@ -448,19 +577,24 @@
         );
       }
 
-      launcher.addEventListener('click', openWidget);
+      launcher.addEventListener('click', function(){
+        if (window.innerWidth <= 480) {
+          openPopup();
+        } else {
+          openWidget();
+        }
+      });
+
       closeBtn.addEventListener('click', closeWidget);
       popBtn.addEventListener('click', openPopup);
       if (popupLink) popupLink.addEventListener('click', openPopup);
 
-      // Optional: close on outside click
-      document.addEventListener('click', (ev) => {
+      document.addEventListener('click', function(ev) {
         if (!widget.contains(ev.target) && ev.target !== launcher && widget.getAttribute('aria-hidden') === 'false') {
           const rect = widget.getBoundingClientRect();
-          // ignore clicks on launcher area
           const lRect = launcher.getBoundingClientRect();
           const nearLauncher = ev.clientX >= lRect.left && ev.clientX <= lRect.right &&
-                               ev.clientY >= lRect.top  && ev.clientY <= lRect.bottom;
+                               ev.clientY >= lRect.top && ev.clientY <= lRect.bottom;
           if (!nearLauncher &&
               (ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
             closeWidget();
@@ -468,8 +602,7 @@
         }
       });
 
-      // ESC to close
-      document.addEventListener('keydown', (ev) => {
+      document.addEventListener('keydown', function(ev) {
         if (ev.key === 'Escape') closeWidget();
       });
     })();
