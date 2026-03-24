@@ -32,10 +32,10 @@
       </div>
       <div class="navbar-collapse site-nav-panel" id="siteNav" aria-label="Page sections">
         <ul class="nav navbar-nav navbar-right site-nav__links" id="main-nav-wrap">
-          <li><a class="smoothscroll" href="#intro">Introduction</a></li>
+          <li><a class="smoothscroll" href="#intro">Intro</a></li>
           <li><a class="smoothscroll" href="#hf-space">Demo</a></li>
           <li><a class="smoothscroll" href="#about">About</a></li>
-          <li><a class="smoothscroll" href="#resume">Experience</a></li>
+          <li><a class="smoothscroll" href="#resume">CV</a></li>
           <li><a class="smoothscroll" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -49,14 +49,14 @@
         <div class="col-twelve">
           <h5>Hey, I'm</h5>
           <h1>Amirhosein Mohaddesi</h1>
-          <p class="hero-tagline">Robotics and machine learning engineer working on multi-robot systems, simulation, and agentic autonomy—bridging ROS2 platforms with modern learning and LLM-based tooling.</p>
+          <p class="hero-tagline">Robotics and machine learning engineer focused on multi-robot systems, simulation, and agentic autonomy—from ROS2 platforms to modern learning and LLM-based tooling.</p>
           <ul class="hero-highlights">
             <li>Ph.D. in Computer Science (2025), UC Irvine · <a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL</a></li>
-            <li>Open to full-time and contract opportunities</li>
+            <li>Open to full-time and contract roles</li>
           </ul>
           <div class="hero-cta">
-            <a class="button stroke smoothscroll button--hero-secondary" href="#about" title="Background and selected work">Background &amp; work</a>
-            <a class="button button-primary smoothscroll button--hero-primary" href="#hf-space" title="Open the interactive assistant">Interactive demo</a>
+            <a class="button stroke smoothscroll" href="#about" title="Background and work">Background &amp; work</a>
+            <a class="button button-primary smoothscroll" href="#hf-space" title="Try the interactive demo">Try the demo</a>
           </div>
           <div class="hero-divider"></div>
         </div>
@@ -108,13 +108,7 @@
           <li><strong>Location:</strong> <span>South San Francisco, CA</span></li>
           <li><strong>Portfolio:</strong> <span><a href="https://amirmohaddesi.github.io/">amirmohaddesi.github.io</a></span></li>
           <li><strong>Lab:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL — Cognitive Anteater Robotics Lab</a></span></li>
-          <li class="info-list__item info-list__item--email-block">
-            <strong class="info-list__label">Email</strong>
-            <ul class="profile-email-list">
-              <li><a class="profile-email-link" href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></li>
-              <li><a class="profile-email-link" href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></li>
-            </ul>
-          </li>
+          <li class="info-list__item info-list__item--stack"><strong>Email</strong> <span class="info-list__values"><a class="info-list__link" href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a><a class="info-list__link" href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
         </ul>
       </div>
       <div class="col-six tab-full">
@@ -163,18 +157,17 @@
   <section id="resume" class="grey-section">
     <div class="row section-intro">
       <div class="col-twelve">
-        <h5>Background</h5>
-        <h1>Education, research, and selected publications.</h1>
-        <p class="resume-section-lead">A concise record of training and research; details and full CV are available on request or via the PDF.</p>
+        <h5>Experience</h5>
+        <h1>Education, research, and publications.</h1>
       </div>
     </div>
 
-    <div class="row resume-timeline resume-timeline--education">
+    <div class="row resume-timeline">
       <div class="col-twelve resume-header">
         <h2>Education</h2>
       </div>
       <div class="col-twelve">
-        <div class="timeline-wrap timeline-wrap--education">
+        <div class="timeline-wrap">
           <div class="timeline-block">
             <div class="timeline-ico"><i class="fa fa-graduation-cap"></i></div>
             <div class="timeline-header">
@@ -203,9 +196,9 @@
       </div>
     </div>
 
-    <div class="row resume-timeline resume-timeline--research">
+    <div class="row resume-timeline">
       <div class="col-twelve resume-header">
-        <h2>Research</h2>
+        <h2>Research Experience</h2>
       </div>
       <div class="col-twelve">
         <div class="timeline-wrap">
@@ -256,23 +249,24 @@
       </div>
       <div class="col-twelve">
         <div class="publications-panel">
-          <p class="publications-intro">Peer-reviewed and conference work from my graduate research. Below are two representative highlights; the full list and citation graph live on my public profiles.</p>
+          <p class="publications-intro">Representative work from graduate research. Full bibliography and citations live on the profiles below.</p>
           <ul class="publication-list">
-            <li class="publication-list__item">
+            <li>
               <span class="publication-list__meta">IEEE ICDL 2024</span>
-              <span class="publication-list__title">Telepresence navigation and cognitive load — human study comparing autonomous assistance with manual control.</span>
-              <a class="publication-list__link" href="https://ieeexplore.ieee.org/abstract/document/10644592">Paper on IEEE Xplore →</a>
+              <span class="publication-list__title">Telepresence navigation and cognitive load — human study on autonomous vs. manual control.</span>
+              <a class="publication-list__link" href="https://ieeexplore.ieee.org/abstract/document/10644592">View on IEEE Xplore</a>
             </li>
-            <li class="publication-list__item">
+            <li>
               <span class="publication-list__meta">SAB 2024</span>
-              <span class="publication-list__title">Strategy diversity in multi-robot teams (details and related entries on my Scholar profile).</span>
-              <a class="publication-list__link" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en">Open Google Scholar →</a>
+              <span class="publication-list__title">Strategy diversity in multi-robot teams (see CV and lab materials for details).</span>
+              <a class="publication-list__link" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en">Google Scholar</a>
             </li>
           </ul>
-          <div class="publications-cta" role="group" aria-label="Publication profiles">
-            <a class="pub-profile-btn" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en">Google Scholar profile</a>
-            <a class="pub-profile-btn pub-profile-btn--secondary" href="https://orcid.org/0009-0008-5021-5954">ORCID record</a>
-          </div>
+          <p class="publications-profiles">
+            <a class="ext-profile-link" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en">Google Scholar</a>
+            <span class="ext-profile-sep" aria-hidden="true">·</span>
+            <a class="ext-profile-link" href="https://orcid.org/0009-0008-5021-5954">ORCID</a>
+          </p>
         </div>
       </div>
     </div>
@@ -283,7 +277,7 @@
       <div class="col-twelve">
         <h5>Contact</h5>
         <h1>Let’s connect.</h1>
-        <p class="contact-lead">Open to roles in AI/ML, robotics, and applied research. Email works best—please include role, timing, and how you found me.</p>
+        <p class="contact-lead">Open to roles in AI/ML, robotics, and applied research. Prefer email; include role and timeline.</p>
       </div>
     </div>
     <div class="row contact-form"></div>
@@ -291,26 +285,20 @@
       <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-pin"></i></div>
         <h5>Location</h5>
-        <p class="contact-card__value">South San Francisco, CA</p>
+        <p>South San Francisco, CA</p>
       </div>
-      <div class="col-four tab-full contact-card contact-card--email">
+      <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-mail"></i></div>
         <h5>Email</h5>
         <ul class="contact-email-list">
-          <li><a class="contact-email-link" href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></li>
-          <li><a class="contact-email-link" href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></li>
+          <li><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></li>
+          <li><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></li>
         </ul>
       </div>
       <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-phone"></i></div>
         <h5>Phone</h5>
-        <p class="contact-card__value"><a class="contact-phone-link" href="tel:+19494268113">(949) 426-8113</a></p>
-      </div>
-    </div>
-    <div class="row contact-closer">
-      <div class="col-twelve">
-        <a class="contact-primary-mailto" href="mailto:Amir.mohaddesi@gmail.com?subject=Hello%20Amirhosein">Email Amir.mohaddesi@gmail.com</a>
-        <p class="contact-closer-note">CV available <a href="CV_Amirhosein.pdf" download>for download</a> from the About section.</p>
+        <p><a href="tel:+19494268113">(949) 426-8113</a></p>
       </div>
     </div>
   </section>
