@@ -14,6 +14,22 @@
   <link rel="stylesheet" href="css/main.css">
 
   <style>
+    :root {
+      --bg-dark: #0b1020;
+      --bg-dark-soft: #111827;
+      --bg-light: #f8fafc;
+      --text-dark: #0f172a;
+      --text-muted-dark: #cbd5e1;
+      --text-muted-light: #475569;
+      --accent: #ec4899;
+      --accent-hover: #db2777;
+      --border-soft: rgba(255, 255, 255, 0.10);
+      --chat-width: 360px;
+      --chat-height: 520px;
+      --chat-radius: 14px;
+      --chat-shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    }
+
     html,
     body {
       overflow-x: hidden;
@@ -26,12 +42,16 @@
       height: auto;
     }
 
+    body {
+      background: var(--bg-dark);
+    }
+
     .hero-divider {
       margin: 2rem auto 0;
-      opacity: .15;
+      opacity: .28;
       width: 140px;
       height: 3px;
-      background: #fff;
+      background: var(--accent);
       border-radius: 4px;
     }
 
@@ -44,21 +64,159 @@
       margin: 0 auto;
     }
 
-    :root {
-      --chat-width: 360px;
-      --chat-height: 520px;
-      --chat-radius: 14px;
-      --chat-shadow: 0 18px 50px rgba(0, 0, 0, .22);
-      --accent: #0057ff;
+    /* ===== Color / contrast improvements ===== */
+    #intro,
+    #resume,
+    #contact,
+    #hf-space {
+      background: var(--bg-dark);
     }
 
+    #about {
+      background: var(--bg-light);
+    }
+
+    #intro h1,
+    #resume .section-intro h1,
+    #hf-space .section-intro h1,
+    #contact h5,
+    #resume .timeline-header h3,
+    #resume .timeline-content h4,
+    #resume .resume-header h2,
+    #resume .timeline-header h4,
+    #resume .timeline-content h4 a,
+    #contact .icon i {
+      color: #f8fafc;
+    }
+
+    #intro .intro-position,
+    #hf-space p,
+    #resume p,
+    #resume .timeline-header p,
+    #resume .timeline-content p,
+    #contact p,
+    #contact a,
+    #contact h5 {
+      color: var(--text-muted-dark);
+    }
+
+    #about h1,
+    #about h3,
+    #about strong,
+    #about a,
+    #about .info-list li strong,
+    #about .section-intro h1 {
+      color: var(--text-dark);
+    }
+
+    #about p,
+    #about .lead,
+    #about .info-list li span {
+      color: var(--text-muted-light);
+    }
+
+    #intro h5,
+    #about .section-intro h5,
+    #resume .resume-header h2,
+    #contact .section-intro h5,
+    #hf-space .section-intro h5 {
+      color: var(--accent);
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--accent);
+    }
+
+    .button.button-primary,
+    a.button.button-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button.button-primary:hover,
+    a.button.button-primary:hover,
+    .button.button-primary:focus,
+    a.button.button-primary:focus {
+      background: var(--accent-hover);
+      color: #fff;
+    }
+
+    .button.stroke,
+    a.button.stroke {
+      border-color: rgba(255, 255, 255, 0.45);
+      color: #fff;
+    }
+
+    .button.stroke:hover,
+    a.button.stroke:hover,
+    .button.stroke:focus,
+    a.button.stroke:focus {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    #about .button.stroke,
+    #about a.button.stroke {
+      border-color: #334155;
+      color: #0f172a;
+    }
+
+    #about .button.stroke:hover,
+    #about a.button.stroke:hover,
+    #about .button.stroke:focus,
+    #about a.button.stroke:focus {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      margin-bottom: 0;
+      border: 0;
+      border-radius: 0;
+      background: rgba(248, 250, 252, 0.96);
+      box-shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .navbar-brand {
+      color: #334155 !important;
+      font-weight: 600;
+    }
+
+    .navbar-nav>li>a {
+      color: #334155 !important;
+      font-weight: 600;
+      letter-spacing: .08rem;
+    }
+
+    .navbar-nav>li>a:hover,
+    .navbar-nav>li>a:focus {
+      color: var(--accent) !important;
+      background: transparent !important;
+    }
+
+    .navbar-toggle {
+      border: 0;
+      background: transparent !important;
+    }
+
+    .navbar-toggle .icon-bar {
+      background-color: #64748b !important;
+      width: 22px;
+      height: 2px;
+      border-radius: 10px;
+    }
+
+    /* ===== Chat widget ===== */
     .chat-launcher {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
+      right: 18px;
+      bottom: 18px;
       z-index: 1000;
-      width: 56px;
-      height: 56px;
+      width: 50px;
+      height: 50px;
       border-radius: 999px;
       border: none;
       background: var(--accent);
@@ -70,14 +228,14 @@
     }
 
     .chat-launcher svg {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
     }
 
     .chat-widget {
       position: fixed;
-      right: 22px;
-      bottom: 86px;
+      right: 18px;
+      bottom: 78px;
       width: var(--chat-width);
       height: var(--chat-height);
       background: #fff;
@@ -136,7 +294,7 @@
     .chat-launcher[data-tip]:hover::after {
       content: attr(data-tip);
       position: absolute;
-      right: 64px;
+      right: 58px;
       bottom: 8px;
       background: #0f172a;
       color: #fff;
@@ -147,194 +305,29 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
     }
 
-    @media (max-width: 768px) {
-      #intro h1 {
-        font-size: 3.6rem;
-        line-height: 1.2;
-      }
-
-      #intro h5 {
-        font-size: 1.6rem;
-      }
-
-      #intro .intro-position span {
-        display: block;
-        font-size: 1.4rem;
-        line-height: 1.6;
-      }
-
-      #about .section-intro h1,
-      #resume .section-intro h1 {
-        font-size: 2.8rem;
-        line-height: 1.25;
-        padding: 0 12px;
-      }
-
-      #about .intro-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      #about .intro-info img {
-        width: 96px;
-        height: 96px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 0 16px 0;
-      }
-
-      #about .intro-info .lead {
-        font-size: 1.8rem;
-        line-height: 1.7;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0 12px;
-        text-align: center;
-        word-break: normal;
-        overflow-wrap: break-word;
-      }
-
-      #about .info-list li,
-      #contact p,
-      #contact a,
-      .timeline-content p,
-      .timeline-header p {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-      }
-
-      .button,
-      button,
-      input[type="submit"],
-      input[type="button"] {
-        white-space: normal;
-      }
-
-      .chat-launcher[data-tip]:hover::after {
-        display: none;
-      }
-
-      .chat-launcher {
-        right: 16px;
-        bottom: 16px;
-        width: 52px;
-        height: 52px;
-      }
+    /* ===== Desktop / tablet content polish ===== */
+    #intro h1 {
+      color: #f8fafc;
     }
 
-    @media (max-width: 480px) {
-      :root {
-        --chat-width: 100vw;
-        --chat-height: 100vh;
-        --chat-radius: 0px;
-      }
-
-      .chat-widget {
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-      }
-
-      #intro h1 {
-        font-size: 3rem;
-      }
-
-      #about .section-intro h1,
-      #resume .section-intro h1 {
-        font-size: 2.4rem;
-      }
-
-      #about .intro-info .lead {
-        font-size: 1.65rem;
-        line-height: 1.65;
-        padding: 0 10px;
-      }
-
-      .navbar-brand {
-        max-width: calc(100vw - 90px);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+    #intro .intro-position span {
+      color: var(--text-muted-dark);
     }
 
-    /* ===== Mobile polish layer ===== */
+    .intro-social li a {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .intro-social li a:hover,
+    .intro-social li a:focus {
+      color: var(--accent);
+    }
+
+    /* ===== Mobile ===== */
     @media (max-width: 768px) {
-
-      html,
-      body {
-        overflow-x: hidden;
-      }
-
-      .navbar {
-        min-height: 58px;
-        border: 0;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
-      }
-
-      .navbar-brand {
-        font-size: 1.8rem;
-        line-height: 58px;
-        font-weight: 600;
-        max-width: calc(100vw - 84px);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .navbar-toggle {
-        margin-top: 11px;
-        margin-bottom: 11px;
-        border: none;
-        background: transparent !important;
-      }
-
-      .navbar-toggle .icon-bar {
-        width: 22px;
-      }
-
-      .navbar-collapse {
-        border-top: 0;
-        box-shadow: none;
-        background: #111;
-        margin-left: -15px;
-        margin-right: -15px;
-        padding: 0;
-      }
-
-      .navbar-nav {
-        float: none !important;
-        margin: 0;
-      }
-
-      .navbar-nav>li {
-        float: none;
-        border-top: 1px solid rgba(255, 255, 255, .08);
-      }
-
-      .navbar-nav>li>a {
-        padding: 15px 22px;
-        color: #fff !important;
-        font-size: 1.35rem;
-        letter-spacing: .12rem;
-      }
-
-      .navbar-nav>li>a:hover,
-      .navbar-nav>li>a:focus {
-        background: rgba(255, 255, 255, .04) !important;
-        color: #FF0077 !important;
-      }
-
       #intro {
         min-height: auto;
-        padding-top: 120px;
+        padding-top: 118px;
         padding-bottom: 76px;
       }
 
@@ -349,16 +342,15 @@
         padding-right: 8px;
       }
 
-      #intro h5 {
-        font-size: 1.5rem;
-        letter-spacing: .22rem;
-        color: #FF0077;
-      }
-
       #intro h1 {
         font-size: 3.2rem;
         line-height: 1.18;
         margin-bottom: 1.6rem;
+      }
+
+      #intro h5 {
+        font-size: 1.5rem;
+        letter-spacing: .22rem;
       }
 
       #intro .intro-position {
@@ -380,12 +372,6 @@
         margin: 0 auto 1.2rem auto;
       }
 
-      .hero-divider {
-        margin-top: 1.6rem;
-        background: #FF0077;
-        opacity: .35;
-      }
-
       .intro-social {
         position: static;
         width: 100%;
@@ -403,12 +389,7 @@
       }
 
       .intro-social li a {
-        color: rgba(255, 255, 255, .9);
         font-size: 2rem;
-      }
-
-      .intro-social li a:hover {
-        color: #FF0077;
       }
 
       #about,
@@ -426,23 +407,39 @@
         padding: 0;
       }
 
-      #about .section-intro h5,
-      #resume .section-intro h5,
-      #contact .section-intro h5,
-      #hf-space .section-intro h5 {
-        color: #FF0077;
+      #about .intro-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
 
-      #about .intro-info,
-      #about .about-content,
-      .resume-timeline,
-      .contact-info {
-        margin-top: 2.5rem;
+      #about .intro-info img {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 0 16px 0;
       }
 
       #about .intro-info .lead {
-        text-align: left;
+        font-size: 1.8rem;
+        line-height: 1.72;
+        width: 100%;
         max-width: 100%;
+        margin: 0;
+        padding: 0 12px;
+        text-align: left;
+        overflow-wrap: break-word;
+      }
+
+      #about .info-list li,
+      #contact p,
+      #contact a,
+      .timeline-content p,
+      .timeline-header p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
       }
 
       .timeline-wrap {
@@ -471,17 +468,11 @@
         margin-bottom: 1rem;
       }
 
-      .timeline-header h3,
-      .timeline-header h4,
-      .timeline-header p,
-      .timeline-content h4,
-      .timeline-content p {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-      }
-
-      .resume-header h2 {
-        color: #FF0077;
+      .button,
+      button,
+      input[type="submit"],
+      input[type="button"] {
+        white-space: normal;
       }
 
       .button-section .button {
@@ -495,10 +486,6 @@
       .contact-info .col-four {
         margin-bottom: 2.6rem;
         text-align: center;
-      }
-
-      .contact-info .icon i {
-        color: #FF0077;
       }
 
       footer .social,
@@ -516,16 +503,99 @@
         display: inline-block;
         float: none;
       }
+
+      .chat-launcher[data-tip]:hover::after {
+        display: none;
+      }
+
+      .chat-launcher {
+        right: 14px;
+        bottom: 14px;
+        width: 46px;
+        height: 46px;
+      }
+
+      /* Custom mobile menu */
+      .navbar {
+        min-height: 58px;
+      }
+
+      .navbar-brand {
+        font-size: 1.8rem;
+        line-height: 58px;
+        max-width: calc(100vw - 84px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .navbar-toggle {
+        margin-top: 11px;
+        margin-bottom: 11px;
+      }
+
+      .navbar-collapse {
+        display: none;
+        border-top: 0;
+        box-shadow: none;
+        background: #ffffff;
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 0;
+      }
+
+      .navbar-collapse.is-open {
+        display: block;
+      }
+
+      .navbar-nav {
+        float: none !important;
+        margin: 0;
+      }
+
+      .navbar-nav>li {
+        float: none;
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      .navbar-nav>li>a {
+        padding: 15px 22px;
+        color: #334155 !important;
+        font-size: 1.35rem;
+        letter-spacing: .12rem;
+      }
+
+      .navbar-nav>li>a:hover,
+      .navbar-nav>li>a:focus {
+        background: rgba(236, 72, 153, 0.05) !important;
+        color: var(--accent) !important;
+      }
     }
 
     @media (max-width: 480px) {
+      :root {
+        --chat-width: 100vw;
+        --chat-height: 100vh;
+        --chat-radius: 0px;
+      }
+
+      .chat-widget {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+
       .row {
         padding-left: 18px;
         padding-right: 18px;
       }
 
       #intro {
-        padding-top: 110px;
+        padding-top: 108px;
         padding-bottom: 64px;
       }
 
@@ -556,39 +626,9 @@
         line-height: 1.7;
       }
 
-      .chat-launcher {
-        right: 14px;
-        bottom: 14px;
+      .navbar-brand {
+        max-width: calc(100vw - 90px);
       }
-    }
-    /* ===== Restore desktop accent identity ===== */
-    #intro h5,
-    #about .section-intro h5,
-    #resume .section-intro h5,
-    #contact .section-intro h5,
-    #hf-space .section-intro h5,
-    .resume-header h2 {
-      color: #FF0077;
-    }
-
-    .intro-social li a {
-      color: rgba(255,255,255,0.85);
-    }
-
-    .intro-social li a:hover,
-    .intro-social li a:focus {
-      color: #FF0077;
-    }
-
-    .button.stroke:hover,
-    .button.stroke:focus {
-      border-color: #FF0077;
-      color: #FF0077;
-    }
-
-    a:hover,
-    a:focus {
-      color: #FF0077;
     }
   </style>
 
@@ -602,14 +642,14 @@
   <nav class="navbar navbar-default templatemo-nav" role="navigation">
     <div class="container">
       <div class="navbar-header">
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button class="navbar-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
           <span class="icon icon-bar"></span>
           <span class="icon icon-bar"></span>
           <span class="icon icon-bar"></span>
         </button>
-        <a href="#" class="navbar-brand">Amirhosein Mohaddesi</a>
+        <a href="#top" class="navbar-brand">Amirhosein Mohaddesi</a>
       </div>
-      <div class="collapse navbar-collapse">
+      <div class="navbar-collapse" id="siteNav">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#top">INTRO</a></li>
           <li><a href="#hf-space">DEMO</a></li>
@@ -643,11 +683,10 @@
     </div>
 
     <ul class="intro-social">
-      <li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/amohaddesi/"><i class="fa fa-linkedin"></i></a></li>
-      <li><a href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ"><i
-            class="fa fa-graduation-cap"></i></a></li>
-      <li><a href="https://github.com/AmirMohaddesi"><i class="fa fa-github"></i></a></li>
+      <li><a href="mailto:Amir.mohaddesi@gmail.com" aria-label="Email"><i class="fa fa-envelope"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/amohaddesi/" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ" aria-label="Google Scholar"><i class="fa fa-graduation-cap"></i></a></li>
+      <li><a href="https://github.com/AmirMohaddesi" aria-label="GitHub"><i class="fa fa-github"></i></a></li>
     </ul>
   </section>
 
@@ -656,8 +695,7 @@
       <div class="col-twelve">
         <h5>Interactive Demo</h5>
         <h1>Career Conversation (Hugging Face Space)</h1>
-        <p>Use the floating <strong>chat launcher</strong> (bottom-right) to open the assistant. Prefer a new window? <a
-            href="#" id="open-popup">Open assistant in a small window</a>.</p>
+        <p>Use the floating <strong>chat launcher</strong> (bottom-right) to open the assistant. Prefer a new window? <a href="#" id="open-popup">Open assistant in a small window</a>.</p>
       </div>
     </div>
   </section>
@@ -670,13 +708,9 @@
         <div class="intro-info">
           <img src="images/Profile-Pic.jpg" alt="Profile Picture">
           <p class="lead">
-            I’m an AI/Robotics engineer with a Ph.D. from UC Irvine (CARL). I build learning-driven, multi-robot systems
-            in ROS2 and increasingly integrate Agentic AI—LLM-powered planners and tools—for language-guided autonomy.
-            Recent work includes a ROS2 platform that trains navigation agents with human data (PyTorch), distributed
-            simulation for multi-agent exploration, and Webots/Gazebo experiments for sim-to-real.<br>
-            Publications span telepresence navigation and cognitive load (IEEE ICDL 2024) and strategy diversity in
-            robot teams (SAB 2024). Current focus: communication-aware, agentic multi-robot coordination with
-            transformers and tool-use. Outside work I enjoy hiking, camping, gaming, and cat time.
+            I’m an AI/Robotics engineer with a Ph.D. from UC Irvine (CARL). I build learning-driven, multi-robot systems in ROS2 and increasingly integrate Agentic AI—LLM-powered planners and tools—for language-guided autonomy.
+            Recent work includes a ROS2 platform that trains navigation agents with human data (PyTorch), distributed simulation for multi-agent exploration, and Webots/Gazebo experiments for sim-to-real.<br>
+            Publications span telepresence navigation and cognitive load (IEEE ICDL 2024) and strategy diversity in robot teams (SAB 2024). Current focus: communication-aware, agentic multi-robot coordination with transformers and tool-use. Outside work I enjoy hiking, camping, gaming, and cat time.
           </p>
         </div>
       </div>
@@ -688,32 +722,19 @@
         <ul class="info-list">
           <li><strong>Full name:</strong> <span>Amirhosein Mohaddesi</span></li>
           <li><strong>Role:</strong> <span>AI/ML Engineer • Robotics</span></li>
-          <li><strong>Website:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL (Cognitive
-                Anteater Robotics Laboratory)</a></span></li>
-          <li><strong>Email:</strong> <span><a
-                href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> <span><a
-                href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
+          <li><strong>Website:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL (Cognitive Anteater Robotics Laboratory)</a></span></li>
+          <li><strong>Email:</strong> <span><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> <span><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
         </ul>
       </div>
       <div class="col-six tab-full">
         <h3>Selected Skills</h3>
         <p>For more information download <a href="CV_Amirhosein.pdf" download>my CV</a>.</p>
         <ul class="skill-bars">
-          <li>
-            <div class="progress percent95"><span>95%</span></div><strong>Python</strong>
-          </li>
-          <li>
-            <div class="progress percent90"><span>90%</span></div><strong>C++</strong>
-          </li>
-          <li>
-            <div class="progress percent85"><span>85%</span></div><strong>ROS2</strong>
-          </li>
-          <li>
-            <div class="progress percent85"><span>85%</span></div><strong>PyTorch</strong>
-          </li>
-          <li>
-            <div class="progress percent80"><span>80%</span></div><strong>LangChain / Hugging Face</strong>
-          </li>
+          <li><div class="progress percent95"><span>95%</span></div><strong>Python</strong></li>
+          <li><div class="progress percent90"><span>90%</span></div><strong>C++</strong></li>
+          <li><div class="progress percent85"><span>85%</span></div><strong>ROS2</strong></li>
+          <li><div class="progress percent85"><span>85%</span></div><strong>PyTorch</strong></li>
+          <li><div class="progress percent80"><span>80%</span></div><strong>LangChain / Hugging Face</strong></li>
         </ul>
       </div>
     </div>
@@ -746,8 +767,7 @@
               <p>2019–2025</p>
             </div>
             <div class="timeline-content">
-              <h4><a href="https://ics.uci.edu/academics/graduate-programs/phd-cs/">University of California, Irvine</a>
-              </h4>
+              <h4><a href="https://ics.uci.edu/academics/graduate-programs/phd-cs/">University of California, Irvine</a></h4>
               <p>Computer Science, Donald Bren School of Information &amp; Computer Sciences<br>GPA: 3.93/4</p>
             </div>
           </div>
@@ -794,21 +814,14 @@
             </div>
             <div class="timeline-content">
               <h4>Graduate Research – Agentic Multi-Robot Navigation Platform</h4>
-              <p>Built a realistic ROS2 platform to study human-inspired navigation in multi-agent systems; integrated
-                human navigation data for training (PyTorch); added Agentic AI (LLM-driven planning, memory, tool-use)
-                enabling language-guided decision-making and multi-robot coordination; prepared distributed training
-                workflows (DDP-ready); ran Webots/Gazebo simulations with visual/sequence models. Manuscript under
-                review; poster/papers at SAB 2024 and IEEE ICDL 2024.</p>
+              <p>Built a realistic ROS2 platform to study human-inspired navigation in multi-agent systems; integrated human navigation data for training (PyTorch); added Agentic AI (LLM-driven planning, memory, tool-use) enabling language-guided decision-making and multi-robot coordination; prepared distributed training workflows (DDP-ready); ran Webots/Gazebo simulations with visual/sequence models. Manuscript under review; poster/papers at SAB 2024 and IEEE ICDL 2024.</p>
             </div>
           </div>
 
           <div class="timeline-block">
             <div class="timeline-content">
               <h4>Navigation and Cognitive Load in Telepresence Robots</h4>
-              <p>We investigated whether autonomous features in telepresence robots reduce cognitive load and improve
-                efficiency. In the autonomous condition, participants navigated more efficiently, performed better in a
-                learning/memory task, and reported lower cognitive load than manual. Presented at <a
-                  href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL 2024</a>.</p>
+              <p>We investigated whether autonomous features in telepresence robots reduce cognitive load and improve efficiency. In the autonomous condition, participants navigated more efficiently, performed better in a learning/memory task, and reported lower cognitive load than manual. Presented at <a href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL 2024</a>.</p>
             </div>
           </div>
 
@@ -821,8 +834,7 @@
             </div>
             <div class="timeline-content">
               <h4>DCLL 8-bit quantizer</h4>
-              <p>Implemented an 8-bit spiking neural network for embedded targets and designed an 8-bit quantization
-                technique that reduced power by 12%–18% on MNIST/CIFAR10/20 with only 3%–7% accuracy drop.</p>
+              <p>Implemented an 8-bit spiking neural network for embedded targets and designed an 8-bit quantization technique that reduced power by 12%–18% on MNIST/CIFAR10/20 with only 3%–7% accuracy drop.</p>
             </div>
           </div>
         </div>
@@ -833,8 +845,9 @@
       <div class="col-twelve resume-header">
         <h2>Publications</h2>
       </div>
-      <h4>See <a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en">Google Scholar</a> and <a
-          href="https://orcid.org/0009-0008-5021-5954">ORCiD</a>.</h4>
+      <div class="col-twelve">
+        <h4>See <a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en">Google Scholar</a> and <a href="https://orcid.org/0009-0008-5021-5954">ORCiD</a>.</h4>
+      </div>
     </div>
   </section>
 
@@ -870,13 +883,13 @@
         <ul class="footer-social">
           <li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
           <li><a href="https://www.linkedin.com/in/amohaddesi"><i class="fa fa-linkedin"></i></a></li>
-          <li><a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en"><i
-                class="fa fa-graduation-cap"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en"><i class="fa fa-graduation-cap"></i></a></li>
           <li><a href="https://github.com/AmirMohaddesi"><i class="fa fa-github"></i></a></li>
         </ul>
       </div>
       <div class="col-six tab-full">
-        <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+        <div id="go-top">
+          <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
         </div>
       </div>
     </div>
@@ -895,18 +908,22 @@
       </div>
     </div>
     <div class="chat-body">
-      <iframe id="chatFrame" src="https://amixxm-career-conversation.hf.space?embed=true"
+      <iframe
+        id="chatFrame"
+        src="https://amixxm-career-conversation.hf.space?embed=true"
         title="Career Conversation – Hugging Face Space"
-        allow="clipboard-read; clipboard-write; microphone; camera; fullscreen" referrerpolicy="no-referrer">
+        allow="clipboard-read; clipboard-write; microphone; camera; fullscreen"
+        referrerpolicy="no-referrer">
       </iframe>
     </div>
   </div>
 
-  <button class="chat-launcher" id="chatLauncher" data-tip="Chat">
+  <button class="chat-launcher" id="chatLauncher" data-tip="Chat" aria-label="Open chat assistant">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M21 12c0 4.418-4.03 8-9 8-1.036 0-2.03-.15-2.95-.43-.27-.08-.56-.06-.81.06l-3.25 1.62c-.76.38-1.64-.33-1.43-1.16l.83-3.24c.07-.27.03-.56-.1-.81C3.47 14.66 3 13.37 3 12c0-4.42 4.03-8 9-8s9 3.58 9 8Z"
-        stroke="currentColor" stroke-width="1.6" />
+        stroke="currentColor"
+        stroke-width="1.6" />
       <circle cx="9" cy="12" r="1" fill="currentColor" />
       <circle cx="12" cy="12" r="1" fill="currentColor" />
       <circle cx="15" cy="12" r="1" fill="currentColor" />
@@ -924,6 +941,10 @@
       const closeBtn = document.getElementById('closeChat');
       const popBtn = document.getElementById('openNewWindow');
       const popupLink = document.getElementById('open-popup');
+
+      const navToggle = document.getElementById('mobileNavToggle');
+      const siteNav = document.getElementById('siteNav');
+      const navLinks = siteNav ? siteNav.querySelectorAll('a') : [];
 
       function openWidget() {
         widget.style.display = 'block';
@@ -945,6 +966,39 @@
           'hf_assistant',
           `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`
         );
+      }
+
+      function closeMobileNav() {
+        if (!siteNav || !navToggle) return;
+        siteNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMobileNav() {
+        if (!siteNav || !navToggle) return;
+        const isOpen = siteNav.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      if (navToggle && siteNav) {
+        navToggle.addEventListener('click', function (e) {
+          e.preventDefault();
+          toggleMobileNav();
+        });
+
+        navLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            if (window.innerWidth <= 768) {
+              closeMobileNav();
+            }
+          });
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 768) {
+            closeMobileNav();
+          }
+        });
       }
 
       launcher.addEventListener('click', function () {
@@ -970,10 +1024,21 @@
             closeWidget();
           }
         }
+
+        if (siteNav && navToggle && window.innerWidth <= 768) {
+          const clickedInsideNav = siteNav.contains(ev.target);
+          const clickedToggle = navToggle.contains(ev.target);
+          if (siteNav.classList.contains('is-open') && !clickedInsideNav && !clickedToggle) {
+            closeMobileNav();
+          }
+        }
       });
 
       document.addEventListener('keydown', function (ev) {
-        if (ev.key === 'Escape') closeWidget();
+        if (ev.key === 'Escape') {
+          closeWidget();
+          closeMobileNav();
+        }
       });
     })();
   </script>
