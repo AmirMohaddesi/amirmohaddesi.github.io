@@ -20,18 +20,18 @@
 
 <body id="top">
 
-  <nav class="navbar navbar-default templatemo-nav site-nav" role="navigation" aria-label="Primary">
-    <div class="container site-nav__inner">
-      <div class="navbar-header site-nav__header">
-        <button type="button" class="navbar-toggle site-nav__toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
+  <nav class="navbar navbar-default templatemo-nav" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
           <span class="icon icon-bar"></span>
           <span class="icon icon-bar"></span>
           <span class="icon icon-bar"></span>
         </button>
-        <a href="#intro" class="navbar-brand smoothscroll site-nav__brand">Amirhosein Mohaddesi</a>
+        <a href="#intro" class="navbar-brand smoothscroll">Amirhosein Mohaddesi</a>
       </div>
-      <div class="navbar-collapse site-nav-panel" id="siteNav" aria-label="Page sections">
-        <ul class="nav navbar-nav navbar-right site-nav__links" id="main-nav-wrap">
+      <div class="navbar-collapse" id="siteNav">
+        <ul class="nav navbar-nav navbar-right" id="main-nav-wrap">
           <li><a class="smoothscroll" href="#intro">Intro</a></li>
           <li><a class="smoothscroll" href="#hf-space">Demo</a></li>
           <li><a class="smoothscroll" href="#about">About</a></li>
@@ -49,14 +49,14 @@
         <div class="col-twelve">
           <h5>Hey, I'm</h5>
           <h1>Amirhosein Mohaddesi</h1>
-          <p class="hero-tagline">Robotics and machine learning engineer focused on multi-robot systems, simulation, and agentic autonomy—from ROS2 platforms to modern learning and LLM-based tooling.</p>
+          <p class="hero-tagline">AI/ML &amp; robotics engineer — multi-agent navigation, simulation, and agentic autonomy (ROS2, PyTorch, LLM tooling).</p>
           <ul class="hero-highlights">
             <li>Ph.D. (2025), UC Irvine · <a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL</a></li>
-            <li>Open to full-time and contract roles</li>
+            <li>Open to full-time or contract roles</li>
           </ul>
           <div class="hero-cta">
-            <a class="button stroke smoothscroll" href="#about" title="Background and work">Background &amp; work</a>
-            <a class="button button-primary smoothscroll" href="#hf-space" title="Try the interactive demo">Try the demo</a>
+            <a class="button stroke smoothscroll" href="#about" title="More About Me">About &amp; projects</a>
+            <a class="button button-primary smoothscroll" href="#hf-space" title="See Live Demo">Live demo</a>
           </div>
           <div class="hero-divider"></div>
         </div>
@@ -76,9 +76,7 @@
       <div class="col-twelve">
         <h5>Interactive demo</h5>
         <h1>Career conversation (Hugging Face Space)</h1>
-        <p class="demo-lead">Ask questions about my background and projects. Use the floating button to open the assistant here, or open it in a separate window if you prefer.</p>
-        <p class="demo-actions"><button type="button" class="demo-popout" id="open-popup">Open assistant in new window</button></p>
-        <p class="demo-note">On narrow screens, the launcher opens the assistant in a new window automatically.</p>
+        <p>Use the <strong>chat button</strong> (lower-right). On small screens it opens in a new window. Desktop users can also <a href="#" id="open-popup">pop out the assistant</a>.</p>
       </div>
     </div>
   </section>
@@ -107,7 +105,7 @@
           <li><strong>Role:</strong> <span>AI/ML Engineer • Robotics</span></li>
           <li><strong>Portfolio:</strong> <span><a href="https://amirmohaddesi.github.io/">amirmohaddesi.github.io</a></span></li>
           <li><strong>Lab:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL — Cognitive Anteater Robotics Lab</a></span></li>
-          <li class="info-list__item info-list__item--stack"><strong>Email</strong> <span class="info-list__values"><a class="info-list__link" href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a><a class="info-list__link" href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
+          <li><strong>Email:</strong> <span><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> · <span><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
         </ul>
       </div>
       <div class="col-six tab-full">
@@ -191,6 +189,17 @@
             </div>
           </div>
 
+          <div class="timeline-block">
+            <div class="timeline-ico"><i class="fa fa-graduation-cap"></i></div>
+            <div class="timeline-header">
+              <h3>Diploma</h3>
+              <p>2010–2014</p>
+            </div>
+            <div class="timeline-content">
+              <h4>Shahid Soltani 1 High School, NODET</h4>
+              <p>Mathematics<br>GPA: 19.8/20</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -214,15 +223,10 @@
             </div>
           </div>
 
-          <div class="timeline-block timeline-block--featured">
-            <div class="timeline-ico"><i class="fa fa-file-text-o"></i></div>
-            <div class="timeline-header">
-              <h3>Publication highlight</h3>
-              <p>IEEE ICDL 2024</p>
-            </div>
+          <div class="timeline-block">
             <div class="timeline-content">
-              <h4>Navigation and cognitive load in telepresence robots</h4>
-              <p>Human study on whether autonomous navigation aids in telepresence reduce cognitive load and improve efficiency. <a href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL 2024</a>.</p>
+              <h4>Navigation and Cognitive Load in Telepresence Robots</h4>
+              <p>We investigated whether autonomous features in telepresence robots reduce cognitive load and improve efficiency. In the autonomous condition, participants navigated more efficiently, performed better in a learning/memory task, and reported lower cognitive load than manual. Presented at <a href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL 2024</a>.</p>
             </div>
           </div>
 
@@ -242,31 +246,12 @@
       </div>
     </div>
 
-    <div class="row resume-timeline resume-timeline--publications">
+    <div class="row resume-timeline">
       <div class="col-twelve resume-header">
         <h2>Publications</h2>
       </div>
       <div class="col-twelve">
-        <div class="publications-panel">
-          <p class="publications-intro">Representative work from graduate research. Full bibliography and citations live on the profiles below.</p>
-          <ul class="publication-list">
-            <li>
-              <span class="publication-list__meta">IEEE ICDL 2024</span>
-              <span class="publication-list__title">Telepresence navigation and cognitive load — human study on autonomous vs. manual control.</span>
-              <a class="publication-list__link" href="https://ieeexplore.ieee.org/abstract/document/10644592">View on IEEE Xplore</a>
-            </li>
-            <li>
-              <span class="publication-list__meta">SAB 2024</span>
-              <span class="publication-list__title">Strategy diversity in multi-robot teams (see CV and lab materials for details).</span>
-              <a class="publication-list__link" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en">Google Scholar</a>
-            </li>
-          </ul>
-          <p class="publications-profiles">
-            <a class="ext-profile-link" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en">Google Scholar</a>
-            <span class="ext-profile-sep" aria-hidden="true">·</span>
-            <a class="ext-profile-link" href="https://orcid.org/0009-0008-5021-5954">ORCID</a>
-          </p>
-        </div>
+        <h4>See <a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en">Google Scholar</a> and <a href="https://orcid.org/0009-0008-5021-5954">ORCiD</a>.</h4>
       </div>
     </div>
   </section>
@@ -289,10 +274,10 @@
       <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-mail"></i></div>
         <h5>Email</h5>
-        <ul class="contact-email-list">
-          <li><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></li>
-          <li><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></li>
-        </ul>
+        <p class="contact-emails">
+          <a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a>
+          <a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a>
+        </p>
       </div>
       <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-phone"></i></div>
@@ -358,6 +343,126 @@
   <script src="js/jquery-2.1.3.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+    (function () {
+      const launcher = document.getElementById('chatLauncher');
+      const widget = document.getElementById('chatWidget');
+      const closeBtn = document.getElementById('closeChat');
+      const popBtn = document.getElementById('openNewWindow');
+      const popupLink = document.getElementById('open-popup');
+
+      const navToggle = document.getElementById('mobileNavToggle');
+      const siteNav = document.getElementById('siteNav');
+      const navLinks = siteNav ? siteNav.querySelectorAll('a') : [];
+
+      function openWidget() {
+        if (!widget) return;
+        widget.style.display = 'block';
+        widget.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeWidget() {
+        if (!widget) return;
+        widget.style.display = 'none';
+        widget.setAttribute('aria-hidden', 'true');
+      }
+
+      function openPopup(e) {
+        if (e) e.preventDefault();
+        const w = 420, h = 720;
+        const y = Math.max(0, (window.outerHeight - h) / 2);
+        const x = Math.max(0, (window.outerWidth - w) / 2);
+        window.open(
+          'https://amixxm-career-conversation.hf.space?embed=true',
+          'hf_assistant',
+          `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`
+        );
+      }
+
+      function closeMobileNav() {
+        if (!siteNav || !navToggle) return;
+        siteNav.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
+
+      function toggleMobileNav() {
+        if (!siteNav || !navToggle) return;
+        const isOpen = siteNav.classList.toggle('is-open');
+        navToggle.classList.toggle('is-open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.classList.toggle('nav-open', isOpen);
+      }
+
+      if (navToggle && siteNav) {
+        navToggle.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMobileNav();
+        });
+
+        navLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            if (window.innerWidth <= 768) {
+              closeMobileNav();
+            }
+          });
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 768) {
+            closeMobileNav();
+          }
+        });
+      }
+
+      if (launcher) {
+        launcher.addEventListener('click', function () {
+          if (window.innerWidth <= 480) {
+            openPopup();
+          } else {
+            openWidget();
+          }
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeWidget);
+      if (popBtn) popBtn.addEventListener('click', openPopup);
+      if (popupLink) popupLink.addEventListener('click', openPopup);
+
+      document.addEventListener('click', function (ev) {
+        if (widget && launcher && widget.getAttribute('aria-hidden') === 'false') {
+          if (!widget.contains(ev.target) && ev.target !== launcher) {
+            const rect = widget.getBoundingClientRect();
+            const lRect = launcher.getBoundingClientRect();
+            const nearLauncher = ev.clientX >= lRect.left && ev.clientX <= lRect.right &&
+              ev.clientY >= lRect.top && ev.clientY <= lRect.bottom;
+            if (!nearLauncher &&
+              (ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
+              closeWidget();
+            }
+          }
+        }
+
+        if (siteNav && navToggle && window.innerWidth <= 768) {
+          const clickedInsideNav = siteNav.contains(ev.target);
+          const clickedToggle = navToggle.contains(ev.target);
+          if (siteNav.classList.contains('is-open') && !clickedInsideNav && !clickedToggle) {
+            closeMobileNav();
+          }
+        }
+      });
+
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape') {
+          closeWidget();
+          closeMobileNav();
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>
