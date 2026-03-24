@@ -30,7 +30,7 @@
   	------------------------------------------------------ */
   	setTimeout(function() {
 
-   	$('#intro h1').fitText(1, { minFontSize: '28px', maxFontSize: '76px' });
+   	$('#intro h1').fitText(1, { minFontSize: '42px', maxFontSize: '84px' });
 
   	}, 100);
 
@@ -197,16 +197,8 @@
    	var target = this.hash,
     	$target = $(target);
 
-		if (!$target.length) {
-			return;
-		}
-
-		var $nav = $('.templatemo-nav');
-		var navH = $nav.length ? $nav.outerHeight() : 0;
-		var scrollTop = Math.max(0, $target.offset().top - navH + 2);
-
     	$('html, body').stop().animate({
-       	'scrollTop': scrollTop
+       	'scrollTop': $target.offset().top
       }, 800, 'swing', function () {
       	window.location.hash = target;
       });

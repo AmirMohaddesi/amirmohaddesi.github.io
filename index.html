@@ -13,625 +13,6 @@
   <link rel="stylesheet" href="css/vendor.css">
   <link rel="stylesheet" href="css/main.css">
 
-  <style>
-    :root {
-      --bg-dark: #0b1020;
-      --bg-dark-soft: #111827;
-      --bg-light: #f8fafc;
-      --text-dark: #0f172a;
-      --text-muted-dark: #cbd5e1;
-      --text-muted-light: #475569;
-      --accent: #ec4899;
-      --accent-hover: #db2777;
-      --border-soft: rgba(255, 255, 255, 0.10);
-      --chat-width: 360px;
-      --chat-height: 520px;
-      --chat-radius: 14px;
-      --chat-shadow: 0 18px 50px rgba(0, 0, 0, .22);
-    }
-
-    html,
-    body {
-      overflow-x: hidden;
-      max-width: 100%;
-    }
-
-    img,
-    iframe {
-      max-width: 100%;
-      height: auto;
-    }
-
-    body {
-      background: var(--bg-dark);
-    }
-
-    .hero-divider {
-      margin: 2rem auto 0;
-      opacity: .28;
-      width: 140px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 4px;
-    }
-
-    #hf-space .section-intro {
-      padding-bottom: 0;
-    }
-
-    #hf-space .col-twelve {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* ===== Color / contrast improvements ===== */
-    #intro,
-    #resume,
-    #contact,
-    #hf-space {
-      background: var(--bg-dark);
-    }
-
-    #about {
-      background: var(--bg-light);
-    }
-
-    #intro h1,
-    #resume .section-intro h1,
-    #hf-space .section-intro h1,
-    #contact h5,
-    #resume .timeline-header h3,
-    #resume .timeline-content h4,
-    #resume .resume-header h2,
-    #resume .timeline-header h4,
-    #resume .timeline-content h4 a,
-    #contact .icon i {
-      color: #f8fafc;
-    }
-
-    #intro .intro-position,
-    #hf-space p,
-    #resume p,
-    #resume .timeline-header p,
-    #resume .timeline-content p,
-    #contact p,
-    #contact a,
-    #contact h5 {
-      color: var(--text-muted-dark);
-    }
-
-    #about h1,
-    #about h3,
-    #about strong,
-    #about a,
-    #about .info-list li strong,
-    #about .section-intro h1 {
-      color: var(--text-dark);
-    }
-
-    #about p,
-    #about .lead,
-    #about .info-list li span {
-      color: var(--text-muted-light);
-    }
-
-    #intro h5,
-    #about .section-intro h5,
-    #resume .resume-header h2,
-    #contact .section-intro h5,
-    #hf-space .section-intro h5 {
-      color: var(--accent);
-    }
-
-    a:hover,
-    a:focus {
-      color: var(--accent);
-    }
-
-    .button.button-primary,
-    a.button.button-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .button.button-primary:hover,
-    a.button.button-primary:hover,
-    .button.button-primary:focus,
-    a.button.button-primary:focus {
-      background: var(--accent-hover);
-      color: #fff;
-    }
-
-    .button.stroke,
-    a.button.stroke {
-      border-color: rgba(255, 255, 255, 0.45);
-      color: #fff;
-    }
-
-    .button.stroke:hover,
-    a.button.stroke:hover,
-    .button.stroke:focus,
-    a.button.stroke:focus {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    #about .button.stroke,
-    #about a.button.stroke {
-      border-color: #334155;
-      color: #0f172a;
-    }
-
-    #about .button.stroke:hover,
-    #about a.button.stroke:hover,
-    #about .button.stroke:focus,
-    #about a.button.stroke:focus {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ===== Navbar ===== */
-    .navbar {
-      margin-bottom: 0;
-      border: 0;
-      border-radius: 0;
-      background: rgba(248, 250, 252, 0.96);
-      box-shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
-      backdrop-filter: blur(8px);
-    }
-
-    .navbar-brand {
-      color: #334155 !important;
-      font-weight: 600;
-    }
-
-    .navbar-nav>li>a {
-      color: #334155 !important;
-      font-weight: 600;
-      letter-spacing: .08rem;
-    }
-
-    .navbar-nav>li>a:hover,
-    .navbar-nav>li>a:focus {
-      color: var(--accent) !important;
-      background: transparent !important;
-    }
-
-    .navbar-toggle {
-      border: 0;
-      background: transparent !important;
-    }
-
-    .navbar-toggle .icon-bar {
-      background-color: #64748b !important;
-      width: 22px;
-      height: 2px;
-      border-radius: 10px;
-    }
-
-    /* ===== Chat widget ===== */
-    .chat-launcher {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 1000;
-      width: 50px;
-      height: 50px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
-
-    .chat-launcher svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .chat-widget {
-      position: fixed;
-      right: 18px;
-      bottom: 78px;
-      width: var(--chat-width);
-      height: var(--chat-height);
-      background: #fff;
-      border-radius: var(--chat-radius);
-      overflow: hidden;
-      box-shadow: var(--chat-shadow);
-      display: none;
-      z-index: 1001;
-    }
-
-    .chat-header {
-      height: 44px;
-      background: #0f172a;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 10px 0 12px;
-      font-weight: 600;
-      letter-spacing: .2px;
-    }
-
-    .chat-header .actions {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .chat-header button {
-      background: transparent;
-      border: 0;
-      color: #fff;
-      cursor: pointer;
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-    }
-
-    .chat-header button:hover {
-      background: rgba(255, 255, 255, .12);
-    }
-
-    .chat-body {
-      width: 100%;
-      height: calc(100% - 44px);
-      background: #000;
-    }
-
-    .chat-body iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .chat-launcher[data-tip]:hover::after {
-      content: attr(data-tip);
-      position: absolute;
-      right: 58px;
-      bottom: 8px;
-      background: #0f172a;
-      color: #fff;
-      padding: 6px 8px;
-      border-radius: 8px;
-      font-size: 12px;
-      white-space: nowrap;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
-    }
-
-    /* ===== Desktop / tablet content polish ===== */
-    #intro h1 {
-      color: #f8fafc;
-    }
-
-    #intro .intro-position span {
-      color: var(--text-muted-dark);
-    }
-
-    .intro-social li a {
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    .intro-social li a:hover,
-    .intro-social li a:focus {
-      color: var(--accent);
-    }
-
-    /* ===== Mobile ===== */
-    @media (max-width: 768px) {
-      #intro {
-        min-height: auto;
-        padding-top: 118px;
-        padding-bottom: 76px;
-      }
-
-      #intro .intro-content {
-        position: relative;
-        top: auto;
-        transform: none;
-      }
-
-      #intro .col-twelve {
-        padding-left: 8px;
-        padding-right: 8px;
-      }
-
-      #intro h1 {
-        font-size: 3.2rem;
-        line-height: 1.18;
-        margin-bottom: 1.6rem;
-      }
-
-      #intro h5 {
-        font-size: 1.5rem;
-        letter-spacing: .22rem;
-      }
-
-      #intro .intro-position {
-        margin-top: 1.6rem;
-        margin-bottom: 2rem;
-      }
-
-      #intro .intro-position span {
-        display: block;
-        font-size: 1.45rem;
-        line-height: 1.65;
-        margin-bottom: .35rem;
-      }
-
-      #intro .button {
-        display: block;
-        width: 100%;
-        max-width: 290px;
-        margin: 0 auto 1.2rem auto;
-      }
-
-      .intro-social {
-        position: static;
-        width: 100%;
-        left: auto;
-        bottom: auto;
-        transform: none;
-        text-align: center;
-        margin-top: 1.8rem;
-      }
-
-      .intro-social li {
-        display: inline-block;
-        float: none;
-        margin: 0 .6rem;
-      }
-
-      .intro-social li a {
-        font-size: 2rem;
-      }
-
-      #about,
-      #resume,
-      #contact {
-        padding-top: 8rem;
-        padding-bottom: 8rem;
-      }
-
-      #about .section-intro h1,
-      #resume .section-intro h1,
-      #hf-space .section-intro h1 {
-        font-size: 2.8rem;
-        line-height: 1.24;
-        padding: 0;
-      }
-
-      #about .intro-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      #about .intro-info img {
-        width: 96px;
-        height: 96px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 0 16px 0;
-      }
-
-      #about .intro-info .lead {
-        font-size: 1.8rem;
-        line-height: 1.72;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0 12px;
-        text-align: left;
-        overflow-wrap: break-word;
-      }
-
-      #about .info-list li,
-      #contact p,
-      #contact a,
-      .timeline-content p,
-      .timeline-header p {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-      }
-
-      .timeline-wrap {
-        margin-top: 2rem;
-      }
-
-      .timeline-block {
-        padding-left: 0 !important;
-        margin-bottom: 3.2rem;
-      }
-
-      .timeline-ico {
-        display: none !important;
-      }
-
-      .timeline-header,
-      .timeline-content {
-        float: none !important;
-        width: 100% !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        text-align: left !important;
-      }
-
-      .timeline-header {
-        margin-bottom: 1rem;
-      }
-
-      .button,
-      button,
-      input[type="submit"],
-      input[type="button"] {
-        white-space: normal;
-      }
-
-      .button-section .button {
-        display: block;
-        width: 100%;
-        max-width: 290px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .contact-info .col-four {
-        margin-bottom: 2.6rem;
-        text-align: center;
-      }
-
-      footer .social,
-      footer .col-six {
-        width: 100% !important;
-        float: none !important;
-        text-align: center !important;
-      }
-
-      .footer-social {
-        margin-bottom: 1.4rem;
-      }
-
-      .footer-social li {
-        display: inline-block;
-        float: none;
-      }
-
-      .chat-launcher[data-tip]:hover::after {
-        display: none;
-      }
-
-      .chat-launcher {
-        right: 14px;
-        bottom: 14px;
-        width: 46px;
-        height: 46px;
-      }
-
-      /* Custom mobile menu */
-      .navbar {
-        min-height: 58px;
-      }
-
-      .navbar-brand {
-        font-size: 1.8rem;
-        line-height: 58px;
-        max-width: calc(100vw - 84px);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .navbar-toggle {
-        margin-top: 11px;
-        margin-bottom: 11px;
-      }
-
-      .navbar-collapse {
-        display: none;
-        border-top: 0;
-        box-shadow: none;
-        background: #ffffff;
-        margin-left: -15px;
-        margin-right: -15px;
-        padding: 0;
-      }
-
-      .navbar-collapse.is-open {
-        display: block;
-      }
-
-      .navbar-nav {
-        float: none !important;
-        margin: 0;
-      }
-
-      .navbar-nav>li {
-        float: none;
-        border-top: 1px solid rgba(15, 23, 42, 0.08);
-      }
-
-      .navbar-nav>li>a {
-        padding: 15px 22px;
-        color: #334155 !important;
-        font-size: 1.35rem;
-        letter-spacing: .12rem;
-      }
-
-      .navbar-nav>li>a:hover,
-      .navbar-nav>li>a:focus {
-        background: rgba(236, 72, 153, 0.05) !important;
-        color: var(--accent) !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      :root {
-        --chat-width: 100vw;
-        --chat-height: 100vh;
-        --chat-radius: 0px;
-      }
-
-      .chat-widget {
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-      }
-
-      .row {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      #intro {
-        padding-top: 108px;
-        padding-bottom: 64px;
-      }
-
-      #intro h1 {
-        font-size: 2.8rem;
-      }
-
-      #intro h5 {
-        font-size: 1.4rem;
-      }
-
-      #intro .intro-position span {
-        font-size: 1.35rem;
-      }
-
-      #about .section-intro h1,
-      #resume .section-intro h1,
-      #hf-space .section-intro h1 {
-        font-size: 2.3rem;
-      }
-
-      #about .intro-info .lead,
-      .timeline-content p,
-      .timeline-header p,
-      #contact p,
-      #contact a {
-        font-size: 1.55rem;
-        line-height: 1.7;
-      }
-
-      .navbar-brand {
-        max-width: calc(100vw - 90px);
-      }
-    }
-  </style>
-
   <script src="js/modernizr.js" defer></script>
   <script src="js/pace.min.js" defer></script>
   <link rel="icon" type="image/png" href="favicon.png">
@@ -642,20 +23,20 @@
   <nav class="navbar navbar-default templatemo-nav" role="navigation">
     <div class="container">
       <div class="navbar-header">
-        <button class="navbar-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
+        <button type="button" class="navbar-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
           <span class="icon icon-bar"></span>
           <span class="icon icon-bar"></span>
           <span class="icon icon-bar"></span>
         </button>
-        <a href="#top" class="navbar-brand">Amirhosein Mohaddesi</a>
+        <a href="#intro" class="navbar-brand smoothscroll">Amirhosein Mohaddesi</a>
       </div>
       <div class="navbar-collapse" id="siteNav">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#top">INTRO</a></li>
-          <li><a href="#hf-space">DEMO</a></li>
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#resume">CV</a></li>
-          <li><a href="#contact">CONTACT</a></li>
+        <ul class="nav navbar-nav navbar-right" id="main-nav-wrap">
+          <li><a class="smoothscroll" href="#intro">Intro</a></li>
+          <li><a class="smoothscroll" href="#hf-space">Demo</a></li>
+          <li><a class="smoothscroll" href="#about">About</a></li>
+          <li><a class="smoothscroll" href="#resume">CV</a></li>
+          <li><a class="smoothscroll" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -667,16 +48,16 @@
       <div class="row">
         <div class="col-twelve">
           <h5>Hey, I'm</h5>
-          <h1>Amirhosein</h1>
-          <p class="intro-position">
-            <span>AI/ML Engineer • Robotics & Agentic AI</span>
-            <span>Ph.D. (2025) – UC Irvine, CARL</span>
-            <span>ROS2 • PyTorch • LangChain • Hugging Face</span>
-            <span>Multi-Agent Navigation & Simulation</span>
-            <span>Open to full-time or contract roles</span>
-          </p>
-          <a class="button stroke smoothscroll" href="#about" title="More About Me">More About Me</a>
-          <a class="button button-primary smoothscroll" href="#hf-space" title="See Live Demo">See Live Demo</a>
+          <h1>Amirhosein Mohaddesi</h1>
+          <p class="hero-tagline">AI/ML &amp; robotics engineer — multi-agent navigation, simulation, and agentic autonomy (ROS2, PyTorch, LLM tooling).</p>
+          <ul class="hero-highlights">
+            <li>Ph.D. (2025), UC Irvine · <a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL</a></li>
+            <li>Open to full-time or contract roles</li>
+          </ul>
+          <div class="hero-cta">
+            <a class="button stroke smoothscroll" href="#about" title="More About Me">About &amp; projects</a>
+            <a class="button button-primary smoothscroll" href="#hf-space" title="See Live Demo">Live demo</a>
+          </div>
           <div class="hero-divider"></div>
         </div>
       </div>
@@ -693,9 +74,9 @@
   <section id="hf-space" class="grey-section">
     <div class="row section-intro">
       <div class="col-twelve">
-        <h5>Interactive Demo</h5>
-        <h1>Career Conversation (Hugging Face Space)</h1>
-        <p>Use the floating <strong>chat launcher</strong> (bottom-right) to open the assistant. Prefer a new window? <a href="#" id="open-popup">Open assistant in a small window</a>.</p>
+        <h5>Interactive demo</h5>
+        <h1>Career conversation (Hugging Face Space)</h1>
+        <p>Use the <strong>chat button</strong> (lower-right). On small screens it opens in a new window. Desktop users can also <a href="#" id="open-popup">pop out the assistant</a>.</p>
       </div>
     </div>
   </section>
@@ -707,11 +88,11 @@
         <h1>Let me introduce myself.</h1>
         <div class="intro-info">
           <img src="images/Profile-Pic.jpg" alt="Profile Picture">
-          <p class="lead">
-            I’m an AI/Robotics engineer with a Ph.D. from UC Irvine (CARL). I build learning-driven, multi-robot systems in ROS2 and increasingly integrate Agentic AI—LLM-powered planners and tools—for language-guided autonomy.
-            Recent work includes a ROS2 platform that trains navigation agents with human data (PyTorch), distributed simulation for multi-agent exploration, and Webots/Gazebo experiments for sim-to-real.<br>
-            Publications span telepresence navigation and cognitive load (IEEE ICDL 2024) and strategy diversity in robot teams (SAB 2024). Current focus: communication-aware, agentic multi-robot coordination with transformers and tool-use. Outside work I enjoy hiking, camping, gaming, and cat time.
-          </p>
+          <div class="lead">
+            <p>I’m an AI/Robotics engineer with a Ph.D. from UC Irvine (CARL). I build learning-driven multi-robot systems in ROS2 and integrate agentic AI—LLM planners, memory, and tools—for language-guided autonomy.</p>
+            <p>Recent work: a ROS2 platform that trains navigation agents from human data (PyTorch), distributed simulation for multi-agent exploration, and Webots/Gazebo sim-to-real experiments. Publications cover telepresence navigation and cognitive load (IEEE ICDL 2024) and strategy diversity in robot teams (SAB 2024). Current focus: communication-aware, multi-robot coordination with transformers and tool-use.</p>
+            <p class="about-personal">Outside work: hiking, camping, gaming, and cat time.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -722,20 +103,43 @@
         <ul class="info-list">
           <li><strong>Full name:</strong> <span>Amirhosein Mohaddesi</span></li>
           <li><strong>Role:</strong> <span>AI/ML Engineer • Robotics</span></li>
-          <li><strong>Website:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL (Cognitive Anteater Robotics Laboratory)</a></span></li>
-          <li><strong>Email:</strong> <span><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> <span><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
+          <li><strong>Portfolio:</strong> <span><a href="https://amirmohaddesi.github.io/">amirmohaddesi.github.io</a></span></li>
+          <li><strong>Lab:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL — Cognitive Anteater Robotics Lab</a></span></li>
+          <li><strong>Email:</strong> <span><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> · <span><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
         </ul>
       </div>
       <div class="col-six tab-full">
-        <h3>Selected Skills</h3>
-        <p>For more information download <a href="CV_Amirhosein.pdf" download>my CV</a>.</p>
-        <ul class="skill-bars">
-          <li><div class="progress percent95"><span>95%</span></div><strong>Python</strong></li>
-          <li><div class="progress percent90"><span>90%</span></div><strong>C++</strong></li>
-          <li><div class="progress percent85"><span>85%</span></div><strong>ROS2</strong></li>
-          <li><div class="progress percent85"><span>85%</span></div><strong>PyTorch</strong></li>
-          <li><div class="progress percent80"><span>80%</span></div><strong>LangChain / Hugging Face</strong></li>
-        </ul>
+        <h3>Selected skills</h3>
+        <p>For detail, see <a href="CV_Amirhosein.pdf" download>my CV</a>.</p>
+        <div class="skill-groups" aria-label="Selected technical skills">
+          <div class="skill-group">
+            <h4 class="skill-group-title">Languages &amp; platforms</h4>
+            <ul class="skill-tags">
+              <li><span class="tag">Python</span></li>
+              <li><span class="tag">C++</span></li>
+              <li><span class="tag">ROS2</span></li>
+              <li><span class="tag">Linux</span></li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h4 class="skill-group-title">ML &amp; AI</h4>
+            <ul class="skill-tags">
+              <li><span class="tag">PyTorch</span></li>
+              <li><span class="tag">Distributed training</span></li>
+              <li><span class="tag">LangChain</span></li>
+              <li><span class="tag">Hugging Face</span></li>
+              <li><span class="tag">LLM agents &amp; tool-use</span></li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h4 class="skill-group-title">Simulation &amp; robotics</h4>
+            <ul class="skill-tags">
+              <li><span class="tag">Webots / Gazebo</span></li>
+              <li><span class="tag">Multi-agent navigation</span></li>
+              <li><span class="tag">Sim-to-real</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -750,7 +154,8 @@
   <section id="resume" class="grey-section">
     <div class="row section-intro">
       <div class="col-twelve">
-        <h1>More of my experiences.</h1>
+        <h5>Experience</h5>
+        <h1>Education, research, and publications.</h1>
       </div>
     </div>
 
@@ -855,24 +260,29 @@
     <div class="row section-intro">
       <div class="col-twelve">
         <h5>Contact</h5>
+        <h1>Let’s connect.</h1>
+        <p class="contact-lead">Open to roles in AI/ML, robotics, and applied research. Prefer email; include role and timeline.</p>
       </div>
     </div>
     <div class="row contact-form"></div>
     <div class="row contact-info">
-      <div class="col-four tab-full">
+      <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-pin"></i></div>
-        <h5>Where to find me</h5>
+        <h5>Location</h5>
         <p>San Mateo, CA</p>
       </div>
-      <div class="col-four tab-full">
+      <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-mail"></i></div>
-        <h5>Email Me At</h5>
-        <p><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></p>
+        <h5>Email</h5>
+        <p class="contact-emails">
+          <a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a>
+          <a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a>
+        </p>
       </div>
-      <div class="col-four tab-full">
+      <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-phone"></i></div>
-        <h5>Call Me At</h5>
-        <p>(949) 426-8113</p>
+        <h5>Phone</h5>
+        <p><a href="tel:+19494268113">(949) 426-8113</a></p>
       </div>
     </div>
   </section>
@@ -947,11 +357,13 @@
       const navLinks = siteNav ? siteNav.querySelectorAll('a') : [];
 
       function openWidget() {
+        if (!widget) return;
         widget.style.display = 'block';
         widget.setAttribute('aria-hidden', 'false');
       }
 
       function closeWidget() {
+        if (!widget) return;
         widget.style.display = 'none';
         widget.setAttribute('aria-hidden', 'true');
       }
@@ -971,18 +383,23 @@
       function closeMobileNav() {
         if (!siteNav || !navToggle) return;
         siteNav.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
       }
 
       function toggleMobileNav() {
         if (!siteNav || !navToggle) return;
         const isOpen = siteNav.classList.toggle('is-open');
+        navToggle.classList.toggle('is-open', isOpen);
         navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.classList.toggle('nav-open', isOpen);
       }
 
       if (navToggle && siteNav) {
         navToggle.addEventListener('click', function (e) {
           e.preventDefault();
+          e.stopPropagation();
           toggleMobileNav();
         });
 
@@ -1001,27 +418,31 @@
         });
       }
 
-      launcher.addEventListener('click', function () {
-        if (window.innerWidth <= 480) {
-          openPopup();
-        } else {
-          openWidget();
-        }
-      });
+      if (launcher) {
+        launcher.addEventListener('click', function () {
+          if (window.innerWidth <= 480) {
+            openPopup();
+          } else {
+            openWidget();
+          }
+        });
+      }
 
-      closeBtn.addEventListener('click', closeWidget);
-      popBtn.addEventListener('click', openPopup);
+      if (closeBtn) closeBtn.addEventListener('click', closeWidget);
+      if (popBtn) popBtn.addEventListener('click', openPopup);
       if (popupLink) popupLink.addEventListener('click', openPopup);
 
       document.addEventListener('click', function (ev) {
-        if (!widget.contains(ev.target) && ev.target !== launcher && widget.getAttribute('aria-hidden') === 'false') {
-          const rect = widget.getBoundingClientRect();
-          const lRect = launcher.getBoundingClientRect();
-          const nearLauncher = ev.clientX >= lRect.left && ev.clientX <= lRect.right &&
-            ev.clientY >= lRect.top && ev.clientY <= lRect.bottom;
-          if (!nearLauncher &&
-            (ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
-            closeWidget();
+        if (widget && launcher && widget.getAttribute('aria-hidden') === 'false') {
+          if (!widget.contains(ev.target) && ev.target !== launcher) {
+            const rect = widget.getBoundingClientRect();
+            const lRect = launcher.getBoundingClientRect();
+            const nearLauncher = ev.clientX >= lRect.left && ev.clientX <= lRect.right &&
+              ev.clientY >= lRect.top && ev.clientY <= lRect.bottom;
+            if (!nearLauncher &&
+              (ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
+              closeWidget();
+            }
           }
         }
 
