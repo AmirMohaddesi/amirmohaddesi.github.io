@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>I'm Amirhosein Mohaddesi</title>
@@ -9,16 +10,18 @@
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/main.css">
 
   <style>
-    html, body {
+    html,
+    body {
       overflow-x: hidden;
       max-width: 100%;
     }
 
-    img, iframe {
+    img,
+    iframe {
       max-width: 100%;
       height: auto;
     }
@@ -45,7 +48,7 @@
       --chat-width: 360px;
       --chat-height: 520px;
       --chat-radius: 14px;
-      --chat-shadow: 0 18px 50px rgba(0,0,0,.22);
+      --chat-shadow: 0 18px 50px rgba(0, 0, 0, .22);
       --accent: #0057ff;
     }
 
@@ -60,7 +63,7 @@
       border: none;
       background: var(--accent);
       color: #fff;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
       display: grid;
       place-items: center;
       cursor: pointer;
@@ -114,7 +117,7 @@
     }
 
     .chat-header button:hover {
-      background: rgba(255,255,255,.12);
+      background: rgba(255, 255, 255, .12);
     }
 
     .chat-body {
@@ -141,7 +144,7 @@
       border-radius: 8px;
       font-size: 12px;
       white-space: nowrap;
-      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
     }
 
     @media (max-width: 768px) {
@@ -261,12 +264,310 @@
         white-space: nowrap;
       }
     }
+
+    /* ===== Mobile polish layer ===== */
+    @media (max-width: 768px) {
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      .navbar {
+        min-height: 58px;
+        border: 0;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+      }
+
+      .navbar-brand {
+        font-size: 1.8rem;
+        line-height: 58px;
+        font-weight: 600;
+        max-width: calc(100vw - 84px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .navbar-toggle {
+        margin-top: 11px;
+        margin-bottom: 11px;
+        border: none;
+        background: transparent !important;
+      }
+
+      .navbar-toggle .icon-bar {
+        width: 22px;
+      }
+
+      .navbar-collapse {
+        border-top: 0;
+        box-shadow: none;
+        background: #111;
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 0;
+      }
+
+      .navbar-nav {
+        float: none !important;
+        margin: 0;
+      }
+
+      .navbar-nav>li {
+        float: none;
+        border-top: 1px solid rgba(255, 255, 255, .08);
+      }
+
+      .navbar-nav>li>a {
+        padding: 15px 22px;
+        color: #fff !important;
+        font-size: 1.35rem;
+        letter-spacing: .12rem;
+      }
+
+      .navbar-nav>li>a:hover,
+      .navbar-nav>li>a:focus {
+        background: rgba(255, 255, 255, .04) !important;
+        color: #FF0077 !important;
+      }
+
+      #intro {
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: 76px;
+      }
+
+      #intro .intro-content {
+        position: relative;
+        top: auto;
+        transform: none;
+      }
+
+      #intro .col-twelve {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      #intro h5 {
+        font-size: 1.5rem;
+        letter-spacing: .22rem;
+        color: #FF0077;
+      }
+
+      #intro h1 {
+        font-size: 3.2rem;
+        line-height: 1.18;
+        margin-bottom: 1.6rem;
+      }
+
+      #intro .intro-position {
+        margin-top: 1.6rem;
+        margin-bottom: 2rem;
+      }
+
+      #intro .intro-position span {
+        display: block;
+        font-size: 1.45rem;
+        line-height: 1.65;
+        margin-bottom: .35rem;
+      }
+
+      #intro .button {
+        display: block;
+        width: 100%;
+        max-width: 290px;
+        margin: 0 auto 1.2rem auto;
+      }
+
+      .hero-divider {
+        margin-top: 1.6rem;
+        background: #FF0077;
+        opacity: .35;
+      }
+
+      .intro-social {
+        position: static;
+        width: 100%;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        text-align: center;
+        margin-top: 1.8rem;
+      }
+
+      .intro-social li {
+        display: inline-block;
+        float: none;
+        margin: 0 .6rem;
+      }
+
+      .intro-social li a {
+        color: rgba(255, 255, 255, .9);
+        font-size: 2rem;
+      }
+
+      .intro-social li a:hover {
+        color: #FF0077;
+      }
+
+      #about,
+      #resume,
+      #contact {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+      }
+
+      #about .section-intro h1,
+      #resume .section-intro h1,
+      #hf-space .section-intro h1 {
+        font-size: 2.8rem;
+        line-height: 1.24;
+        padding: 0;
+      }
+
+      #about .section-intro h5,
+      #resume .section-intro h5,
+      #contact .section-intro h5,
+      #hf-space .section-intro h5 {
+        color: #FF0077;
+      }
+
+      #about .intro-info,
+      #about .about-content,
+      .resume-timeline,
+      .contact-info {
+        margin-top: 2.5rem;
+      }
+
+      #about .intro-info .lead {
+        text-align: left;
+        max-width: 100%;
+      }
+
+      .timeline-wrap {
+        margin-top: 2rem;
+      }
+
+      .timeline-block {
+        padding-left: 0 !important;
+        margin-bottom: 3.2rem;
+      }
+
+      .timeline-ico {
+        display: none !important;
+      }
+
+      .timeline-header,
+      .timeline-content {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+      }
+
+      .timeline-header {
+        margin-bottom: 1rem;
+      }
+
+      .timeline-header h3,
+      .timeline-header h4,
+      .timeline-header p,
+      .timeline-content h4,
+      .timeline-content p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      .resume-header h2 {
+        color: #FF0077;
+      }
+
+      .button-section .button {
+        display: block;
+        width: 100%;
+        max-width: 290px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .contact-info .col-four {
+        margin-bottom: 2.6rem;
+        text-align: center;
+      }
+
+      .contact-info .icon i {
+        color: #FF0077;
+      }
+
+      footer .social,
+      footer .col-six {
+        width: 100% !important;
+        float: none !important;
+        text-align: center !important;
+      }
+
+      .footer-social {
+        margin-bottom: 1.4rem;
+      }
+
+      .footer-social li {
+        display: inline-block;
+        float: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .row {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      #intro {
+        padding-top: 110px;
+        padding-bottom: 64px;
+      }
+
+      #intro h1 {
+        font-size: 2.8rem;
+      }
+
+      #intro h5 {
+        font-size: 1.4rem;
+      }
+
+      #intro .intro-position span {
+        font-size: 1.35rem;
+      }
+
+      #about .section-intro h1,
+      #resume .section-intro h1,
+      #hf-space .section-intro h1 {
+        font-size: 2.3rem;
+      }
+
+      #about .intro-info .lead,
+      .timeline-content p,
+      .timeline-header p,
+      #contact p,
+      #contact a {
+        font-size: 1.55rem;
+        line-height: 1.7;
+      }
+
+      .chat-launcher {
+        right: 14px;
+        bottom: 14px;
+      }
+    }
   </style>
 
   <script src="js/modernizr.js" defer></script>
   <script src="js/pace.min.js" defer></script>
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
+
 <body id="top">
 
   <nav class="navbar navbar-default templatemo-nav" role="navigation">
@@ -315,7 +616,8 @@
     <ul class="intro-social">
       <li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
       <li><a href="https://www.linkedin.com/in/amohaddesi/"><i class="fa fa-linkedin"></i></a></li>
-      <li><a href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ"><i class="fa fa-graduation-cap"></i></a></li>
+      <li><a href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ"><i
+            class="fa fa-graduation-cap"></i></a></li>
       <li><a href="https://github.com/AmirMohaddesi"><i class="fa fa-github"></i></a></li>
     </ul>
   </section>
@@ -325,7 +627,8 @@
       <div class="col-twelve">
         <h5>Interactive Demo</h5>
         <h1>Career Conversation (Hugging Face Space)</h1>
-        <p>Use the floating <strong>chat launcher</strong> (bottom-right) to open the assistant. Prefer a new window? <a href="#" id="open-popup">Open assistant in a small window</a>.</p>
+        <p>Use the floating <strong>chat launcher</strong> (bottom-right) to open the assistant. Prefer a new window? <a
+            href="#" id="open-popup">Open assistant in a small window</a>.</p>
       </div>
     </div>
   </section>
@@ -338,8 +641,13 @@
         <div class="intro-info">
           <img src="images/Profile-Pic.jpg" alt="Profile Picture">
           <p class="lead">
-            I’m an AI/Robotics engineer with a Ph.D. from UC Irvine (CARL). I build learning-driven, multi-robot systems in ROS2 and increasingly integrate Agentic AI—LLM-powered planners and tools—for language-guided autonomy. Recent work includes a ROS2 platform that trains navigation agents with human data (PyTorch), distributed simulation for multi-agent exploration, and Webots/Gazebo experiments for sim-to-real.<br>
-            Publications span telepresence navigation and cognitive load (IEEE ICDL 2024) and strategy diversity in robot teams (SAB 2024). Current focus: communication-aware, agentic multi-robot coordination with transformers and tool-use. Outside work I enjoy hiking, camping, gaming, and cat time.
+            I’m an AI/Robotics engineer with a Ph.D. from UC Irvine (CARL). I build learning-driven, multi-robot systems
+            in ROS2 and increasingly integrate Agentic AI—LLM-powered planners and tools—for language-guided autonomy.
+            Recent work includes a ROS2 platform that trains navigation agents with human data (PyTorch), distributed
+            simulation for multi-agent exploration, and Webots/Gazebo experiments for sim-to-real.<br>
+            Publications span telepresence navigation and cognitive load (IEEE ICDL 2024) and strategy diversity in
+            robot teams (SAB 2024). Current focus: communication-aware, agentic multi-robot coordination with
+            transformers and tool-use. Outside work I enjoy hiking, camping, gaming, and cat time.
           </p>
         </div>
       </div>
@@ -351,19 +659,32 @@
         <ul class="info-list">
           <li><strong>Full name:</strong> <span>Amirhosein Mohaddesi</span></li>
           <li><strong>Role:</strong> <span>AI/ML Engineer • Robotics</span></li>
-          <li><strong>Website:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL (Cognitive Anteater Robotics Laboratory)</a></span></li>
-          <li><strong>Email:</strong> <span><a href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> <span><a href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
+          <li><strong>Website:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL (Cognitive
+                Anteater Robotics Laboratory)</a></span></li>
+          <li><strong>Email:</strong> <span><a
+                href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></span> <span><a
+                href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></span></li>
         </ul>
       </div>
       <div class="col-six tab-full">
         <h3>Selected Skills</h3>
         <p>For more information download <a href="CV_Amirhosein.pdf" download>my CV</a>.</p>
         <ul class="skill-bars">
-          <li><div class="progress percent95"><span>95%</span></div><strong>Python</strong></li>
-          <li><div class="progress percent90"><span>90%</span></div><strong>C++</strong></li>
-          <li><div class="progress percent85"><span>85%</span></div><strong>ROS2</strong></li>
-          <li><div class="progress percent85"><span>85%</span></div><strong>PyTorch</strong></li>
-          <li><div class="progress percent80"><span>80%</span></div><strong>LangChain / Hugging Face</strong></li>
+          <li>
+            <div class="progress percent95"><span>95%</span></div><strong>Python</strong>
+          </li>
+          <li>
+            <div class="progress percent90"><span>90%</span></div><strong>C++</strong>
+          </li>
+          <li>
+            <div class="progress percent85"><span>85%</span></div><strong>ROS2</strong>
+          </li>
+          <li>
+            <div class="progress percent85"><span>85%</span></div><strong>PyTorch</strong>
+          </li>
+          <li>
+            <div class="progress percent80"><span>80%</span></div><strong>LangChain / Hugging Face</strong>
+          </li>
         </ul>
       </div>
     </div>
@@ -384,7 +705,9 @@
     </div>
 
     <div class="row resume-timeline">
-      <div class="col-twelve resume-header"><h2>Education</h2></div>
+      <div class="col-twelve resume-header">
+        <h2>Education</h2>
+      </div>
       <div class="col-twelve">
         <div class="timeline-wrap">
           <div class="timeline-block">
@@ -394,7 +717,8 @@
               <p>2019–2025</p>
             </div>
             <div class="timeline-content">
-              <h4><a href="https://ics.uci.edu/academics/graduate-programs/phd-cs/">University of California, Irvine</a></h4>
+              <h4><a href="https://ics.uci.edu/academics/graduate-programs/phd-cs/">University of California, Irvine</a>
+              </h4>
               <p>Computer Science, Donald Bren School of Information &amp; Computer Sciences<br>GPA: 3.93/4</p>
             </div>
           </div>
@@ -427,7 +751,9 @@
     </div>
 
     <div class="row resume-timeline">
-      <div class="col-twelve resume-header"><h2>Research Experience</h2></div>
+      <div class="col-twelve resume-header">
+        <h2>Research Experience</h2>
+      </div>
       <div class="col-twelve">
         <div class="timeline-wrap">
           <div class="timeline-block">
@@ -439,14 +765,21 @@
             </div>
             <div class="timeline-content">
               <h4>Graduate Research – Agentic Multi-Robot Navigation Platform</h4>
-              <p>Built a realistic ROS2 platform to study human-inspired navigation in multi-agent systems; integrated human navigation data for training (PyTorch); added Agentic AI (LLM-driven planning, memory, tool-use) enabling language-guided decision-making and multi-robot coordination; prepared distributed training workflows (DDP-ready); ran Webots/Gazebo simulations with visual/sequence models. Manuscript under review; poster/papers at SAB 2024 and IEEE ICDL 2024.</p>
+              <p>Built a realistic ROS2 platform to study human-inspired navigation in multi-agent systems; integrated
+                human navigation data for training (PyTorch); added Agentic AI (LLM-driven planning, memory, tool-use)
+                enabling language-guided decision-making and multi-robot coordination; prepared distributed training
+                workflows (DDP-ready); ran Webots/Gazebo simulations with visual/sequence models. Manuscript under
+                review; poster/papers at SAB 2024 and IEEE ICDL 2024.</p>
             </div>
           </div>
 
           <div class="timeline-block">
             <div class="timeline-content">
               <h4>Navigation and Cognitive Load in Telepresence Robots</h4>
-              <p>We investigated whether autonomous features in telepresence robots reduce cognitive load and improve efficiency. In the autonomous condition, participants navigated more efficiently, performed better in a learning/memory task, and reported lower cognitive load than manual. Presented at <a href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL 2024</a>.</p>
+              <p>We investigated whether autonomous features in telepresence robots reduce cognitive load and improve
+                efficiency. In the autonomous condition, participants navigated more efficiently, performed better in a
+                learning/memory task, and reported lower cognitive load than manual. Presented at <a
+                  href="https://ieeexplore.ieee.org/abstract/document/10644592">IEEE ICDL 2024</a>.</p>
             </div>
           </div>
 
@@ -459,7 +792,8 @@
             </div>
             <div class="timeline-content">
               <h4>DCLL 8-bit quantizer</h4>
-              <p>Implemented an 8-bit spiking neural network for embedded targets and designed an 8-bit quantization technique that reduced power by 12%–18% on MNIST/CIFAR10/20 with only 3%–7% accuracy drop.</p>
+              <p>Implemented an 8-bit spiking neural network for embedded targets and designed an 8-bit quantization
+                technique that reduced power by 12%–18% on MNIST/CIFAR10/20 with only 3%–7% accuracy drop.</p>
             </div>
           </div>
         </div>
@@ -467,14 +801,19 @@
     </div>
 
     <div class="row resume-timeline">
-      <div class="col-twelve resume-header"><h2>Publications</h2></div>
-      <h4>See <a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en">Google Scholar</a> and <a href="https://orcid.org/0009-0008-5021-5954">ORCiD</a>.</h4>
+      <div class="col-twelve resume-header">
+        <h2>Publications</h2>
+      </div>
+      <h4>See <a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en">Google Scholar</a> and <a
+          href="https://orcid.org/0009-0008-5021-5954">ORCiD</a>.</h4>
     </div>
   </section>
 
   <section id="contact">
     <div class="row section-intro">
-      <div class="col-twelve"><h5>Contact</h5></div>
+      <div class="col-twelve">
+        <h5>Contact</h5>
+      </div>
     </div>
     <div class="row contact-form"></div>
     <div class="row contact-info">
@@ -502,17 +841,21 @@
         <ul class="footer-social">
           <li><a href="mailto:Amir.mohaddesi@gmail.com"><i class="fa fa-envelope"></i></a></li>
           <li><a href="https://www.linkedin.com/in/amohaddesi"><i class="fa fa-linkedin"></i></a></li>
-          <li><a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en"><i class="fa fa-graduation-cap"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=goi591YAAAAJ&hl=en"><i
+                class="fa fa-graduation-cap"></i></a></li>
           <li><a href="https://github.com/AmirMohaddesi"><i class="fa fa-github"></i></a></li>
         </ul>
       </div>
       <div class="col-six tab-full">
-        <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>
+        <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <div id="preloader"><div id="loader"></div></div>
+  <div id="preloader">
+    <div id="loader"></div>
+  </div>
 
   <div class="chat-widget" id="chatWidget" aria-hidden="true">
     <div class="chat-header">
@@ -523,22 +866,21 @@
       </div>
     </div>
     <div class="chat-body">
-      <iframe
-        id="chatFrame"
-        src="https://amixxm-career-conversation.hf.space?embed=true"
+      <iframe id="chatFrame" src="https://amixxm-career-conversation.hf.space?embed=true"
         title="Career Conversation – Hugging Face Space"
-        allow="clipboard-read; clipboard-write; microphone; camera; fullscreen"
-        referrerpolicy="no-referrer">
+        allow="clipboard-read; clipboard-write; microphone; camera; fullscreen" referrerpolicy="no-referrer">
       </iframe>
     </div>
   </div>
 
   <button class="chat-launcher" id="chatLauncher" data-tip="Chat">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M21 12c0 4.418-4.03 8-9 8-1.036 0-2.03-.15-2.95-.43-.27-.08-.56-.06-.81.06l-3.25 1.62c-.76.38-1.64-.33-1.43-1.16l.83-3.24c.07-.27.03-.56-.1-.81C3.47 14.66 3 13.37 3 12c0-4.42 4.03-8 9-8s9 3.58 9 8Z" stroke="currentColor" stroke-width="1.6"/>
-      <circle cx="9" cy="12" r="1" fill="currentColor"/>
-      <circle cx="12" cy="12" r="1" fill="currentColor"/>
-      <circle cx="15" cy="12" r="1" fill="currentColor"/>
+      <path
+        d="M21 12c0 4.418-4.03 8-9 8-1.036 0-2.03-.15-2.95-.43-.27-.08-.56-.06-.81.06l-3.25 1.62c-.76.38-1.64-.33-1.43-1.16l.83-3.24c.07-.27.03-.56-.1-.81C3.47 14.66 3 13.37 3 12c0-4.42 4.03-8 9-8s9 3.58 9 8Z"
+        stroke="currentColor" stroke-width="1.6" />
+      <circle cx="9" cy="12" r="1" fill="currentColor" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" />
+      <circle cx="15" cy="12" r="1" fill="currentColor" />
     </svg>
   </button>
 
@@ -547,24 +889,24 @@
   <script src="js/main.js"></script>
 
   <script>
-    (function(){
+    (function () {
       const launcher = document.getElementById('chatLauncher');
       const widget = document.getElementById('chatWidget');
       const closeBtn = document.getElementById('closeChat');
       const popBtn = document.getElementById('openNewWindow');
       const popupLink = document.getElementById('open-popup');
 
-      function openWidget(){
+      function openWidget() {
         widget.style.display = 'block';
         widget.setAttribute('aria-hidden', 'false');
       }
 
-      function closeWidget(){
+      function closeWidget() {
         widget.style.display = 'none';
         widget.setAttribute('aria-hidden', 'true');
       }
 
-      function openPopup(e){
+      function openPopup(e) {
         if (e) e.preventDefault();
         const w = 420, h = 720;
         const y = Math.max(0, (window.outerHeight - h) / 2);
@@ -576,7 +918,7 @@
         );
       }
 
-      launcher.addEventListener('click', function(){
+      launcher.addEventListener('click', function () {
         if (window.innerWidth <= 480) {
           openPopup();
         } else {
@@ -588,23 +930,24 @@
       popBtn.addEventListener('click', openPopup);
       if (popupLink) popupLink.addEventListener('click', openPopup);
 
-      document.addEventListener('click', function(ev) {
+      document.addEventListener('click', function (ev) {
         if (!widget.contains(ev.target) && ev.target !== launcher && widget.getAttribute('aria-hidden') === 'false') {
           const rect = widget.getBoundingClientRect();
           const lRect = launcher.getBoundingClientRect();
           const nearLauncher = ev.clientX >= lRect.left && ev.clientX <= lRect.right &&
-                               ev.clientY >= lRect.top && ev.clientY <= lRect.bottom;
+            ev.clientY >= lRect.top && ev.clientY <= lRect.bottom;
           if (!nearLauncher &&
-              (ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
+            (ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
             closeWidget();
           }
         }
       });
 
-      document.addEventListener('keydown', function(ev) {
+      document.addEventListener('keydown', function (ev) {
         if (ev.key === 'Escape') closeWidget();
       });
     })();
   </script>
 </body>
+
 </html>
