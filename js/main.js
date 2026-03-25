@@ -147,8 +147,8 @@
 		var scrollY = window.pageYOffset || docEl.scrollTop || 0;
 		var viewportH = window.innerHeight || docEl.clientHeight || 0;
 
-		// Use a viewport probe line instead of offsetTop-only logic so tall sections do not keep the wrong tab active.
-		var probeY = scrollY + Math.max(140, Math.round(viewportH * 0.32));
+		// Keep the probe line near the top so Demo stays active before About.
+		var probeY = scrollY + 90;
 
 		var activeId = sections[0].id;
 
@@ -161,7 +161,6 @@
 			}
 		}
 
-		// Keep Contact active near the bottom of the page.
 		var docH = Math.max(
 			document.body.scrollHeight,
 			docEl.scrollHeight,
