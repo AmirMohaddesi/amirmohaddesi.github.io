@@ -2376,11 +2376,11 @@ button.demo-popout-link {
   .hero-tagline {
     margin-bottom: 1.38rem;
     line-height: 1.6;
-    max-width: 47rem;
+    max-width: 50rem;
   }
 
   .hero-highlights {
-    max-width: 45rem;
+    max-width: 46rem;
     margin-bottom: 2.05rem;
     padding: 1.12rem 1.48rem 1.14rem 1.52rem;
   }
@@ -2403,6 +2403,7 @@ button.demo-popout-link {
   }
 
   #about .section-intro {
+    max-width: 1180px;
     margin-bottom: 4.35rem;
   }
 
@@ -2411,7 +2412,7 @@ button.demo-popout-link {
   }
 
   .about-lead__summary {
-    max-width: 48rem;
+    max-width: 52rem;
     margin-bottom: 1.45rem;
     line-height: 1.6;
   }
@@ -2426,7 +2427,7 @@ button.demo-popout-link {
   }
 
   .about-lead__highlights li {
-    max-width: 50rem;
+    max-width: 54rem;
     line-height: 1.62;
     margin-bottom: 0.82rem;
   }
