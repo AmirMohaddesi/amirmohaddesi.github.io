@@ -105,10 +105,10 @@
    /*---------------------------------------------------- */
   	/* Portfolio nav: single source menu + scrollspy + smooth scroll
   	------------------------------------------------------ */
-	var portfolioNavInitialized = false;
 	var PORTFOLIO_MOBILE_NAV_W = 768;
 	var portfolioNavIds = [];
 	var portfolioNavTicking = false;
+	var portfolioNavInitialized = false;
 
 	function portfolioAllNavLinks() {
 		return $('#main-nav-wrap a, #mobile-nav-wrap a');
@@ -143,18 +143,15 @@
 		var sections = document.querySelectorAll('#main-content > section[id]');
 		if (!sections.length) return 'intro';
 
-		var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-		var viewportH = window.innerHeight || document.documentElement.clientHeight || 0;
-
-		// Use a probe line near the top of the viewport so Demo stays active before About.
+		var docEl = document.documentElement;
+		var scrollY = window.pageYOffset || docEl.scrollTop || 0;
+		var viewportH = window.innerHeight || docEl.clientHeight || 0;
 		var probe = 80;
 
 		var activeId = sections[0].id;
 
 		for (var i = 0; i < sections.length; i++) {
-			var rect = sections[i].getBoundingClientRect();
-			var top = rect.top;
-
+			var top = sections[i].getBoundingClientRect().top;
 			if (top <= probe) {
 				activeId = sections[i].id;
 			} else {
@@ -162,13 +159,12 @@
 			}
 		}
 
-		var doc = document.documentElement;
 		var docH = Math.max(
 			document.body.scrollHeight,
-			doc.scrollHeight,
+			docEl.scrollHeight,
 			document.body.offsetHeight,
-			doc.offsetHeight,
-			doc.clientHeight
+			docEl.offsetHeight,
+			docEl.clientHeight
 		);
 
 		if (scrollY + viewportH >= docH - 24) {
@@ -183,7 +179,6 @@
 		portfolioNavTicking = true;
 		window.requestAnimationFrame(function () {
 			portfolioNavTicking = false;
-			// console.log('active section:', portfolioActiveSectionId());
 			portfolioSetCurrentNav(portfolioActiveSectionId());
 		});
 	}
@@ -195,17 +190,18 @@
 		var mobileNav = document.getElementById('mobile-nav-wrap');
 		var navToggle = document.getElementById('mobileNavToggle');
 		var siteNav = document.getElementById('siteNav');
+
 		if (!desktopNav || !mobileNav || !siteNav || !navToggle) return;
 
 		portfolioNavInitialized = true;
 
-		// Single source of truth: clone desktop <ul> into mobile drawer (no duplicate markup).
 		mobileNav.innerHTML = '';
 		var desktopClone = desktopNav.cloneNode(true);
 		desktopClone.removeAttribute('id');
 		while (desktopClone.firstChild) {
 			mobileNav.appendChild(desktopClone.firstChild);
 		}
+
 		portfolioNavIds = [];
 		Array.prototype.forEach.call(desktopNav.querySelectorAll('a[href^="#"]'), function (link) {
 			var id = link.getAttribute('href').replace(/^#/, '');
@@ -237,6 +233,7 @@
 
 		window.addEventListener('hashchange', schedulePortfolioNavSync);
 		$(window).off('.portfolioNav').on('scroll.portfolioNav resize.portfolioNav', schedulePortfolioNavSync);
+
 		schedulePortfolioNavSync();
 	}
 
@@ -250,14 +247,9 @@
 		e.preventDefault();
 		portfolioSetCurrentNav(target.replace(/^#/, ''));
 
-		var isMobile = window.innerWidth <= 768;
+		var isMobile = window.innerWidth <= PORTFOLIO_MOBILE_NAV_W;
 		var offset = isMobile ? (portfolioMobileNavHeight() + 6) : 0;
 		var scrollTop = Math.max(0, $target.offset().top - offset);
-
-		// console.log('target:', target);
-		// console.log('target top:', $target.offset().top);
-		// console.log('mobile nav height:', portfolioMobileNavHeight());
-		// console.log('final scrollTop:', scrollTop);
 
 		$('html, body').stop().animate({ scrollTop: scrollTop }, 800, 'swing', function () {
 			if (history && history.replaceState) {
@@ -272,7 +264,6 @@
 	});
 
 	$(document).ready(initPortfolioNavigation);
-  
 
    /*---------------------------------------------------- */
 	/*  Placeholder Plugin Settings

@@ -1525,20 +1525,20 @@ iframe {
   height: auto;
 }
 
+#intro,
+#hf-space,
 #about,
 #resume,
-#contact,
-#hf-space,
-#intro {
+#contact {
   scroll-margin-top: 0;
 }
 
 @media only screen and (max-width: 768px) {
+  #intro,
+  #hf-space,
   #about,
   #resume,
-  #contact,
-  #hf-space,
-  #intro {
+  #contact {
     scroll-margin-top: 64px;
   }
 }
