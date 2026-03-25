@@ -158,7 +158,7 @@
   	/* Highlight the current section in the navigation bar
   	------------------------------------------------------ */
 	var sections = $("section"),
-	navigation_links = $("#main-nav-wrap li a, #siteNav .site-nav__links li a");
+	navigation_links = $("#main-nav-wrap li a");	
 
 	sections.waypoint( {
 
@@ -170,8 +170,7 @@
 
 			if (direction === "up") active_section = active_section.prev();
 
-			var sid = active_section.attr("id");
-			var active_link = $('#main-nav-wrap a[href="#' + sid + '"], #siteNav a[href="#' + sid + '"]');
+			var active_link = $('#main-nav-wrap a[href="#' + active_section.attr("id") + '"]');			
 
          navigation_links.parent().removeClass("current");
 			active_link.parent().addClass("current");
@@ -196,8 +195,8 @@
 			return;
 		}
 
-		var $navBar = $('#mobileNavBar');
-		var navH = ($navBar.length && $navBar.is(':visible')) ? $navBar.outerHeight() : 0;
+		var $nav = $('.templatemo-nav');
+		var navH = $nav.length ? $nav.outerHeight() : 0;
 		var scrollTop = Math.max(0, $target.offset().top - navH + 2);
 
     	$('html, body').stop().animate({
