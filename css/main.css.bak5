@@ -529,15 +529,7 @@
  }
 
  .about-content .info-list__item--email-block {
-   padding-bottom: 0.35rem;
- }
-
- .profile-email-shell {
-   padding: 1rem 1.1rem 1.15rem;
-   border-radius: 12px;
-   border: 1px solid rgba(15, 23, 42, 0.09);
-   background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
-   box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+   padding-bottom: 0.25rem;
  }
 
  .profile-email-list {
@@ -546,7 +538,7 @@
    padding: 0;
    display: flex;
    flex-direction: column;
-   gap: 0.65rem;
+   gap: 0.55rem;
  }
 
  .profile-email-list li {
@@ -555,54 +547,30 @@
  }
 
  .profile-email-link {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   gap: 0.25rem;
+   display: block;
    width: 100%;
    max-width: 100%;
    box-sizing: border-box;
-   min-height: 48px;
-   justify-content: center;
    font-family: "poppins-regular", sans-serif;
-   line-height: 1.35;
-   padding: 0.75rem 0.95rem;
+   font-size: 1.45rem;
+   line-height: 1.45;
+   padding: 0.65rem 0.85rem;
    border-radius: 10px;
    border: 1px solid rgba(15, 23, 42, 0.1);
-   border-left: 3px solid rgba(236, 72, 153, 0.35);
-   background: #fff;
+   background: #f8fafc;
    color: var(--text-dark);
    text-decoration: none;
    overflow-wrap: anywhere;
    word-break: break-word;
-   transition: border-color 0.2s ease, box-shadow 0.2s ease, border-left-color 0.2s ease, transform 0.15s ease;
- }
-
- .profile-email-link__label {
-   font-family: "poppins-bold", sans-serif;
-   font-size: 1.05rem;
-   letter-spacing: 0.16rem;
-   text-transform: uppercase;
-   color: #64748b;
- }
-
- .profile-email-link__addr {
-   font-size: 1.42rem;
-   color: #0f172a;
+   transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
  }
 
  .profile-email-link:hover,
  .profile-email-link:focus {
-   border-color: rgba(236, 72, 153, 0.4);
-   border-left-color: var(--accent);
-   box-shadow: 0 6px 20px rgba(236, 72, 153, 0.12);
-   transform: translateY(-1px);
-   outline: none;
- }
-
- .profile-email-link:hover .profile-email-link__addr,
- .profile-email-link:focus .profile-email-link__addr {
+   border-color: rgba(236, 72, 153, 0.45);
+   box-shadow: 0 0 0 3px var(--accent-soft);
    color: var(--accent-hover);
+   outline: none;
  }
 
  .about-content .skill-groups {
@@ -699,12 +667,11 @@
  }
 
  .resume-section-lead {
-   color: rgba(203, 213, 225, 0.86);
-   font-size: 1.62rem;
-   line-height: 1.72;
-   max-width: 48rem;
-   margin: 0.35rem auto 0;
-   padding: 0 0.5rem;
+   color: rgba(203, 213, 225, 0.88);
+   font-size: 1.65rem;
+   line-height: 1.7;
+   max-width: 52rem;
+   margin: -0.5rem auto 0;
    text-align: center;
  }
 
@@ -870,81 +837,53 @@
  }
 
  .publications-cta {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 1rem;
-   align-items: stretch;
-   margin-top: 1.35rem;
-   padding: 1.35rem 1.25rem 1.4rem;
-   border-radius: 14px;
-   border: 1px solid rgba(255, 255, 255, 0.1);
-   background: rgba(2, 8, 22, 0.45);
-   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 36px rgba(0, 0, 0, 0.2);
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.85rem 1rem;
+   justify-content: flex-start;
+   align-items: center;
+   padding-top: 0.5rem;
+   border-top: 1px solid rgba(255, 255, 255, 0.08);
+   margin-top: 0.5rem;
  }
 
  .pub-profile-btn {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
+   display: inline-flex;
+   align-items: center;
    justify-content: center;
-   gap: 0.4rem;
-   min-height: 52px;
-   padding: 1rem 1.25rem;
-   text-decoration: none;
-   text-align: left;
-   border-radius: 12px;
-   border: 1px solid rgba(236, 72, 153, 0.5);
-   background: linear-gradient(165deg, rgba(236, 72, 153, 0.2) 0%, rgba(236, 72, 153, 0.08) 100%);
-   color: #fff;
-   box-shadow: 0 6px 20px rgba(236, 72, 153, 0.15);
-   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
- }
-
- .pub-profile-btn__title {
-   font-family: "poppins-bold", sans-serif;
-   font-size: 1.35rem;
-   letter-spacing: 0.12rem;
-   text-transform: uppercase;
-   color: #fce7f3;
- }
-
- .pub-profile-btn__desc {
-   font-family: "poppins-regular", sans-serif;
+   min-height: 44px;
+   padding: 0.65rem 1.35rem;
+   font-family: "poppins-semibold", sans-serif;
    font-size: 1.3rem;
-   line-height: 1.45;
-   letter-spacing: 0.02rem;
-   text-transform: none;
-   color: rgba(226, 232, 240, 0.82);
+   letter-spacing: 0.06rem;
+   text-transform: uppercase;
+   text-decoration: none;
+   border-radius: 10px;
+   border: 1px solid rgba(236, 72, 153, 0.45);
+   background: rgba(236, 72, 153, 0.12);
+   color: #fce7f3;
+   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
  }
 
  .pub-profile-btn:hover,
  .pub-profile-btn:focus {
-   transform: translateY(-2px);
+   background: rgba(236, 72, 153, 0.22);
    border-color: var(--accent);
-   box-shadow: 0 10px 28px rgba(236, 72, 153, 0.28);
-   background: linear-gradient(165deg, rgba(236, 72, 153, 0.28) 0%, rgba(236, 72, 153, 0.12) 100%);
+   color: #fff;
    outline: none;
  }
 
  .pub-profile-btn--secondary {
-   border-color: rgba(34, 211, 238, 0.35);
-   background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
- }
-
- .pub-profile-btn--secondary .pub-profile-btn__title {
-   color: #e2e8f0;
- }
-
- .pub-profile-btn--secondary .pub-profile-btn__desc {
-   color: rgba(203, 213, 225, 0.78);
+   border-color: rgba(148, 163, 184, 0.45);
+   background: rgba(255, 255, 255, 0.05);
+   color: var(--text-muted-dark);
  }
 
  .pub-profile-btn--secondary:hover,
  .pub-profile-btn--secondary:focus {
-   border-color: rgba(34, 211, 238, 0.65);
-   box-shadow: 0 10px 28px rgba(34, 211, 238, 0.12);
-   background: linear-gradient(165deg, rgba(34, 211, 238, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+   border-color: rgba(34, 211, 238, 0.5);
+   background: rgba(34, 211, 238, 0.08);
+   color: var(--text-bright);
  }
  
  /* Contact */
@@ -1002,37 +941,19 @@
    color: var(--text-muted-dark);
  }
 
- .contact-card--email {
-   padding-bottom: 1.5rem;
- }
-
- .contact-card--email .contact-email-shell {
-   margin-top: 0.5rem;
- }
-
- .contact-email-shell {
-   margin: 0 auto;
-   max-width: 24rem;
-   padding: 1rem 1rem 1.1rem;
-   border-radius: 14px;
-   border: 1px solid rgba(255, 255, 255, 0.12);
-   background: rgba(255, 255, 255, 0.035);
-   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
- }
-
  .contact-card--email .contact-email-list {
-   margin-top: 0;
+   margin-top: 0.35rem;
  }
 
  .contact-email-list {
    list-style: none;
    margin: 0 auto;
    padding: 0;
-   text-align: left;
-   max-width: none;
+   text-align: center;
+   max-width: 22rem;
    display: flex;
    flex-direction: column;
-   gap: 0.75rem;
+   gap: 0.65rem;
  }
 
  .contact-email-list li {
@@ -1041,54 +962,29 @@
  }
 
  .contact-email-link {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   gap: 0.3rem;
+   display: block;
    box-sizing: border-box;
    width: 100%;
-   min-height: 52px;
-   justify-content: center;
-   padding: 0.85rem 1rem;
-   border-radius: 11px;
-   border: 1px solid rgba(255, 255, 255, 0.14);
-   border-left: 3px solid rgba(236, 72, 153, 0.55);
-   background: rgba(15, 23, 42, 0.55);
+   padding: 0.7rem 0.75rem;
+   border-radius: 10px;
+   border: 1px solid rgba(255, 255, 255, 0.12);
+   background: rgba(255, 255, 255, 0.04);
    font-family: "poppins-regular", sans-serif;
-   line-height: 1.35;
-   color: #f1f5f9;
+   font-size: 1.4rem;
+   line-height: 1.4;
+   color: #e2e8f0;
    text-decoration: none;
    overflow-wrap: anywhere;
    word-break: break-word;
-   transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
- }
-
- .contact-email-link__label {
-   font-family: "poppins-bold", sans-serif;
-   font-size: 1.05rem;
-   letter-spacing: 0.16rem;
-   text-transform: uppercase;
-   color: rgba(203, 213, 225, 0.75);
- }
-
- .contact-email-link__addr {
-   font-size: 1.38rem;
-   color: #f8fafc;
+   transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
  }
 
  .contact-email-link:hover,
  .contact-email-link:focus {
-   border-color: rgba(236, 72, 153, 0.55);
-   border-left-color: var(--accent);
-   background: rgba(236, 72, 153, 0.12);
-   box-shadow: 0 8px 24px rgba(236, 72, 153, 0.18);
-   transform: translateY(-2px);
-   outline: none;
- }
-
- .contact-email-link:hover .contact-email-link__addr,
- .contact-email-link:focus .contact-email-link__addr {
+   border-color: rgba(236, 72, 153, 0.5);
+   background: rgba(236, 72, 153, 0.1);
    color: #fff;
+   outline: none;
  }
 
  .contact-phone-link {
@@ -1405,12 +1301,12 @@ section[id] {
 /* Hero — concise first screen */
 .hero-tagline {
   font-family: "poppins-regular", sans-serif;
-  font-size: 1.82rem;
-  line-height: 1.62;
-  letter-spacing: 0.006em;
-  color: rgba(226, 232, 240, 0.94);
-  max-width: 38rem;
-  margin: 0 auto 1.85rem;
+  font-size: 1.9rem;
+  line-height: 1.58;
+  letter-spacing: 0.008em;
+  color: rgba(226, 232, 240, 0.93);
+  max-width: 34rem;
+  margin: 0 auto 1.75rem;
 }
 
 .hero-highlights {
@@ -2017,13 +1913,13 @@ body.nav-open {
   }
 
   .publications-cta {
-    grid-template-columns: 1fr;
-    padding: 1.15rem 1rem 1.2rem;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .pub-profile-btn {
     width: 100%;
-    align-items: flex-start;
+    justify-content: center;
   }
 }
 

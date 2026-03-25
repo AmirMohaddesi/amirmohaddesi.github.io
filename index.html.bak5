@@ -49,7 +49,7 @@
         <div class="col-twelve">
           <h5>Hey, I'm</h5>
           <h1>Amirhosein Mohaddesi</h1>
-          <p class="hero-tagline">I build multi-robot systems that hold up past the demo—simulation and ROS2 for a dependable base, learning from data where it earns its place, and language-driven agents when they genuinely improve how robots coordinate.</p>
+          <p class="hero-tagline">Robotics and machine learning engineer working on multi-robot systems, simulation, and agentic autonomy—bridging ROS2 platforms with modern learning and LLM-based tooling.</p>
           <ul class="hero-highlights">
             <li>Ph.D. in Computer Science (2025), UC Irvine · <a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL</a></li>
             <li>Open to full-time and contract opportunities</li>
@@ -110,12 +110,10 @@
           <li><strong>Lab:</strong> <span><a href="https://sites.socsci.uci.edu/~jkrichma/CARL/">CARL — Cognitive Anteater Robotics Lab</a></span></li>
           <li class="info-list__item info-list__item--email-block">
             <strong class="info-list__label">Email</strong>
-            <div class="profile-email-shell">
-              <ul class="profile-email-list">
-                <li><a class="profile-email-link" href="mailto:Amir.mohaddesi@gmail.com"><span class="profile-email-link__label">Primary</span><span class="profile-email-link__addr">Amir.mohaddesi@gmail.com</span></a></li>
-                <li><a class="profile-email-link" href="mailto:smohadde@uci.edu"><span class="profile-email-link__label">Academic</span><span class="profile-email-link__addr">smohadde@uci.edu</span></a></li>
-              </ul>
-            </div>
+            <ul class="profile-email-list">
+              <li><a class="profile-email-link" href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></li>
+              <li><a class="profile-email-link" href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -165,9 +163,9 @@
   <section id="resume" class="grey-section">
     <div class="row section-intro">
       <div class="col-twelve">
-        <h5>Technical background</h5>
-        <h1>Education, research, and published work.</h1>
-        <p class="resume-section-lead">Curated highlights from graduate training and research—not a full résumé. For depth, use the downloadable CV or reach out.</p>
+        <h5>Background</h5>
+        <h1>Education, research, and selected publications.</h1>
+        <p class="resume-section-lead">A concise record of training and research; details and full CV are available on request or via the PDF.</p>
       </div>
     </div>
 
@@ -272,8 +270,8 @@
             </li>
           </ul>
           <div class="publications-cta" role="group" aria-label="Publication profiles">
-            <a class="pub-profile-btn" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en"><span class="pub-profile-btn__title">Google Scholar</span><span class="pub-profile-btn__desc">Publications, citations &amp; related work</span></a>
-            <a class="pub-profile-btn pub-profile-btn--secondary" href="https://orcid.org/0009-0008-5021-5954"><span class="pub-profile-btn__title">ORCID</span><span class="pub-profile-btn__desc">Persistent researcher ID &amp; metadata</span></a>
+            <a class="pub-profile-btn" href="https://scholar.google.com/citations?user=goi591YAAAAJ&amp;hl=en">Google Scholar profile</a>
+            <a class="pub-profile-btn pub-profile-btn--secondary" href="https://orcid.org/0009-0008-5021-5954">ORCID record</a>
           </div>
         </div>
       </div>
@@ -298,12 +296,10 @@
       <div class="col-four tab-full contact-card contact-card--email">
         <div class="icon"><i class="icon-mail"></i></div>
         <h5>Email</h5>
-        <div class="contact-email-shell">
-          <ul class="contact-email-list">
-            <li><a class="contact-email-link" href="mailto:Amir.mohaddesi@gmail.com"><span class="contact-email-link__label">Primary</span><span class="contact-email-link__addr">Amir.mohaddesi@gmail.com</span></a></li>
-            <li><a class="contact-email-link" href="mailto:smohadde@uci.edu"><span class="contact-email-link__label">Academic</span><span class="contact-email-link__addr">smohadde@uci.edu</span></a></li>
-          </ul>
-        </div>
+        <ul class="contact-email-list">
+          <li><a class="contact-email-link" href="mailto:Amir.mohaddesi@gmail.com">Amir.mohaddesi@gmail.com</a></li>
+          <li><a class="contact-email-link" href="mailto:smohadde@uci.edu">smohadde@uci.edu</a></li>
+        </ul>
       </div>
       <div class="col-four tab-full contact-card">
         <div class="icon"><i class="icon-phone"></i></div>
