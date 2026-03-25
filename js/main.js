@@ -102,9 +102,6 @@
    });
 
 	
-   /*---------------------------------------------------- */
-  	/* Portfolio nav: single source menu + scrollspy + smooth scroll
-  	------------------------------------------------------ */
 	var PORTFOLIO_MOBILE_NAV_W = 768;
 	var portfolioNavIds = [];
 	var portfolioNavTicking = false;
@@ -179,7 +176,6 @@
 		portfolioNavTicking = true;
 		window.requestAnimationFrame(function () {
 			portfolioNavTicking = false;
-			// console.log('active section after sync:', portfolioActiveSectionId());
 			portfolioSetCurrentNav(portfolioActiveSectionId());
 		});
 	}
@@ -251,9 +247,6 @@
 		var isMobile = window.innerWidth <= PORTFOLIO_MOBILE_NAV_W;
 		var offset = isMobile ? (portfolioMobileNavHeight() + 6) : 0;
 		var scrollTop = Math.max(0, $target.offset().top - offset);
-		// console.log('clicked target:', target);
-		// console.log('target top before animation:', $target.offset().top);
-		// console.log('final scroll position:', scrollTop);
 
 		$('html, body').stop().animate({ scrollTop: scrollTop }, 800, 'swing', function () {
 			if (history && history.replaceState) {
@@ -261,7 +254,6 @@
 			} else {
 				window.location.hash = target;
 			}
-			// console.log('detected active section after animation:', portfolioActiveSectionId());
 			schedulePortfolioNavSync();
 		});
 
