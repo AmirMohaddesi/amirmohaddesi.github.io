@@ -143,19 +143,18 @@
 		var sections = document.querySelectorAll('#main-content > section[id]');
 		if (!sections.length) return 'intro';
 
-		var docEl = document.documentElement;
-		var docH = Math.max(document.body.scrollHeight, docEl.scrollHeight, docEl.clientHeight);
-		if (window.scrollY + window.innerHeight >= docH - 10) {
-			return sections[sections.length - 1].id;
-		}
-
-		// Single activation line from viewport top (px). Tune here if section edges feel off.
-		var threshold = 100;
+		var scrollPos = window.scrollY + 120; // small offset for UX (tune if needed)
 
 		var activeId = sections[0].id;
+
 		for (var i = 0; i < sections.length; i++) {
-			if (sections[i].getBoundingClientRect().top <= threshold) activeId = sections[i].id;
+			var sectionTop = sections[i].offsetTop;
+
+			if (scrollPos >= sectionTop) {
+				activeId = sections[i].id;
+			}
 		}
+
 		return activeId;
 	}
 
