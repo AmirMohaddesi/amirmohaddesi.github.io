@@ -222,6 +222,7 @@
    z-index: 800;
    height: 100%;
    width: 100%;
+   pointer-events: none;
  }
  .no-js #preloader, .oldie #preloader {
    display: none;
@@ -400,12 +401,16 @@
    position: absolute;
    inset: 0;
    background: transparent;
+   pointer-events: none;
+   z-index: 0;
  }
  #intro .intro-content {
    display: table-cell;
    vertical-align: middle;
    text-align: center;
    transform: none;
+   position: relative;
+   z-index: 2;
  }
  #intro .intro-content h5 {
    color: var(--accent);
@@ -2345,11 +2350,13 @@ button.demo-popout-link {
   overflow: hidden;
   box-shadow: var(--chat-shadow);
   display: none;
+  pointer-events: none;
   z-index: calc(var(--nav-z) - 10);
 }
 
 .chat-widget.is-visible {
   display: block;
+  pointer-events: auto;
 }
 
 .chat-header {
@@ -2687,11 +2694,15 @@ body.nav-open {
 
   /* Drawer: custom panel class + .is-open (avoids Bootstrap collapse JS) */
   .templatemo-nav .container .site-nav-panel:not(.is-open) {
-    display: none;
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .templatemo-nav .container .site-nav-panel.is-open {
     display: block;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .templatemo-nav .site-nav-panel {
