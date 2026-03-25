@@ -2348,6 +2348,79 @@ button.demo-popout-link {
   border-color: rgba(251, 207, 232, 0.75);
 }
 
+/* Intro + About: desktop polish (rhythm, hero highlights width — preserves mobile) */
+@media (min-width: 769px) {
+  #intro .intro-content h1 {
+    margin-bottom: 2.15rem;
+  }
+
+  .hero-tagline {
+    margin-bottom: 1.55rem;
+    line-height: 1.62;
+  }
+
+  .hero-highlights {
+    max-width: 44rem;
+    margin-bottom: 2.28rem;
+    padding: 1.2rem 1.75rem 1.22rem 1.8rem;
+  }
+
+  .hero-highlights li {
+    margin-bottom: 0.52rem;
+    line-height: 1.55;
+  }
+
+  .hero-cta {
+    margin-top: 0.95rem;
+  }
+
+  #intro .intro-social {
+    margin-top: 1.55rem;
+  }
+
+  #intro .hero-divider {
+    margin: 2.25rem auto 4.6rem;
+  }
+
+  #about .section-intro {
+    margin-bottom: 4.35rem;
+  }
+
+  .intro-info {
+    margin-top: 3.95rem;
+  }
+
+  .about-lead__summary {
+    max-width: 45rem;
+    margin-bottom: 1.45rem;
+  }
+
+  .about-lead__subhead {
+    margin-top: 1.65rem;
+    margin-bottom: 1.12rem;
+  }
+
+  .about-lead__highlights {
+    margin-bottom: 1.72rem;
+  }
+
+  .about-content {
+    margin-top: 3.35rem;
+  }
+
+  #about .about-content > .col-six.tab-full:first-of-type {
+    padding-right: 2.4rem;
+  }
+
+  #about .about-content > .col-six.tab-full:last-of-type {
+    padding-left: 2.4rem;
+  }
+
+  .about-content .skill-groups {
+    margin-top: 1.85rem;
+  }
+}
+
 /* Sticky top bar — custom site nav (Bootstrap classes kept for grid compatibility) */
 .templatemo-nav.site-nav.navbar {
   position: sticky;
