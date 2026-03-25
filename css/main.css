@@ -414,6 +414,8 @@
    transform: none;
    position: relative;
    z-index: 2;
+   pointer-events: auto;
+   isolation: isolate;
  }
  #intro .intro-content h5 {
    color: var(--accent);
@@ -449,7 +451,7 @@
    margin: 1.45rem auto 0;
    padding: 0;
    position: relative;
-   z-index: 1;
+   z-index: 4;
  }
  .intro-social li {
    margin: 0;
@@ -479,6 +481,23 @@
  .intro-social li a:focus-visible {
    outline: 2px solid rgba(251, 207, 232, 0.95);
    outline-offset: 2px;
+ }
+
+ #intro .intro-social a[href^="mailto:"],
+ .footer-social a[href^="mailto:"] {
+   position: relative;
+   z-index: 2;
+   pointer-events: auto;
+   cursor: pointer;
+ }
+
+ #contact a.contact-primary-mailto[href^="mailto:"],
+ #contact a.contact-email-link[href^="mailto:"],
+ #about a.profile-email-link[href^="mailto:"] {
+   pointer-events: auto;
+   cursor: pointer;
+   position: relative;
+   z-index: 1;
  }
  
  /* About */
@@ -2355,23 +2374,24 @@ button.demo-popout-link {
   }
 
   .hero-tagline {
-    margin-bottom: 1.55rem;
-    line-height: 1.62;
+    margin-bottom: 1.38rem;
+    line-height: 1.6;
+    max-width: 47rem;
   }
 
   .hero-highlights {
-    max-width: 44rem;
-    margin-bottom: 2.28rem;
-    padding: 1.2rem 1.75rem 1.22rem 1.8rem;
+    max-width: 45rem;
+    margin-bottom: 2.05rem;
+    padding: 1.12rem 1.48rem 1.14rem 1.52rem;
   }
 
   .hero-highlights li {
-    margin-bottom: 0.52rem;
-    line-height: 1.55;
+    margin-bottom: 0.58rem;
+    line-height: 1.58;
   }
 
   .hero-cta {
-    margin-top: 0.95rem;
+    margin-top: 0.78rem;
   }
 
   #intro .intro-social {
@@ -2391,8 +2411,9 @@ button.demo-popout-link {
   }
 
   .about-lead__summary {
-    max-width: 45rem;
+    max-width: 48rem;
     margin-bottom: 1.45rem;
+    line-height: 1.6;
   }
 
   .about-lead__subhead {
@@ -2404,16 +2425,22 @@ button.demo-popout-link {
     margin-bottom: 1.72rem;
   }
 
+  .about-lead__highlights li {
+    max-width: 50rem;
+    line-height: 1.62;
+    margin-bottom: 0.82rem;
+  }
+
   .about-content {
     margin-top: 3.35rem;
   }
 
   #about .about-content > .col-six.tab-full:first-of-type {
-    padding-right: 2.4rem;
+    padding-right: 2.05rem;
   }
 
   #about .about-content > .col-six.tab-full:last-of-type {
-    padding-left: 2.4rem;
+    padding-left: 2.05rem;
   }
 
   .about-content .skill-groups {

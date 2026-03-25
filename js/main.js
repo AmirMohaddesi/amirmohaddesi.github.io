@@ -226,6 +226,8 @@
 
 	$(document).on('click', 'a.smoothscroll', function () {
 		if (this.hasAttribute && this.hasAttribute('download')) return;
+		var hrefAttr = this.getAttribute('href');
+		if (!hrefAttr || hrefAttr.charAt(0) !== '#') return;
 		var target = this.hash;
 		if (!target) return;
 
