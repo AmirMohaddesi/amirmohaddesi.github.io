@@ -33,9 +33,12 @@
    --chat-height: 520px;
    --chat-radius: 14px;
    --chat-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-   --nav-z: 1080;
-   --nav-h: 56px;
- }
+  --nav-z: 1080;
+  --nav-h: 56px;
+  --radius-btn: 10px;
+  --link-under-offset: 0.22em;
+  --link-under-thick: 1px;
+}
  
  html {
    font-size: 10px;
@@ -281,8 +284,8 @@
    text-align: center;
    white-space: nowrap;
    border: none;
-   border-radius: 10px;
-   transition: all 0.3s ease-in-out;
+   border-radius: var(--radius-btn);
+   transition: color 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, transform 0.2s ease;
  }
  .button:hover,
  a.button:hover,
@@ -878,7 +881,7 @@
  }
 
  .selected-work-grid > [class*="col-"] {
-   margin-bottom: 2rem;
+   margin-bottom: 2.25rem;
  }
 
  .selected-work-grid > [class*="col-"]:last-child {
@@ -888,43 +891,45 @@
  .proof-card {
    height: 100%;
    box-sizing: border-box;
-   padding: 2rem 1.85rem 1.85rem;
+   padding: 2.05rem 2rem 1.95rem;
    border-radius: 14px;
    border: 1px solid rgba(255, 255, 255, 0.1);
    background: rgba(255, 255, 255, 0.045);
    box-shadow: 0 10px 32px rgba(2, 8, 23, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-   transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.2s ease;
+   transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.2s ease, background 0.22s ease;
  }
 
  .proof-card:hover {
    border-color: rgba(236, 72, 153, 0.28);
-   box-shadow: 0 14px 40px rgba(236, 72, 153, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-   transform: translateY(-2px);
+   box-shadow: 0 12px 36px rgba(236, 72, 153, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+   transform: translateY(-1px);
+   background: rgba(255, 255, 255, 0.055);
  }
 
  .proof-card__title {
    font-family: "poppins-bold", sans-serif;
-   font-size: 1.68rem;
-   line-height: 1.32;
+   font-size: 1.72rem;
+   line-height: 1.3;
    letter-spacing: -0.02em;
    color: var(--text-bright);
-   margin: 0 0 0.85rem;
+   margin: 0 0 0.75rem;
  }
 
  .proof-card__desc {
-   margin: 0 0 1.1rem;
-   font-size: 1.52rem;
-   line-height: 1.62;
+   margin: 0 0 1.15rem;
+   font-size: 1.5rem;
+   line-height: 1.64;
    color: rgba(203, 213, 225, 0.9);
  }
 
  .proof-card__stack {
-   margin: 0 0 1.25rem;
+   margin: 0 0 1.2rem;
    font-family: "poppins-semibold", sans-serif;
-   font-size: 1.22rem;
-   line-height: 1.45;
-   letter-spacing: 0.04em;
-   color: rgba(186, 198, 216, 0.82);
+   font-size: 1.16rem;
+   line-height: 1.48;
+   letter-spacing: 0.055em;
+   text-transform: uppercase;
+   color: rgba(148, 163, 184, 0.88);
  }
 
  .proof-card__link {
@@ -971,17 +976,10 @@
    border-bottom-color: rgba(251, 207, 232, 0.5);
  }
 
- .proof-card__link--external::after {
-   content: "";
-   display: inline-block;
-   width: 0.42em;
-   height: 0.42em;
-   margin-left: 0.28em;
-   border-top: 1.5px solid currentColor;
-   border-right: 1.5px solid currentColor;
-   transform: rotate(45deg) translate(-0.05em, 0.1em);
-   opacity: 0.75;
-   vertical-align: middle;
+ .proof-card__link.link-external {
+   text-decoration: none;
+   text-underline-offset: unset;
+   text-decoration-thickness: unset;
  }
 
  .proof-card__note {
@@ -1826,6 +1824,180 @@ iframe {
 }
 
 /* ------------------------------------------------------------------
+ * Link system — in-page vs external vs download vs utility (portfolio polish)
+ * ------------------------------------------------------------------ */
+
+/* A — In-page navigation: directional, no “outbound” cues */
+#sidebar-nav .sidebar-nav-list a.smoothscroll {
+  box-shadow: inset 3px 0 0 0 transparent;
+}
+
+#sidebar-nav .sidebar-nav-list li:not(.current) > a.smoothscroll:hover,
+#sidebar-nav .sidebar-nav-list li:not(.current) > a.smoothscroll:focus {
+  box-shadow: inset 3px 0 0 0 rgba(34, 211, 238, 0.38);
+}
+
+.templatemo-nav .site-nav__links.navbar-nav > li > a.smoothscroll {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+#go-top a.smoothscroll,
+#go-top a.smoothscroll:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-btn);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+#go-top a.smoothscroll:hover,
+#go-top a.smoothscroll:focus {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25);
+}
+
+/* C — External (prose): refined underline + subtle outbound cue */
+a.link-external {
+  text-underline-offset: var(--link-under-offset);
+  text-decoration-thickness: var(--link-under-thick);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease, border-color 0.2s ease;
+}
+
+.intro-social a.link-external,
+.footer-social a.link-external {
+  text-decoration: none;
+  text-underline-offset: unset;
+  text-decoration-thickness: unset;
+}
+
+.intro-social a.link-external::after,
+.footer-social a.link-external::after {
+  content: none;
+}
+
+#intro .hero-highlights a.link-external,
+#intro .hero-highlights a.link-external:visited {
+  color: #fbcfe8;
+  text-decoration: underline;
+  text-decoration-color: rgba(251, 207, 232, 0.5);
+  border-bottom: none;
+}
+
+#intro .hero-highlights a.link-external:hover,
+#intro .hero-highlights a.link-external:focus {
+  color: #fff;
+  text-decoration-color: rgba(165, 243, 252, 0.65);
+}
+
+#intro .hero-highlights a.link-external:focus-visible {
+  outline: 2px solid rgba(103, 232, 249, 0.75);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (forced-colors: active) {
+  a.link-external {
+    text-decoration: underline;
+  }
+}
+
+#about .about-lead__summary a.link-external,
+#about .about-lead__summary a.link-external:visited,
+.about-content .info-list li span a.link-external,
+.about-content .info-list li span a.link-external:visited {
+  color: #9d174d;
+  text-decoration: underline;
+  text-decoration-color: rgba(190, 24, 93, 0.42);
+  border-bottom: none;
+}
+
+#about .about-lead__summary a.link-external:hover,
+#about .about-lead__summary a.link-external:focus,
+.about-content .info-list li span a.link-external:hover,
+.about-content .info-list li span a.link-external:focus {
+  color: var(--accent-hover);
+  text-decoration-color: rgba(219, 39, 119, 0.65);
+}
+
+.about-content .info-list li span a.link-external--site,
+.about-content .info-list li span a.link-external--site:visited {
+  color: #0f172a;
+  text-decoration-color: rgba(15, 23, 42, 0.28);
+}
+
+.about-content .info-list li span a.link-external--site:hover,
+.about-content .info-list li span a.link-external--site:focus {
+  color: var(--accent-hover);
+  text-decoration-color: rgba(219, 39, 119, 0.5);
+}
+
+#resume .timeline-content a.link-external,
+#resume .timeline-content a.link-external:visited,
+#resume .timeline-header h4 a.link-external,
+#resume .timeline-header h4 a.link-external:visited {
+  color: #fbcfe8;
+  text-decoration: underline;
+  text-decoration-color: rgba(251, 207, 232, 0.42);
+  border-bottom: none;
+}
+
+#resume .timeline-content a.link-external:hover,
+#resume .timeline-content a.link-external:focus,
+#resume .timeline-header h4 a.link-external:hover,
+#resume .timeline-header h4 a.link-external:focus {
+  color: #fff;
+  text-decoration-color: rgba(165, 243, 252, 0.55);
+}
+
+#resume .timeline-content a.link-external:focus-visible,
+#resume .timeline-header h4 a.link-external:focus-visible {
+  outline: 2px solid rgba(103, 232, 249, 0.8);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.contact-proof-strip a.link-external,
+.contact-proof-strip a.link-external:visited {
+  color: #fbcfe8;
+  text-decoration: underline;
+  text-decoration-color: rgba(251, 207, 232, 0.42);
+  border-bottom: none;
+}
+
+.contact-proof-strip a.link-external:hover,
+.contact-proof-strip a.link-external:focus {
+  color: #fff;
+  text-decoration-color: rgba(165, 243, 252, 0.55);
+}
+
+.publication-list__link.link-external {
+  text-decoration: underline;
+  text-decoration-color: rgba(251, 207, 232, 0.45);
+  border-bottom: none;
+}
+
+.publication-list__link.link-external:hover,
+.publication-list__link.link-external:focus {
+  text-decoration-color: rgba(165, 243, 252, 0.65);
+}
+
+.publication-list__link.link-external:focus-visible {
+  outline: 2px solid rgba(103, 232, 249, 0.8);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Inline prose links on dark bands (timeline body) keep elegant underlines when not .link-external */
+#resume .timeline-content > p a:not(.link-external) {
+  text-underline-offset: var(--link-under-offset);
+  text-decoration-thickness: var(--link-under-thick);
+}
+
+/* ------------------------------------------------------------------
  * Desktop left sidebar + main column (mobile: sidebar hidden, top bar + drawer)
  * ------------------------------------------------------------------ */
 #sidebar-nav {
@@ -2004,28 +2176,6 @@ iframe {
   margin-bottom: 1.15rem;
 }
 
-.demo-popout {
-  font-family: "poppins-semibold", sans-serif;
-  font-size: 1.25rem;
-  letter-spacing: 0.14rem;
-  text-transform: uppercase;
-  padding: 1rem 1.75rem;
-  border-radius: 10px;
-  border: 1px solid rgba(248, 250, 252, 0.35);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text-bright);
-  cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-.demo-popout:hover,
-.demo-popout:focus-visible {
-  border-color: var(--accent);
-  background: rgba(236, 72, 153, 0.12);
-  color: #fff;
-  outline: none;
-}
-
 .demo-popout-link,
 .demo-popout-link:visited {
   font-family: "poppins-regular", sans-serif;
@@ -2034,12 +2184,14 @@ iframe {
   text-transform: none;
   color: rgba(203, 213, 225, 0.78);
   text-decoration: none;
-  border-bottom: 1px dashed rgba(148, 163, 184, 0.45);
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.42);
   background: none;
-  padding: 0 0 2px;
-  margin: 0;
+  padding: 0.15rem 0.2rem 0.2rem;
+  margin: 0 -0.2rem;
+  border-radius: 6px;
   cursor: pointer;
   line-height: inherit;
+  transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease;
 }
 
 button.demo-popout-link {
@@ -2050,14 +2202,15 @@ button.demo-popout-link {
 .demo-popout-link:hover,
 .demo-popout-link:focus {
   color: rgba(241, 245, 249, 0.95);
-  border-bottom-color: rgba(34, 211, 238, 0.5);
+  border-bottom-color: rgba(34, 211, 238, 0.48);
+  background: rgba(34, 211, 238, 0.06);
   outline: none;
 }
 
 .demo-popout-link:focus-visible {
   outline: 2px solid rgba(34, 211, 238, 0.65);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .demo-note {
@@ -2116,14 +2269,14 @@ button.demo-popout-link {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-.hero-highlights a,
-.hero-highlights a:visited {
+.hero-highlights a:not(.link-external),
+.hero-highlights a:not(.link-external):visited {
   color: #fbcfe8;
   border-bottom: 1px solid rgba(251, 207, 232, 0.45);
 }
 
-.hero-highlights a:hover,
-.hero-highlights a:focus {
+.hero-highlights a:not(.link-external):hover,
+.hero-highlights a:not(.link-external):focus {
   color: #fff;
   border-bottom-color: rgba(255, 255, 255, 0.55);
 }
@@ -2146,15 +2299,22 @@ button.demo-popout-link {
   padding-left: 2.4rem;
   padding-right: 2.4rem;
   box-shadow: 0 6px 22px rgba(236, 72, 153, 0.22);
+  border-radius: var(--radius-btn);
 }
 
 .button--hero-secondary {
   border-width: 2px;
+  border-radius: var(--radius-btn);
 }
 
 .button--hero-primary:hover,
 .button--hero-primary:focus {
   box-shadow: 0 8px 28px rgba(236, 72, 153, 0.28);
+}
+
+#intro .hero-cta a.button:focus-visible {
+  outline: 2px solid rgba(251, 207, 232, 0.95);
+  outline-offset: 3px;
 }
 
 #intro .hero-cta a.button.stroke,
