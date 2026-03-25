@@ -141,23 +141,24 @@
 		if (!sections.length) return 'intro';
 
 		var viewportH = window.innerHeight || document.documentElement.clientHeight;
-
-		var bestId = sections[0].id;
-		var bestScore = -Infinity;
+		var probeY = Math.round(viewportH * 0.35);
 
 		for (var i = 0; i < sections.length; i++) {
 			var rect = sections[i].getBoundingClientRect();
 
-			// visible height of section in viewport
-			var visible = Math.min(rect.bottom, viewportH) - Math.max(rect.top, 0);
-
-			if (visible > bestScore) {
-				bestScore = visible;
-				bestId = sections[i].id;
+			if (rect.top <= probeY && rect.bottom >= probeY) {
+				return sections[i].id;
 			}
 		}
 
-		return bestId;
+		// Fallbacks:
+		// if probe is above all sections, use first
+		if (sections[0].getBoundingClientRect().top > probeY) {
+			return sections[0].id;
+		}
+
+		// if probe is below all sections, use last
+		return sections[sections.length - 1].id;
 	}
 
 	function schedulePortfolioNavSync() {
