@@ -11,20 +11,14 @@
 
 	/*---------------------------------------------------- */
 	/* Preloader
-	------------------------------------------------------ */ 
-   $(window).load(function() {
-
-      // will first fade out the loading animation 
-    	$("#loader").fadeOut("slow", function(){
-
-        // will fade out the whole DIV that covers the website.
-        $("#preloader").delay(300).fadeOut("slow", function () {
-        	schedulePortfolioNavSync();
-        });
-
-      });       
-
-  	})
+	------------------------------------------------------ */
+	$(function () {
+		$("#loader").fadeOut("slow", function () {
+			$("#preloader").delay(300).fadeOut("slow", function () {
+				schedulePortfolioNavSync();
+			});
+		});
+	});
 
 
   	/*---------------------------------------------------- */
@@ -67,39 +61,11 @@
 
 
 	/*----------------------------------------------------- */
-	/* Stat Counter
+	/* Stat Counter (unused on this site — waypoint disabled to avoid scroll timing overlap)
   	------------------------------------------------------- */
-   var statSection = $("#stats"),
-       stats = $(".stat-count");
-
-   statSection.waypoint({
-
-   	handler: function(direction) {
-
-      	if (direction === "down") {       		
-
-			   stats.each(function () {
-				   var $this = $(this);
-
-				   $({ Counter: 0 }).animate({ Counter: $this.text() }, {
-				   	duration: 4000,
-				   	easing: 'swing',
-				   	step: function (curValue) {
-				      	$this.text(Math.ceil(curValue));
-				    	}
-				  	});
-				});
-
-       	} 
-
-       	// trigger once only
-       	this.destroy();      	
-
-		},
-			
-		offset: "90%"
-	
-	});	
+	/* var statSection = $("#stats"),
+		stats = $(".stat-count");
+	statSection.waypoint({ ... }); */
 
 
 	/*---------------------------------------------------- */
@@ -139,6 +105,7 @@
    /*---------------------------------------------------- */
   	/* Portfolio nav: single source menu + scrollspy + smooth scroll
   	------------------------------------------------------ */
+	let portfolioNavInitialized = false;
 	var PORTFOLIO_MOBILE_NAV_W = 768;
 	var portfolioNavIds = [];
 	var portfolioNavTicking = false;
@@ -182,10 +149,8 @@
 			return sections[sections.length - 1].id;
 		}
 
-		// On mobile, use the sticky nav height; on desktop use a viewport ratio.
-		var threshold = portfolioMobileNavHeight() > 0
-			? portfolioMobileNavHeight() + 18
-			: Math.max(80, Math.round((window.innerHeight || 600) * 0.28));
+		// Single activation line from viewport top (px). Tune here if section edges feel off.
+		var threshold = 100;
 
 		var activeId = sections[0].id;
 		for (var i = 0; i < sections.length; i++) {
@@ -204,14 +169,21 @@
 	}
 
 	function initPortfolioNavigation() {
+		if (portfolioNavInitialized) return;
+
 		var desktopNav = document.getElementById('main-nav-wrap');
 		var mobileNav = document.getElementById('mobile-nav-wrap');
 		var navToggle = document.getElementById('mobileNavToggle');
 		var siteNav = document.getElementById('siteNav');
 		if (!desktopNav || !mobileNav || !siteNav || !navToggle) return;
 
-		// Single source of truth: clone desktop nav items into mobile drawer.
-		mobileNav.innerHTML = desktopNav.innerHTML;
+		portfolioNavInitialized = true;
+
+		// Single source of truth: clone desktop <ul> into mobile drawer (no duplicate markup).
+		mobileNav.innerHTML = '';
+		var navClone = desktopNav.cloneNode(true);
+		navClone.removeAttribute('id');
+		mobileNav.appendChild(navClone);
 		portfolioNavIds = [];
 		Array.prototype.forEach.call(desktopNav.querySelectorAll('a[href^="#"]'), function (link) {
 			var id = link.getAttribute('href').replace(/^#/, '');
@@ -242,7 +214,7 @@
 		});
 
 		window.addEventListener('hashchange', schedulePortfolioNavSync);
-		$(window).on('scroll.portfolioNav resize.portfolioNav load.portfolioNav', schedulePortfolioNavSync);
+		$(window).off('.portfolioNav').on('scroll.portfolioNav resize.portfolioNav', schedulePortfolioNavSync);
 		schedulePortfolioNavSync();
 	}
 
@@ -266,7 +238,7 @@
 		if (window.innerWidth <= PORTFOLIO_MOBILE_NAV_W) closePortfolioMobileNav();
 	});
 
-	$(initPortfolioNavigation);
+	$(document).ready(initPortfolioNavigation);
   
 
    /*---------------------------------------------------- */
