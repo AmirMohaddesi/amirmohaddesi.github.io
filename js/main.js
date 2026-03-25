@@ -143,16 +143,35 @@
 		var sections = document.querySelectorAll('#main-content > section[id]');
 		if (!sections.length) return 'intro';
 
-		var scrollPos = window.scrollY + 120; // small offset for UX (tune if needed)
+		var docEl = document.documentElement;
+		var scrollY = window.pageYOffset || docEl.scrollTop || 0;
+		var viewportH = window.innerHeight || docEl.clientHeight || 0;
+
+		// Use a viewport probe line instead of offsetTop-only logic so tall sections do not keep the wrong tab active.
+		var probeY = scrollY + Math.max(140, Math.round(viewportH * 0.32));
 
 		var activeId = sections[0].id;
 
 		for (var i = 0; i < sections.length; i++) {
-			var sectionTop = sections[i].offsetTop;
+			var rect = sections[i].getBoundingClientRect();
+			var top = rect.top + scrollY;
 
-			if (scrollPos >= sectionTop) {
+			if (probeY >= top) {
 				activeId = sections[i].id;
 			}
+		}
+
+		// Keep Contact active near the bottom of the page.
+		var docH = Math.max(
+			document.body.scrollHeight,
+			docEl.scrollHeight,
+			document.body.offsetHeight,
+			docEl.offsetHeight,
+			docEl.clientHeight
+		);
+
+		if (scrollY + viewportH >= docH - 24) {
+			activeId = sections[sections.length - 1].id;
 		}
 
 		return activeId;
