@@ -1,5 +1,9 @@
 const { test, expect } = require('@playwright/test');
 
+/**
+ * Desktop + mobile primary navigation (order, hrefs, scroll targets).
+ * See also: hyperlinks.spec.js (CTAs, downloads, external rel/target), sections-visible.spec.js.
+ */
 const DESKTOP_LINKS = [
   { text: 'Introduction', href: '#intro' },
   { text: 'Demo', href: '#hf-space' },
