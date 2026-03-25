@@ -320,6 +320,21 @@
  input[type="button"].button-primary:focus {
    background: var(--accent-hover);
  }
+
+ a.button:focus-visible,
+ button:focus-visible,
+ .button:focus-visible,
+ input[type="submit"]:focus-visible,
+ input[type="reset"]:focus-visible,
+ input[type="button"]:focus-visible {
+   outline: 2px solid rgba(236, 72, 153, 0.88);
+   outline-offset: 3px;
+ }
+
+ a.button.button-primary:focus-visible,
+ button.button-primary:focus-visible {
+   outline-color: rgba(251, 207, 232, 0.95);
+ }
  button.full-width, .button.full-width {
    width: 100%;
    margin-right: 0;
@@ -329,23 +344,29 @@
    border: 2px solid rgba(255,255,255,0.45);
    color: var(--text-bright);
    line-height: 5rem;
+   transition: border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease, transform 0.18s ease;
  }
  button.stroke:hover, .button.stroke:hover {
    border-color: var(--accent);
    color: var(--accent);
+   box-shadow: 0 6px 20px rgba(236, 72, 153, 0.12);
+ }
+ button.stroke:focus-visible, .button.stroke:focus-visible {
+   outline: 2px solid rgba(251, 207, 232, 0.9);
+   outline-offset: 3px;
  }
  
  /* Sections */
  .section-intro {
    max-width: 900px;
-   margin: 0 auto 4.8rem auto;
+   margin: 0 auto 4.35rem auto;
    text-align: center;
  }
  .section-intro h5 {
    color: var(--accent);
  }
  .section-intro h1 {
-   margin-bottom: 1.8rem;
+   margin-bottom: 1.65rem;
  }
  .grey-section {
    background:
@@ -455,11 +476,11 @@
  /* About */
  #about {
    background: var(--bg-light);
-   padding-top: 12rem;
-   padding-bottom: 15rem;
+   padding-top: 11rem;
+   padding-bottom: 13rem;
  }
  #about .section-intro {
-   margin-bottom: 4.85rem;
+   margin-bottom: 4.25rem;
  }
  #about .section-intro h1,
  #about h3,
@@ -513,30 +534,32 @@
  }
 
  .about-lead__summary {
-   margin-bottom: 1.5rem;
+   margin-bottom: 1.35rem;
+   max-width: 42rem;
  }
 
  .about-lead__subhead {
    font-family: "poppins-bold", sans-serif;
-   font-size: 1.35rem;
-   letter-spacing: 0.2rem;
+   font-size: 1.32rem;
+   letter-spacing: 0.18rem;
    text-transform: uppercase;
    color: var(--text-dark);
-   margin: 2rem 0 1.25rem 0;
-   padding-bottom: 0.55rem;
+   margin: 1.75rem 0 1.05rem 0;
+   padding-bottom: 0.5rem;
    border-bottom: 2px solid var(--accent-soft);
  }
 
  .about-lead__highlights {
    list-style: none;
-   margin: 0 0 1.85rem;
+   margin: 0 0 1.55rem;
    padding: 0;
  }
 
  .about-lead__highlights li {
    position: relative;
    padding-left: 1.15em;
-   margin-bottom: 0.95rem;
+   margin-bottom: 0.78rem;
+   max-width: 42rem;
    font-family: "lora-regular", serif;
    font-size: 1.85rem;
    line-height: 1.65;
@@ -621,11 +644,13 @@
 
  .about-content h3 {
    font-family: "poppins-bold", sans-serif;
-   font-size: 1.8rem;
+   font-size: 1.72rem;
    text-transform: uppercase;
-   letter-spacing: .25rem;
+   letter-spacing: 0.2rem;
    margin-top: 0;
-   margin-bottom: 1.55rem;
+   margin-bottom: 1.35rem;
+   line-height: 1.35;
+   color: var(--text-dark);
  }
  .about-content .info-list {
    list-style: none;
@@ -810,12 +835,116 @@
  
  .button-section {
    text-align: center;
+   margin-top: 0.5rem;
  }
  .button-section .button {
    width: 250px;
  }
  .button-section [class*="col-"] .button:first-child {
    margin-right: 4rem;
+ }
+
+ /* Selected work — compact proof band */
+ .selected-work-section {
+   padding-top: 9.5rem;
+   padding-bottom: 9.5rem;
+ }
+
+ .section-intro--selected-work {
+   margin-bottom: 3.1rem;
+ }
+
+ .section-intro--selected-work h1 {
+   margin-bottom: 1.1rem;
+ }
+
+ .selected-work-lead {
+   max-width: 36rem;
+   margin: 0.35rem auto 0;
+   font-size: 1.58rem;
+   line-height: 1.62;
+   color: rgba(203, 213, 225, 0.88);
+ }
+
+ .selected-work-grid {
+   max-width: 1080px;
+   margin: 0 auto;
+   align-items: stretch;
+ }
+
+ .selected-work-grid > [class*="col-"] {
+   margin-bottom: 2rem;
+ }
+
+ .selected-work-grid > [class*="col-"]:last-child {
+   margin-bottom: 0;
+ }
+
+ .proof-card {
+   height: 100%;
+   box-sizing: border-box;
+   padding: 2rem 1.85rem 1.85rem;
+   border-radius: 14px;
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   background: rgba(255, 255, 255, 0.045);
+   box-shadow: 0 10px 32px rgba(2, 8, 23, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+   transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.2s ease;
+ }
+
+ .proof-card:hover {
+   border-color: rgba(236, 72, 153, 0.28);
+   box-shadow: 0 14px 40px rgba(236, 72, 153, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+   transform: translateY(-2px);
+ }
+
+ .proof-card__title {
+   font-family: "poppins-bold", sans-serif;
+   font-size: 1.68rem;
+   line-height: 1.32;
+   letter-spacing: -0.02em;
+   color: var(--text-bright);
+   margin: 0 0 0.85rem;
+ }
+
+ .proof-card__desc {
+   margin: 0 0 1.1rem;
+   font-size: 1.52rem;
+   line-height: 1.62;
+   color: rgba(203, 213, 225, 0.9);
+ }
+
+ .proof-card__stack {
+   margin: 0 0 1.25rem;
+   font-family: "poppins-semibold", sans-serif;
+   font-size: 1.22rem;
+   line-height: 1.45;
+   letter-spacing: 0.04em;
+   color: rgba(186, 198, 216, 0.82);
+ }
+
+ .proof-card__link {
+   font-family: "poppins-semibold", sans-serif;
+   font-size: 1.32rem;
+   text-decoration: none;
+   color: #fbcfe8;
+   border-bottom: 1px solid rgba(251, 207, 232, 0.42);
+   transition: color 0.2s ease, border-color 0.2s ease;
+ }
+
+ .proof-card__link:visited {
+   color: #f5d0fe;
+ }
+
+ .proof-card__link:hover,
+ .proof-card__link:focus {
+   color: #fff;
+   border-bottom-color: rgba(255, 255, 255, 0.5);
+ }
+
+ .proof-card__link:focus-visible {
+   outline: 2px solid rgba(103, 232, 249, 0.75);
+   outline-offset: 3px;
+   border-radius: 2px;
  }
  
  /* Resume */
@@ -825,8 +954,8 @@
      radial-gradient(ellipse 70% 50% at 90% 40%, rgba(34, 211, 238, 0.06), transparent 50%),
      linear-gradient(180deg, #0a0f1c 0%, var(--bg-dark) 38%, #0d1224 100%);
    border-top: 1px solid var(--border-soft);
-   padding-top: 12rem;
-   padding-bottom: 12rem;
+   padding-top: 10.5rem;
+   padding-bottom: 11.5rem;
  }
  #resume .section-intro h1,
  #resume .resume-header h2,
@@ -851,22 +980,22 @@
  }
 
  #resume .section-intro {
-   margin-bottom: 5.85rem;
+   margin-bottom: 5.1rem;
  }
 
  .resume-section-lead {
    color: rgba(203, 213, 225, 0.86);
-   font-size: 1.62rem;
-   line-height: 1.72;
-   max-width: 48rem;
-   margin: 0.55rem auto 0;
+   font-size: 1.58rem;
+   line-height: 1.68;
+   max-width: 44rem;
+   margin: 0.45rem auto 0;
    padding: 0 0.75rem;
    text-align: center;
  }
 
  .resume-timeline {
    max-width: 980px;
-   margin-top: 4.5rem;
+   margin-top: 3.85rem;
  }
 
  .resume-timeline--education {
@@ -897,7 +1026,7 @@
  .timeline-block {
    position: relative;
    padding-left: 7rem;
-   margin-bottom: 3.5rem;
+   margin-bottom: 3rem;
  }
  .timeline-ico {
    height: 4rem;
@@ -919,14 +1048,18 @@
  .timeline-header p,
  .timeline-content p {
    color: rgba(203, 213, 225, 0.9);
-   line-height: 1.8;
+   line-height: 1.72;
  }
  .timeline-content {
    background: rgba(255,255,255,0.035);
    border: 1px solid rgba(255,255,255,0.07);
    border-radius: 16px;
-   padding: 2.9rem 2.85rem;
+   padding: 2.55rem 2.6rem;
    box-shadow: 0 8px 30px rgba(2,8,23,0.16);
+ }
+
+ #resume .timeline-content > p {
+   max-width: 52rem;
  }
  .timeline-content h4 {
    color: var(--text-bright);
@@ -959,18 +1092,20 @@
  .publications-panel {
    max-width: 720px;
    margin: 1.15rem auto 0;
-   padding: 2.95rem 3rem 3rem;
-   background: rgba(255, 255, 255, 0.04);
-   border: 1px solid rgba(255, 255, 255, 0.08);
+   padding: 2.75rem 2.85rem 2.85rem;
+   background: rgba(255, 255, 255, 0.045);
+   border: 1px solid rgba(255, 255, 255, 0.09);
    border-radius: 16px;
    text-align: left;
+   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.04);
  }
 
  .publications-intro {
    color: rgba(203, 213, 225, 0.9);
-   font-size: 1.65rem;
-   line-height: 1.7;
-   margin-bottom: 2.55rem;
+   font-size: 1.58rem;
+   line-height: 1.66;
+   margin-bottom: 2.25rem;
+   max-width: 48rem;
  }
 
  .publication-list {
@@ -1144,11 +1279,42 @@
 
  .contact-lead {
    color: rgba(226, 232, 240, 0.94);
-   max-width: 48rem;
-   margin: 0 auto 1.85rem;
-   font-size: 1.7rem;
-   line-height: 1.68;
+   max-width: 40rem;
+   margin: 0 auto 0.35rem;
+   font-size: 1.62rem;
+   line-height: 1.66;
  }
+
+ .contact-proof-strip {
+   margin: 1.5rem auto 0;
+   max-width: 40rem;
+   font-family: "poppins-semibold", sans-serif;
+   font-size: 1.28rem;
+   line-height: 1.55;
+   letter-spacing: 0.04em;
+   color: rgba(186, 198, 216, 0.88);
+ }
+
+ .contact-proof-strip a,
+ .contact-proof-strip a:visited {
+   color: #fbcfe8;
+   text-decoration: none;
+   border-bottom: 1px solid rgba(251, 207, 232, 0.38);
+   transition: color 0.2s ease, border-color 0.2s ease;
+ }
+
+ .contact-proof-strip a:hover,
+ .contact-proof-strip a:focus {
+   color: #fff;
+   border-bottom-color: rgba(255, 255, 255, 0.5);
+ }
+
+ .contact-proof-strip a:focus-visible {
+   outline: 2px solid rgba(103, 232, 249, 0.85);
+   outline-offset: 2px;
+   border-radius: 2px;
+ }
+
  #contact .contact-info {
    max-width: 1000px;
    margin: 0 auto;
@@ -1529,6 +1695,7 @@ iframe {
 #intro,
 #hf-space,
 #about,
+#selected-work,
 #resume,
 #contact {
   scroll-margin-top: 0;
@@ -1538,6 +1705,7 @@ iframe {
   #intro,
   #hf-space,
   #about,
+  #selected-work,
   #resume,
   #contact {
     scroll-margin-top: 64px;
@@ -1772,12 +1940,12 @@ iframe {
 /* Hero — concise first screen */
 .hero-tagline {
   font-family: "poppins-regular", sans-serif;
-  font-size: 1.82rem;
-  line-height: 1.65;
-  letter-spacing: 0.006em;
+  font-size: 1.78rem;
+  line-height: 1.58;
+  letter-spacing: 0.004em;
   color: rgba(226, 232, 240, 0.94);
-  max-width: 42rem;
-  margin: 0 auto 1.85rem;
+  max-width: 40rem;
+  margin: 0 auto 1.65rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   box-sizing: border-box;
@@ -1785,14 +1953,14 @@ iframe {
 
 .hero-highlights {
   list-style: none;
-  margin: 0 auto 2.4rem;
-  padding: 1.2rem 1.4rem 1.2rem 1.6rem;
-  max-width: 32rem;
+  margin: 0 auto 2.15rem;
+  padding: 1.05rem 1.35rem 1.1rem 1.5rem;
+  max-width: 36rem;
   text-align: left;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 12px;
-  background: rgba(2, 6, 20, 0.35);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: rgba(2, 6, 20, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
 .hero-highlights li {
@@ -2194,10 +2362,27 @@ body.nav-open {
   }
 
   #about,
+  #selected-work,
   #resume,
   #contact {
     padding-top: 8rem;
     padding-bottom: 8rem;
+  }
+
+  .section-intro--selected-work {
+    margin-bottom: 2.35rem;
+  }
+
+  .proof-card {
+    padding: 1.75rem 1.5rem 1.6rem;
+  }
+
+  .proof-card:hover {
+    transform: none;
+  }
+
+  .selected-work-grid > [class*="col-"] {
+    margin-bottom: 1.5rem;
   }
 
   #hf-space.grey-section {
@@ -2214,6 +2399,7 @@ body.nav-open {
   }
 
   #about .section-intro h1,
+  #selected-work .section-intro h1,
   #resume .section-intro h1,
   #hf-space .section-intro h1 {
     font-size: 2.8rem;
