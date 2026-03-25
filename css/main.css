@@ -500,8 +500,8 @@
  }
  .intro-info {
    margin-top: 4.2rem;
-   margin-right: -22px;
-   margin-left: -22px;
+   margin-right: -16px;
+   margin-left: -16px;
  }
  .intro-info::after {
    content: "";
@@ -567,7 +567,7 @@
    position: relative;
    padding-left: 1.15em;
    margin-bottom: 0.78rem;
-   max-width: 44rem;
+   max-width: 46rem;
    font-family: "lora-regular", serif;
    font-size: 1.85rem;
    line-height: 1.65;
@@ -624,7 +624,7 @@
  .about-content {
    position: relative;
    text-align: left;
-   max-width: 1100px;
+   max-width: 1280px;
    margin-top: 3.1rem;
    margin-bottom: 5rem;
  }
@@ -792,7 +792,7 @@
 
  .about-content .skill-groups {
    margin-top: 1.75rem;
-   padding: 2.35rem 2.35rem 2.5rem;
+   padding: 2.4rem 2.5rem 2.55rem;
    background: #fff;
    border-radius: 14px;
    border: 1px solid rgba(15, 23, 42, 0.08);
@@ -2100,6 +2100,18 @@ a.link-external {
   max-width: 1240px;
 }
 
+@media (min-width: 769px) {
+  #main-content #intro .intro-content > .row,
+  #main-content #about > .row.section-intro,
+  #main-content #about > .row.button-section {
+    max-width: 1310px;
+  }
+
+  #main-content #about > .row.about-content {
+    max-width: 1280px;
+  }
+}
+
 @media (max-width: 768px) {
   #sidebar-nav {
     display: none !important;
@@ -2235,18 +2247,18 @@ button.demo-popout-link {
   line-height: 1.58;
   letter-spacing: 0.004em;
   color: rgba(226, 232, 240, 0.94);
-  max-width: 42rem;
+  max-width: 43rem;
   margin: 0 auto 1.65rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
   box-sizing: border-box;
 }
 
 .hero-highlights {
   list-style: none;
   margin: 0 auto 2.15rem;
-  padding: 1.12rem 1.45rem 1.15rem 1.55rem;
-  max-width: 38rem;
+  padding: 1.15rem 1.55rem 1.18rem 1.65rem;
+  max-width: 40rem;
   text-align: left;
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 12px;
@@ -2294,7 +2306,7 @@ button.demo-popout-link {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1rem 1.25rem;
+  gap: 1rem 1.35rem;
 }
 
 .hero-cta .button {
