@@ -1191,6 +1191,12 @@
  #resume .timeline-content > p {
    max-width: 52rem;
  }
+
+@media (min-width: 769px) {
+  #resume .resume-timeline--research .timeline-block:first-child .timeline-content > p {
+    max-width: 60rem;
+  }
+}
  .timeline-content h4 {
    color: var(--text-bright);
  }
