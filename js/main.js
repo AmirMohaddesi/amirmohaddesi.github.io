@@ -234,30 +234,19 @@
 		schedulePortfolioNavSync();
 	}
 
-	$(document).on('click', 'a.smoothscroll', function (e) {
+	$(document).on('click', 'a.smoothscroll', function () {
 		var target = this.hash;
 		if (!target) return;
 
-		var $target = $(target);
-		if (!$target.length) return;
+		if (target.charAt(0) === '#') {
+			portfolioSetCurrentNav(target.replace(/^#/, ''));
+		}
 
-		e.preventDefault();
-		portfolioSetCurrentNav(target.replace(/^#/, ''));
+		if (window.innerWidth <= PORTFOLIO_MOBILE_NAV_W) {
+			closePortfolioMobileNav();
+		}
 
-		var isMobile = window.innerWidth <= PORTFOLIO_MOBILE_NAV_W;
-		var offset = isMobile ? (portfolioMobileNavHeight() + 6) : 0;
-		var scrollTop = Math.max(0, $target.offset().top - offset);
-
-		$('html, body').stop().animate({ scrollTop: scrollTop }, 800, 'swing', function () {
-			if (history && history.replaceState) {
-				history.replaceState(null, '', target);
-			} else {
-				window.location.hash = target;
-			}
-			schedulePortfolioNavSync();
-		});
-
-		if (window.innerWidth <= PORTFOLIO_MOBILE_NAV_W) closePortfolioMobileNav();
+		setTimeout(schedulePortfolioNavSync, 50);
 	});
 
 	$(document).ready(initPortfolioNavigation);
