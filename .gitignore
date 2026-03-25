@@ -1,0 +1,4 @@
+# Editor / local backup clutter
+*.bak
+*.bak*
+*~
