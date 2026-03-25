@@ -140,35 +140,24 @@
 		var sections = document.querySelectorAll('#main-content > section[id]');
 		if (!sections.length) return 'intro';
 
-		var docEl = document.documentElement;
-		var scrollY = window.pageYOffset || docEl.scrollTop || 0;
-		var viewportH = window.innerHeight || docEl.clientHeight || 0;
-		var probe = 80;
+		var viewportH = window.innerHeight || document.documentElement.clientHeight;
 
-		var activeId = sections[0].id;
+		var bestId = sections[0].id;
+		var bestScore = -Infinity;
 
 		for (var i = 0; i < sections.length; i++) {
-			var top = sections[i].getBoundingClientRect().top;
-			if (top <= probe) {
-				activeId = sections[i].id;
-			} else {
-				break;
+			var rect = sections[i].getBoundingClientRect();
+
+			// visible height of section in viewport
+			var visible = Math.min(rect.bottom, viewportH) - Math.max(rect.top, 0);
+
+			if (visible > bestScore) {
+				bestScore = visible;
+				bestId = sections[i].id;
 			}
 		}
 
-		var docH = Math.max(
-			document.body.scrollHeight,
-			docEl.scrollHeight,
-			document.body.offsetHeight,
-			docEl.offsetHeight,
-			docEl.clientHeight
-		);
-
-		if (scrollY + viewportH >= docH - 24) {
-			activeId = sections[sections.length - 1].id;
-		}
-
-		return activeId;
+		return bestId;
 	}
 
 	function schedulePortfolioNavSync() {
@@ -246,7 +235,7 @@
 			closePortfolioMobileNav();
 		}
 
-		setTimeout(schedulePortfolioNavSync, 50);
+		setTimeout(schedulePortfolioNavSync, 80);
 	});
 
 	$(document).ready(initPortfolioNavigation);
