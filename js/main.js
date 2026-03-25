@@ -250,12 +250,21 @@
 		e.preventDefault();
 		portfolioSetCurrentNav(target.replace(/^#/, ''));
 
-		var mobileOffset = portfolioMobileNavHeight();
-		var desktopOffset = 12;
-		var offset = mobileOffset > 0 ? mobileOffset + 6 : desktopOffset;
+		var isMobile = window.innerWidth <= 768;
+		var offset = isMobile ? (portfolioMobileNavHeight() + 6) : 0;
 		var scrollTop = Math.max(0, $target.offset().top - offset);
+
+		// console.log('target:', target);
+		// console.log('target top:', $target.offset().top);
+		// console.log('mobile nav height:', portfolioMobileNavHeight());
+		// console.log('final scrollTop:', scrollTop);
+
 		$('html, body').stop().animate({ scrollTop: scrollTop }, 800, 'swing', function () {
-			window.location.hash = target;
+			if (history && history.replaceState) {
+				history.replaceState(null, '', target);
+			} else {
+				window.location.hash = target;
+			}
 			schedulePortfolioNavSync();
 		});
 

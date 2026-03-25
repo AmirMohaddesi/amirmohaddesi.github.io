@@ -1525,8 +1525,22 @@ iframe {
   height: auto;
 }
 
-section[id] {
-  scroll-margin-top: calc(var(--nav-h) + 10px);
+#about,
+#resume,
+#contact,
+#hf-space,
+#intro {
+  scroll-margin-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  #about,
+  #resume,
+  #contact,
+  #hf-space,
+  #intro {
+    scroll-margin-top: 64px;
+  }
 }
 
 /* ------------------------------------------------------------------
@@ -1638,10 +1652,6 @@ section[id] {
 @media (min-width: 769px) {
   #mobileNavBar {
     display: none !important;
-  }
-
-  section[id] {
-    scroll-margin-top: 12px;
   }
 }
 

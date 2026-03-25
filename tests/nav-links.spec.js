@@ -10,6 +10,13 @@ const DESKTOP_LINKS = [
 
 const BASE_URL = process.env.BASE_URL || 'http://127.0.0.1:5500';
 
+async function sectionViewportTop(page, selector) {
+  return page.evaluate((sel) => {
+    const el = document.querySelector(sel);
+    return el ? el.getBoundingClientRect().top : null;
+  }, selector);
+}
+
 test.describe('Portfolio nav links', () => {
   test('desktop nav order, hrefs, hash updates, and active classes', async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 900 });
@@ -40,6 +47,46 @@ test.describe('Portfolio nav links', () => {
     await page.click('#main-nav-wrap a[href="#about"]');
     await page.waitForTimeout(900);
     await expect(page.locator('#main-nav-wrap li.current > a')).toHaveText('About');
+  });
+
+  test('desktop: About / Technical background / Contact land at section tops', async ({ page }) => {
+    await page.setViewportSize({ width: 1366, height: 900 });
+    await page.goto(BASE_URL);
+    await page.waitForTimeout(200);
+
+    await page.click('#main-nav-wrap a[href="#about"]');
+    await page.waitForTimeout(950);
+    let top = await sectionViewportTop(page, '#about');
+    expect(top).not.toBeNull();
+    expect(Math.abs(top)).toBeLessThanOrEqual(12);
+
+    await page.click('#main-nav-wrap a[href="#resume"]');
+    await page.waitForTimeout(950);
+    top = await sectionViewportTop(page, '#resume');
+    expect(top).not.toBeNull();
+    expect(Math.abs(top)).toBeLessThanOrEqual(12);
+
+    await page.click('#main-nav-wrap a[href="#contact"]');
+    await page.waitForTimeout(950);
+    top = await sectionViewportTop(page, '#contact');
+    expect(top).not.toBeNull();
+    expect(Math.abs(top)).toBeLessThanOrEqual(12);
+  });
+
+  test('mobile drawer: About / resume / Contact clear sticky nav', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(BASE_URL);
+    await page.waitForTimeout(200);
+
+    for (const sel of ['#about', '#resume', '#contact']) {
+      await page.click('#mobileNavToggle');
+      await page.click(`#mobile-nav-wrap a[href="${sel}"]`);
+      await page.waitForTimeout(950);
+      const top = await sectionViewportTop(page, sel);
+      expect(top).not.toBeNull();
+      expect(top).toBeGreaterThanOrEqual(50);
+      expect(top).toBeLessThanOrEqual(90);
+    }
   });
 
   test('mobile drawer links mirror desktop links', async ({ page }) => {
