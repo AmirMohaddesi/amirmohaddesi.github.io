@@ -225,6 +225,7 @@
 	}
 
 	$(document).on('click', 'a.smoothscroll', function () {
+		if (this.hasAttribute && this.hasAttribute('download')) return;
 		var target = this.hash;
 		if (!target) return;
 
