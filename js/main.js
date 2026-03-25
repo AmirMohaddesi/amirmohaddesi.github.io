@@ -105,7 +105,7 @@
    /*---------------------------------------------------- */
   	/* Portfolio nav: single source menu + scrollspy + smooth scroll
   	------------------------------------------------------ */
-	let portfolioNavInitialized = false;
+	var portfolioNavInitialized = false;
 	var PORTFOLIO_MOBILE_NAV_W = 768;
 	var portfolioNavIds = [];
 	var portfolioNavTicking = false;
@@ -143,30 +143,32 @@
 		var sections = document.querySelectorAll('#main-content > section[id]');
 		if (!sections.length) return 'intro';
 
-		var docEl = document.documentElement;
-		var scrollY = window.pageYOffset || docEl.scrollTop || 0;
-		var viewportH = window.innerHeight || docEl.clientHeight || 0;
+		var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+		var viewportH = window.innerHeight || document.documentElement.clientHeight || 0;
 
-		// Keep the probe line near the top so Demo stays active before About.
-		var probeY = scrollY + 90;
+		// Use a probe line near the top of the viewport so Demo stays active before About.
+		var probe = 80;
 
 		var activeId = sections[0].id;
 
 		for (var i = 0; i < sections.length; i++) {
 			var rect = sections[i].getBoundingClientRect();
-			var top = rect.top + scrollY;
+			var top = rect.top;
 
-			if (probeY >= top) {
+			if (top <= probe) {
 				activeId = sections[i].id;
+			} else {
+				break;
 			}
 		}
 
+		var doc = document.documentElement;
 		var docH = Math.max(
 			document.body.scrollHeight,
-			docEl.scrollHeight,
+			doc.scrollHeight,
 			document.body.offsetHeight,
-			docEl.offsetHeight,
-			docEl.clientHeight
+			doc.offsetHeight,
+			doc.clientHeight
 		);
 
 		if (scrollY + viewportH >= docH - 24) {
@@ -181,6 +183,7 @@
 		portfolioNavTicking = true;
 		window.requestAnimationFrame(function () {
 			portfolioNavTicking = false;
+			// console.log('active section:', portfolioActiveSectionId());
 			portfolioSetCurrentNav(portfolioActiveSectionId());
 		});
 	}
@@ -198,9 +201,11 @@
 
 		// Single source of truth: clone desktop <ul> into mobile drawer (no duplicate markup).
 		mobileNav.innerHTML = '';
-		var navClone = desktopNav.cloneNode(true);
-		navClone.removeAttribute('id');
-		mobileNav.appendChild(navClone);
+		var desktopClone = desktopNav.cloneNode(true);
+		desktopClone.removeAttribute('id');
+		while (desktopClone.firstChild) {
+			mobileNav.appendChild(desktopClone.firstChild);
+		}
 		portfolioNavIds = [];
 		Array.prototype.forEach.call(desktopNav.querySelectorAll('a[href^="#"]'), function (link) {
 			var id = link.getAttribute('href').replace(/^#/, '');
@@ -245,8 +250,10 @@
 		e.preventDefault();
 		portfolioSetCurrentNav(target.replace(/^#/, ''));
 
-		var navH = portfolioMobileNavHeight();
-		var scrollTop = Math.max(0, $target.offset().top - navH + 2);
+		var mobileOffset = portfolioMobileNavHeight();
+		var desktopOffset = 12;
+		var offset = mobileOffset > 0 ? mobileOffset + 6 : desktopOffset;
+		var scrollTop = Math.max(0, $target.offset().top - offset);
 		$('html, body').stop().animate({ scrollTop: scrollTop }, 800, 'swing', function () {
 			window.location.hash = target;
 			schedulePortfolioNavSync();
