@@ -18,7 +18,9 @@
     	$("#loader").fadeOut("slow", function(){
 
         // will fade out the whole DIV that covers the website.
-        $("#preloader").delay(300).fadeOut("slow");
+        $("#preloader").delay(300).fadeOut("slow", function () {
+        	schedulePortfolioNavSync();
+        });
 
       });       
 
@@ -155,31 +157,79 @@
 
 
    /*---------------------------------------------------- */
-  	/* Highlight the current section in the navigation bar
+  	/* Scrollspy: sidebar + mobile drawer stay in sync
   	------------------------------------------------------ */
-	var sections = $("section"),
-	navigation_links = $("#main-nav-wrap li a, #siteNav .site-nav__links li a");
+	/* Keep in sync with #main-content > section[id] anchors */
+	var PORTFOLIO_SECTION_IDS = ['intro', 'hf-space', 'about', 'resume', 'contact'];
 
-	sections.waypoint( {
+	function portfolioNavLinks() {
+		return $('#main-nav-wrap li a, #siteNav .site-nav__links li a');
+	}
 
-       handler: function(direction) {
+	function portfolioMobileNavHeight() {
+		var bar = document.getElementById('mobileNavBar');
+		if (!bar) return 0;
+		var st = window.getComputedStyle(bar);
+		if (st.display === 'none') return 0;
+		return Math.round(bar.getBoundingClientRect().height) || 0;
+	}
 
-		   var active_section;
+	function portfolioScrollspyThreshold() {
+		var navH = portfolioMobileNavHeight();
+		var vh = window.innerHeight || 600;
+		if (navH > 0) return navH + 18;
+		return Math.max(80, Math.round(vh * 0.28));
+	}
 
-			active_section = $('section#' + this.element.id);
+	function portfolioActiveSectionId() {
+		var sections = document.querySelectorAll('#main-content > section[id]');
+		if (!sections.length) return 'intro';
 
-			if (direction === "up") active_section = active_section.prev();
+		var docEl = document.documentElement;
+		var docH = Math.max(
+			document.body.scrollHeight,
+			docEl.scrollHeight,
+			docEl.clientHeight
+		);
+		if (window.scrollY + window.innerHeight >= docH - 10) {
+			return sections[sections.length - 1].id;
+		}
 
-			var sid = active_section.attr("id");
-			var active_link = $('#main-nav-wrap a[href="#' + sid + '"], #siteNav a[href="#' + sid + '"]');
+		var threshold = portfolioScrollspyThreshold();
+		var activeId = sections[0].id;
+		for (var i = 0; i < sections.length; i++) {
+			if (sections[i].getBoundingClientRect().top <= threshold) {
+				activeId = sections[i].id;
+			}
+		}
+		return activeId;
+	}
 
-         navigation_links.parent().removeClass("current");
-			active_link.parent().addClass("current");
+	function setPortfolioNavCurrent(sectionId) {
+		if (!sectionId) return;
+		if (sectionId === 'top') sectionId = 'intro';
+		if (PORTFOLIO_SECTION_IDS.indexOf(sectionId) === -1) return;
+		var $links = portfolioNavLinks();
+		$links.parent().removeClass('current');
+		$links.filter('[href="#' + sectionId + '"]').parent().addClass('current');
+	}
 
-		}, 
+	var portfolioNavScrollQueued = false;
+	function schedulePortfolioNavSync() {
+		if (portfolioNavScrollQueued) return;
+		portfolioNavScrollQueued = true;
+		window.requestAnimationFrame(function () {
+			portfolioNavScrollQueued = false;
+			setPortfolioNavCurrent(portfolioActiveSectionId());
+		});
+	}
 
-		offset: '25%'
+	$(function syncPortfolioNavOnReady() {
+		setPortfolioNavCurrent(portfolioActiveSectionId());
 	});
+
+	$(window).on('scroll.portfolioNav resize.portfolioNav load.portfolioNav', schedulePortfolioNavSync);
+	window.addEventListener('hashchange', schedulePortfolioNavSync);
 
 
 	/*---------------------------------------------------- */
@@ -196,6 +246,10 @@
 			return;
 		}
 
+		var sid = target.replace(/^#/, '');
+		if (sid === 'top') setPortfolioNavCurrent('intro');
+		else if (PORTFOLIO_SECTION_IDS.indexOf(sid) !== -1) setPortfolioNavCurrent(sid);
+
 		var $navBar = $('#mobileNavBar');
 		var navH = ($navBar.length && $navBar.is(':visible')) ? $navBar.outerHeight() : 0;
 		var scrollTop = Math.max(0, $target.offset().top - navH + 2);
@@ -204,6 +258,7 @@
        	'scrollTop': scrollTop
       }, 800, 'swing', function () {
       	window.location.hash = target;
+      	schedulePortfolioNavSync();
       });
 
   	});  
