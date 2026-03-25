@@ -1194,7 +1194,7 @@
 
 @media (min-width: 769px) {
   #resume .resume-timeline--research .timeline-block:first-child .timeline-content > p {
-    max-width: 120rem;
+    max-width: 64rem;
   }
 }
  .timeline-content h4 {
