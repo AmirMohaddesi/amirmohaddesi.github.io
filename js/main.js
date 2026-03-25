@@ -136,49 +136,40 @@
    });
 
 	
-	/*-----------------------------------------------------*/
-  	/* Navigation Menu (legacy Kards theme — not used on this site)
-   ------------------------------------------------------ */  
-   var toggleButton = $('.menu-toggle'),
-       nav = $('.main-navigation');
-
-   if (toggleButton.length && nav.length) {
-	   toggleButton.on('click', function(e) {
-			e.preventDefault();
-			toggleButton.toggleClass('is-clicked');
-			nav.slideToggle();
-		});
-
-	   nav.find('li a').on("click", function() {
-			toggleButton.toggleClass('is-clicked');
-			nav.fadeOut();
-		});
-   }
-
-
    /*---------------------------------------------------- */
-  	/* Scrollspy: sidebar + mobile drawer stay in sync
+  	/* Portfolio nav: single source menu + scrollspy + smooth scroll
   	------------------------------------------------------ */
-	/* Keep in sync with #main-content > section[id] anchors */
-	var PORTFOLIO_SECTION_IDS = ['intro', 'hf-space', 'about', 'resume', 'contact'];
+	var PORTFOLIO_MOBILE_NAV_W = 768;
+	var portfolioNavIds = [];
+	var portfolioNavTicking = false;
 
-	function portfolioNavLinks() {
-		return $('#main-nav-wrap li a, #siteNav .site-nav__links li a');
+	function portfolioAllNavLinks() {
+		return $('#main-nav-wrap a, #mobile-nav-wrap a');
 	}
 
 	function portfolioMobileNavHeight() {
 		var bar = document.getElementById('mobileNavBar');
-		if (!bar) return 0;
-		var st = window.getComputedStyle(bar);
-		if (st.display === 'none') return 0;
+		if (!bar || window.getComputedStyle(bar).display === 'none') return 0;
 		return Math.round(bar.getBoundingClientRect().height) || 0;
 	}
 
-	function portfolioScrollspyThreshold() {
-		var navH = portfolioMobileNavHeight();
-		var vh = window.innerHeight || 600;
-		if (navH > 0) return navH + 18;
-		return Math.max(80, Math.round(vh * 0.28));
+	function closePortfolioMobileNav() {
+		var siteNav = document.getElementById('siteNav');
+		var navToggle = document.getElementById('mobileNavToggle');
+		if (!siteNav || !navToggle) return;
+		siteNav.classList.remove('is-open');
+		navToggle.classList.remove('is-open');
+		navToggle.setAttribute('aria-expanded', 'false');
+		document.body.classList.remove('nav-open');
+	}
+
+	function portfolioSetCurrentNav(sectionId) {
+		if (!sectionId) return;
+		if (sectionId === 'top') sectionId = 'intro';
+		if (portfolioNavIds.indexOf(sectionId) === -1) return;
+		var $links = portfolioAllNavLinks();
+		$links.parent().removeClass('current');
+		$links.filter('[href="#' + sectionId + '"]').parent().addClass('current');
 	}
 
 	function portfolioActiveSectionId() {
@@ -186,82 +177,96 @@
 		if (!sections.length) return 'intro';
 
 		var docEl = document.documentElement;
-		var docH = Math.max(
-			document.body.scrollHeight,
-			docEl.scrollHeight,
-			docEl.clientHeight
-		);
+		var docH = Math.max(document.body.scrollHeight, docEl.scrollHeight, docEl.clientHeight);
 		if (window.scrollY + window.innerHeight >= docH - 10) {
 			return sections[sections.length - 1].id;
 		}
 
-		var threshold = portfolioScrollspyThreshold();
+		// On mobile, use the sticky nav height; on desktop use a viewport ratio.
+		var threshold = portfolioMobileNavHeight() > 0
+			? portfolioMobileNavHeight() + 18
+			: Math.max(80, Math.round((window.innerHeight || 600) * 0.28));
+
 		var activeId = sections[0].id;
 		for (var i = 0; i < sections.length; i++) {
-			if (sections[i].getBoundingClientRect().top <= threshold) {
-				activeId = sections[i].id;
-			}
+			if (sections[i].getBoundingClientRect().top <= threshold) activeId = sections[i].id;
 		}
 		return activeId;
 	}
 
-	function setPortfolioNavCurrent(sectionId) {
-		if (!sectionId) return;
-		if (sectionId === 'top') sectionId = 'intro';
-		if (PORTFOLIO_SECTION_IDS.indexOf(sectionId) === -1) return;
-		var $links = portfolioNavLinks();
-		$links.parent().removeClass('current');
-		$links.filter('[href="#' + sectionId + '"]').parent().addClass('current');
-	}
-
-	var portfolioNavScrollQueued = false;
 	function schedulePortfolioNavSync() {
-		if (portfolioNavScrollQueued) return;
-		portfolioNavScrollQueued = true;
+		if (portfolioNavTicking) return;
+		portfolioNavTicking = true;
 		window.requestAnimationFrame(function () {
-			portfolioNavScrollQueued = false;
-			setPortfolioNavCurrent(portfolioActiveSectionId());
+			portfolioNavTicking = false;
+			portfolioSetCurrentNav(portfolioActiveSectionId());
 		});
 	}
 
-	$(function syncPortfolioNavOnReady() {
-		setPortfolioNavCurrent(portfolioActiveSectionId());
+	function initPortfolioNavigation() {
+		var desktopNav = document.getElementById('main-nav-wrap');
+		var mobileNav = document.getElementById('mobile-nav-wrap');
+		var navToggle = document.getElementById('mobileNavToggle');
+		var siteNav = document.getElementById('siteNav');
+		if (!desktopNav || !mobileNav || !siteNav || !navToggle) return;
+
+		// Single source of truth: clone desktop nav items into mobile drawer.
+		mobileNav.innerHTML = desktopNav.innerHTML;
+		portfolioNavIds = [];
+		Array.prototype.forEach.call(desktopNav.querySelectorAll('a[href^="#"]'), function (link) {
+			var id = link.getAttribute('href').replace(/^#/, '');
+			if (id && portfolioNavIds.indexOf(id) === -1) portfolioNavIds.push(id);
+		});
+
+		navToggle.addEventListener('click', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			var isOpen = siteNav.classList.toggle('is-open');
+			navToggle.classList.toggle('is-open', isOpen);
+			navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+			document.body.classList.toggle('nav-open', isOpen);
+		});
+
+		window.addEventListener('resize', function () {
+			if (window.innerWidth > PORTFOLIO_MOBILE_NAV_W) closePortfolioMobileNav();
+			schedulePortfolioNavSync();
+		});
+
+		document.addEventListener('click', function (ev) {
+			if (window.innerWidth > PORTFOLIO_MOBILE_NAV_W) return;
+			var clickedInsideNav = siteNav.contains(ev.target);
+			var clickedToggle = navToggle.contains(ev.target);
+			if (siteNav.classList.contains('is-open') && !clickedInsideNav && !clickedToggle) {
+				closePortfolioMobileNav();
+			}
+		});
+
+		window.addEventListener('hashchange', schedulePortfolioNavSync);
+		$(window).on('scroll.portfolioNav resize.portfolioNav load.portfolioNav', schedulePortfolioNavSync);
+		schedulePortfolioNavSync();
+	}
+
+	$(document).on('click', 'a.smoothscroll', function (e) {
+		var target = this.hash;
+		if (!target) return;
+
+		var $target = $(target);
+		if (!$target.length) return;
+
+		e.preventDefault();
+		portfolioSetCurrentNav(target.replace(/^#/, ''));
+
+		var navH = portfolioMobileNavHeight();
+		var scrollTop = Math.max(0, $target.offset().top - navH + 2);
+		$('html, body').stop().animate({ scrollTop: scrollTop }, 800, 'swing', function () {
+			window.location.hash = target;
+			schedulePortfolioNavSync();
+		});
+
+		if (window.innerWidth <= PORTFOLIO_MOBILE_NAV_W) closePortfolioMobileNav();
 	});
 
-	$(window).on('scroll.portfolioNav resize.portfolioNav load.portfolioNav', schedulePortfolioNavSync);
-	window.addEventListener('hashchange', schedulePortfolioNavSync);
-
-
-	/*---------------------------------------------------- */
-  	/* Smooth Scrolling
-  	------------------------------------------------------ */
-  	$('.smoothscroll').on('click', function (e) {
-	 	
-	 	e.preventDefault();
-
-   	var target = this.hash,
-    	$target = $(target);
-
-		if (!$target.length) {
-			return;
-		}
-
-		var sid = target.replace(/^#/, '');
-		if (sid === 'top') setPortfolioNavCurrent('intro');
-		else if (PORTFOLIO_SECTION_IDS.indexOf(sid) !== -1) setPortfolioNavCurrent(sid);
-
-		var $navBar = $('#mobileNavBar');
-		var navH = ($navBar.length && $navBar.is(':visible')) ? $navBar.outerHeight() : 0;
-		var scrollTop = Math.max(0, $target.offset().top - navH + 2);
-
-    	$('html, body').stop().animate({
-       	'scrollTop': scrollTop
-      }, 800, 'swing', function () {
-      	window.location.hash = target;
-      	schedulePortfolioNavSync();
-      });
-
-  	});  
+	$(initPortfolioNavigation);
   
 
    /*---------------------------------------------------- */
@@ -350,7 +355,6 @@
 	/* Portfolio chrome: sticky nav drawer + Hugging Face chat
 	 * Runs after DOM ready; vanilla DOM for toggles (no plugin deps).
 	 *-----------------------------------------------------*/
-	var PORTFOLIO_MOBILE_NAV_W = 768;
 	var PORTFOLIO_CHAT_POPUP_W = 480;
 	var PORTFOLIO_HF_URL = 'https://amixxm-career-conversation.hf.space?embed=true';
 
@@ -360,10 +364,6 @@
 		var closeBtn = document.getElementById('closeChat');
 		var popBtn = document.getElementById('openNewWindow');
 		var popupTrigger = document.getElementById('open-popup');
-
-		var navToggle = document.getElementById('mobileNavToggle');
-		var siteNav = document.getElementById('siteNav');
-		var navLinks = siteNav ? siteNav.querySelectorAll('a') : [];
 
 		function openChatWidget() {
 			if (!widget) return;
@@ -387,44 +387,6 @@
 				'hf_assistant',
 				'popup=yes,width=' + w + ',height=' + h + ',left=' + x + ',top=' + y + ',resizable=yes,scrollbars=yes'
 			);
-		}
-
-		function closeMobileNav() {
-			if (!siteNav || !navToggle) return;
-			siteNav.classList.remove('is-open');
-			navToggle.classList.remove('is-open');
-			navToggle.setAttribute('aria-expanded', 'false');
-			document.body.classList.remove('nav-open');
-		}
-
-		function toggleMobileNav() {
-			if (!siteNav || !navToggle) return;
-			var isOpen = siteNav.classList.toggle('is-open');
-			navToggle.classList.toggle('is-open', isOpen);
-			navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-			document.body.classList.toggle('nav-open', isOpen);
-		}
-
-		if (navToggle && siteNav) {
-			navToggle.addEventListener('click', function (e) {
-				e.preventDefault();
-				e.stopPropagation();
-				toggleMobileNav();
-			});
-
-			Array.prototype.forEach.call(navLinks, function (link) {
-				link.addEventListener('click', function () {
-					if (window.innerWidth <= PORTFOLIO_MOBILE_NAV_W) {
-						closeMobileNav();
-					}
-				});
-			});
-
-			window.addEventListener('resize', function () {
-				if (window.innerWidth > PORTFOLIO_MOBILE_NAV_W) {
-					closeMobileNav();
-				}
-			});
 		}
 
 		if (launcher) {
@@ -455,19 +417,12 @@
 				}
 			}
 
-			if (siteNav && navToggle && window.innerWidth <= PORTFOLIO_MOBILE_NAV_W) {
-				var clickedInsideNav = siteNav.contains(ev.target);
-				var clickedToggle = navToggle.contains(ev.target);
-				if (siteNav.classList.contains('is-open') && !clickedInsideNav && !clickedToggle) {
-					closeMobileNav();
-				}
-			}
 		});
 
 		document.addEventListener('keydown', function (ev) {
 			if (ev.key === 'Escape') {
 				closeChatWidget();
-				closeMobileNav();
+				closePortfolioMobileNav();
 			}
 		});
 	});

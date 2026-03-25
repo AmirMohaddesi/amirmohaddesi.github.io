@@ -670,7 +670,8 @@
    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.07);
  }
 
- .profile-email-list {
+.profile-email-list,
+.contact-email-list {
    list-style: none;
    margin: 0;
    padding: 0;
@@ -679,7 +680,8 @@
    gap: 0.95rem;
  }
 
- .profile-email-list li {
+.profile-email-list li,
+.contact-email-list li {
    margin: 0;
    padding: 0;
    list-style: none;
@@ -975,19 +977,16 @@
    padding: 0;
  }
 
- .publication-list__item,
- .publication-list > li {
+.publication-list__item {
    padding: 1.6rem 0;
    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
  }
 
- .publication-list__item:first-child,
- .publication-list > li:first-child {
+.publication-list__item:first-child {
    padding-top: 0;
  }
 
- .publication-list__item:last-child,
- .publication-list > li:last-child {
+.publication-list__item:last-child {
    border-bottom: 0;
    padding-bottom: 0;
  }
@@ -1209,21 +1208,10 @@
    margin-top: 0;
  }
 
- .contact-email-list {
-   list-style: none;
-   margin: 0 auto;
-   padding: 0;
+.contact-email-list {
+  margin: 0 auto;
    text-align: left;
    max-width: none;
-   display: flex;
-   flex-direction: column;
-   gap: 0.95rem;
- }
-
- .contact-email-list li {
-   margin: 0;
-   padding: 0;
-   list-style: none;
  }
 
  .contact-email-link {
