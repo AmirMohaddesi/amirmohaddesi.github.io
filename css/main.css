@@ -2588,6 +2588,65 @@ button.demo-popout-link {
   }
 }
 
+/* Desktop text-measure widening pass (layout-width only) */
+@media (min-width: 769px) {
+  .hero-tagline {
+    max-width: 68rem;
+  }
+
+  .hero-highlights {
+    max-width: 56rem;
+  }
+
+  #hf-space p {
+    max-width: 68rem;
+  }
+
+  .demo-lead {
+    max-width: 66rem;
+  }
+
+  .selected-work-lead {
+    max-width: 60rem;
+  }
+
+  .about-lead__summary {
+    max-width: 72rem;
+  }
+
+  .about-lead__highlights li {
+    max-width: 66rem;
+  }
+
+  .about-personal {
+    max-width: 64rem;
+  }
+
+  .resume-section-lead {
+    max-width: 70rem;
+  }
+
+  #resume .timeline-content > p {
+    max-width: 68rem;
+  }
+
+  #resume .resume-timeline--research .timeline-block:first-child .timeline-content > p {
+    max-width: 72rem;
+  }
+
+  .publications-intro {
+    max-width: 66rem;
+  }
+
+  .contact-lead {
+    max-width: 64rem;
+  }
+
+  .contact-proof-strip {
+    max-width: 58rem;
+  }
+}
+
 /* Sticky top bar — custom site nav (Bootstrap classes kept for grid compatibility) */
 .templatemo-nav.site-nav.navbar {
   position: sticky;
