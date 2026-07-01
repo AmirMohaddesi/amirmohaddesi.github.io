@@ -23,17 +23,13 @@ const EXTERNAL_HREF_FRAGMENTS = [
 ];
 
 test.describe('In-page links, downloads, utility, external hrefs', () => {
-  test('hero Interactive demo navigates to #hf-space', async ({ page }) => {
+  test('flat PSOL outcome rows are visible on page', async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 900 });
     await page.goto(BASE_URL);
-    await page.waitForTimeout(200);
 
-    await page.locator('a.button--hero-primary.smoothscroll[href="#hf-space"]').click();
-    await page.waitForTimeout(900);
-    await expect(page).toHaveURL(/#hf-space$/);
-    const top = await sectionViewportTop(page, '#hf-space');
-    expect(top).not.toBeNull();
-    expect(Math.abs(top)).toBeLessThanOrEqual(20);
+    const outcomes = page.locator('.psol-outcome');
+    await expect(outcomes.first()).toBeVisible();
+    expect(await outcomes.count()).toBeGreaterThan(3);
   });
 
   test('footer Back to Top navigates to #top with intro near viewport top', async ({ page }) => {
@@ -53,24 +49,21 @@ test.describe('In-page links, downloads, utility, external hrefs', () => {
     expect(introTop).toBeLessThanOrEqual(24);
   });
 
-  test('PSOL project card opens modal with full detail', async ({ page }) => {
+  test('hero resume and GitHub links are present', async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 900 });
     await page.goto(BASE_URL);
-    await page.waitForTimeout(200);
 
-    await page.locator('#selected-work .psol-card[data-psol-id="policy-aware-agentic"]').click();
-    await page.waitForTimeout(400);
-    await expect(page.locator('#psolModal.is-open')).toBeVisible();
-    await expect(page.locator('#psolModalTitle')).toContainText('Policy-Aware Agentic Task Execution');
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(200);
-    await expect(page.locator('#psolModal.is-open')).toHaveCount(0);
+    const resume = page.locator('#intro a.hero-link.link-cv-download[href="CV_Amirhosein.pdf"]');
+    const github = page.locator('#intro a.hero-link.link-external[href*="github.com/AmirMohaddesi"]');
+    await expect(resume).toHaveCount(1);
+    await expect(github).toHaveCount(1);
+    await expect(resume).toHaveAttribute('download');
   });
 
-  test('hero and About primary Download CV use PDF href and download attribute', async ({ page }) => {
+  test('hero Download CV uses PDF href and download attribute', async ({ page }) => {
     await page.goto(BASE_URL);
 
-    const heroCv = page.locator('#intro a.link-cv-download[href="CV_Amirhosein.pdf"]');
+    const heroCv = page.locator('#intro a.hero-link.link-cv-download[href="CV_Amirhosein.pdf"]');
     const aboutCv = page.locator('#about .button-section a.link-cv-download[href="CV_Amirhosein.pdf"]');
 
     await expect(heroCv).toHaveCount(1);
