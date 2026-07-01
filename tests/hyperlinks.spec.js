@@ -53,17 +53,18 @@ test.describe('In-page links, downloads, utility, external hrefs', () => {
     expect(introTop).toBeLessThanOrEqual(24);
   });
 
-  test('Selected work in-page jump lands on #resume', async ({ page }) => {
+  test('PSOL project card opens modal with full detail', async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 900 });
     await page.goto(BASE_URL);
     await page.waitForTimeout(200);
 
-    await page.locator('#selected-work a.proof-card__link--in-page[href="#resume"]').click();
-    await page.waitForTimeout(900);
-    await expect(page).toHaveURL(/#resume$/);
-    const top = await sectionViewportTop(page, '#resume');
-    expect(top).not.toBeNull();
-    expect(Math.abs(top)).toBeLessThanOrEqual(16);
+    await page.locator('#selected-work .psol-card[data-psol-id="policy-aware-agentic"]').click();
+    await page.waitForTimeout(400);
+    await expect(page.locator('#psolModal.is-open')).toBeVisible();
+    await expect(page.locator('#psolModalTitle')).toContainText('Policy-Aware Agentic Task Execution');
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(200);
+    await expect(page.locator('#psolModal.is-open')).toHaveCount(0);
   });
 
   test('hero and About primary Download CV use PDF href and download attribute', async ({ page }) => {

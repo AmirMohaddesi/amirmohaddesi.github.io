@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/vendor.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <script src="js/modernizr.js" defer></script>
   <script src="js/pace.min.js" defer></script>
@@ -53,37 +54,52 @@
   <main id="main-content">
 
   <section id="intro">
+    <canvas id="hero-three-canvas" class="hero-three-canvas" aria-hidden="true"></canvas>
     <div class="intro-overlay"></div>
     <div class="intro-content">
       <div class="row">
         <div class="col-twelve">
-          <h5>AI Systems Architect (Ph.D.)</h5>
-          <h1>Amirhosein Mohaddesi</h1>
-          <p class="hero-role-chip">Data-Centric Autonomy · Agentic Systems · ROS2 Multi-Robot Infrastructure</p>
-          <p class="hero-tagline">I architect machine learning infrastructure for autonomous multi-robot teams—high-throughput C++/Python telemetry pipelines, PyTorch training workflows, and policy-aware agentic orchestration via LangGraph where language guidance measurably reduces coordination overhead.</p>
-          <ul class="hero-highlights">
-            <li>Ph.D. Information &amp; Computer Science (2025), UC Irvine · <a class="link-external" href="https://sites.socsci.uci.edu/~jkrichma/CARL/" target="_blank" rel="noopener noreferrer">CARL</a></li>
-            <li>ROS2 Humble · Nav2 · SLAM Toolbox · LangGraph / LangChain mission layers</li>
-            <li>South San Francisco, CA · Open to full-time and contract roles</li>
-          </ul>
-          <div class="hero-cta">
-            <a class="button button-primary smoothscroll button--hero-primary" href="#hf-space" title="Open the interactive assistant">Interactive demo</a>
-            <a class="button stroke button--hero-secondary link-cv-download" href="CV_Amirhosein.pdf" download title="Download CV (PDF)">Download CV (PDF)</a>
+          <div class="hero-terminal" id="heroTerminal" aria-live="polite" aria-label="ROS2 stack initialization">
+            <div class="hero-terminal__chrome">
+              <span class="hero-terminal__dot hero-terminal__dot--red"></span>
+              <span class="hero-terminal__dot hero-terminal__dot--yellow"></span>
+              <span class="hero-terminal__dot hero-terminal__dot--green"></span>
+              <span class="hero-terminal__title">fleet_manager@carl-ros2 — bash</span>
+            </div>
+            <div class="hero-terminal__body">
+              <div class="hero-terminal__output" id="terminalOutput"></div>
+            </div>
           </div>
-          <ul class="intro-social" aria-label="Quick links">
-            <li><a href="mailto:Amir.mohaddesi@gmail.com" aria-label="Email"><i class="fa fa-envelope"></i></a></li>
-            <li><a class="link-external" href="https://www.linkedin.com/in/amohaddesi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-            <li><a class="link-external" href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><i class="fa fa-graduation-cap"></i></a></li>
-            <li><a class="link-external" href="https://github.com/AmirMohaddesi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github"></i></a></li>
-          </ul>
-          <div class="cred-rail" aria-label="Credibility">
-            <a class="cred-pill" href="https://sites.socsci.uci.edu/~jkrichma/CARL/" target="_blank" rel="noopener noreferrer">CARL</a>
-            <a class="cred-pill smoothscroll" href="#resume">PhD</a>
-            <a class="cred-pill" href="https://ieeexplore.ieee.org/abstract/document/10644592" target="_blank" rel="noopener noreferrer">IEEE</a>
-            <a class="cred-pill" href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
-            <a class="cred-pill" href="https://orcid.org/0009-0008-5021-5954" target="_blank" rel="noopener noreferrer">ORCID</a>
+
+          <div class="hero-main" id="heroMain" aria-hidden="true">
+            <h5>AI Systems Architect (Ph.D.)</h5>
+            <h1>Amirhosein Mohaddesi</h1>
+            <p class="hero-role-chip">Data-Centric Autonomy · Agentic Systems · ROS2 Multi-Robot Infrastructure</p>
+            <p class="hero-tagline">I architect machine learning infrastructure for autonomous multi-robot teams—high-throughput C++/Python telemetry pipelines, PyTorch training workflows, and policy-aware agentic orchestration via LangGraph where language guidance measurably reduces coordination overhead.</p>
+            <ul class="hero-highlights">
+              <li>Ph.D. Information &amp; Computer Science (2025), UC Irvine · <a class="link-external" href="https://sites.socsci.uci.edu/~jkrichma/CARL/" target="_blank" rel="noopener noreferrer">CARL</a></li>
+              <li>ROS2 Humble · Nav2 · SLAM Toolbox · LangGraph / LangChain mission layers</li>
+              <li>South San Francisco, CA · Open to full-time and contract roles</li>
+            </ul>
+            <div class="hero-cta">
+              <a class="button button-primary smoothscroll button--hero-primary" href="#hf-space" title="Open the interactive assistant">Interactive demo</a>
+              <a class="button stroke button--hero-secondary link-cv-download" href="CV_Amirhosein.pdf" download title="Download CV (PDF)">Download CV (PDF)</a>
+            </div>
+            <ul class="intro-social" aria-label="Quick links">
+              <li><a href="mailto:Amir.mohaddesi@gmail.com" aria-label="Email"><i class="fa fa-envelope"></i></a></li>
+              <li><a class="link-external" href="https://www.linkedin.com/in/amohaddesi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+              <li><a class="link-external" href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><i class="fa fa-graduation-cap"></i></a></li>
+              <li><a class="link-external" href="https://github.com/AmirMohaddesi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github"></i></a></li>
+            </ul>
+            <div class="cred-rail" aria-label="Credibility">
+              <a class="cred-pill" href="https://sites.socsci.uci.edu/~jkrichma/CARL/" target="_blank" rel="noopener noreferrer">CARL</a>
+              <a class="cred-pill smoothscroll" href="#resume">PhD</a>
+              <a class="cred-pill" href="https://ieeexplore.ieee.org/abstract/document/10644592" target="_blank" rel="noopener noreferrer">IEEE</a>
+              <a class="cred-pill" href="https://scholar.google.com/citations?hl=en&user=goi591YAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+              <a class="cred-pill" href="https://orcid.org/0009-0008-5021-5954" target="_blank" rel="noopener noreferrer">ORCID</a>
+            </div>
+            <div class="hero-divider"></div>
           </div>
-          <div class="hero-divider"></div>
         </div>
       </div>
     </div>
@@ -195,31 +211,76 @@
     </div>
     <div class="row selected-work-grid">
       <div class="col-four tab-full">
-        <article class="proof-card">
+        <article class="proof-card psol-card glass-card" data-psol-id="policy-aware-agentic" tabindex="0" role="button" aria-label="Open PSOL detail: Policy-Aware Agentic Task Execution">
+          <span class="psol-card__hint">Click for full PSOL</span>
           <h3 class="proof-card__title">Policy-Aware Agentic Task Execution</h3>
-          <p class="proof-card__desc"><span class="psol-inline"><span class="psol-label">Problem:</span> Missions needed governed execution over Nav2 without bypassing fleet policy.</span> <span class="psol-inline"><span class="psol-label">Outcome:</span> Language-guided task execution with policy gates in simulation.</span></p>
+          <p class="proof-card__desc">LangGraph mission layer over ROS2/Nav2 with policy gates and schema-validated tool calls.</p>
           <div class="proof-meta">Agentic layer · LangGraph + LangChain · ROS2/Nav2</div>
           <p class="proof-card__stack">LangGraph · LangChain · ROS2 · Nav2 · policy validation</p>
-          <a class="proof-card__link proof-card__link--in-page smoothscroll" href="#resume">View PSOL detail</a>
         </article>
       </div>
       <div class="col-four tab-full">
-        <article class="proof-card">
+        <article class="proof-card psol-card glass-card" data-psol-id="ros2-nav-platform" tabindex="0" role="button" aria-label="Open PSOL detail: ROS2 Multi-Robot Navigation Platform">
+          <span class="psol-card__hint">Click for full PSOL</span>
           <h3 class="proof-card__title">ROS2 Multi-Robot Navigation Platform</h3>
-          <p class="proof-card__desc"><span class="psol-inline"><span class="psol-label">Problem:</span> Webots prototypes could not scale swarm telemetry for policy training.</span> <span class="psol-inline"><span class="psol-label">Outcome:</span> Larger multi-agent experiments with RViz live telemetry and quantified cooperation metrics.</span></p>
+          <p class="proof-card__desc">ROS2 Humble fleet stack with SLAM Toolbox, Nav2, and PyTorch-ready telemetry pipelines.</p>
           <div class="proof-meta">Fleet infrastructure · ROS2 Humble + PyTorch</div>
           <p class="proof-card__stack">ROS2 · C++/Python · SLAM Toolbox · Nav2 · PyTorch</p>
-          <a class="proof-card__link proof-card__link--external link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          <a class="proof-card__link proof-card__link--external link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">GitHub →</a>
         </article>
       </div>
       <div class="col-four tab-full">
-        <article class="proof-card">
+        <article class="proof-card psol-card glass-card" data-psol-id="comm-aware-coordination" tabindex="0" role="button" aria-label="Open PSOL detail: Communication-Aware Coordination">
+          <span class="psol-card__hint">Click for full PSOL</span>
           <h3 class="proof-card__title">Communication-Aware Coordination</h3>
-          <p class="proof-card__desc"><span class="psol-inline"><span class="psol-label">Problem:</span> Homogeneous policies caused redundant exploration at scale.</span> <span class="psol-inline"><span class="psol-label">Outcome:</span> Mixed strategies delivered the strongest exploration–efficiency balance.</span></p>
+          <p class="proof-card__desc">Inter-robot goal sharing and LangGraph hooks when classical policies stall at scale.</p>
           <div class="proof-meta">Multi-robot coordination · Strategy diversity</div>
           <p class="proof-card__stack">ROS2 · LangGraph hooks · inter-robot messaging · SAB 2024</p>
-          <a class="proof-card__link proof-card__link--in-page smoothscroll" href="#resume">View PSOL detail</a>
         </article>
+      </div>
+    </div>
+
+    <div class="row media-carousel-row">
+      <div class="col-twelve">
+        <div class="media-carousel-header">
+          <h2 class="media-carousel-title">Fleet telemetry &amp; simulation</h2>
+          <p class="media-carousel-lead">RViz, ROS2 bag playback, and multi-agent sim captures — placeholders until media is added.</p>
+        </div>
+        <div class="swiper media-swiper" aria-label="Project media carousel">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="media-placeholder glass-panel">
+                <span class="media-placeholder__icon" aria-hidden="true">◉</span>
+                <span class="media-placeholder__label">RViz fleet state</span>
+                <span class="media-placeholder__sub">/fleet/state · live telemetry</span>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="media-placeholder glass-panel">
+                <span class="media-placeholder__icon" aria-hidden="true">▣</span>
+                <span class="media-placeholder__label">SLAM + map_merge</span>
+                <span class="media-placeholder__sub">Multi-robot mapping session</span>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="media-placeholder glass-panel">
+                <span class="media-placeholder__icon" aria-hidden="true">⟁</span>
+                <span class="media-placeholder__label">Nav2 goal execution</span>
+                <span class="media-placeholder__sub">Policy-aware agent layer</span>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="media-placeholder glass-panel">
+                <span class="media-placeholder__icon" aria-hidden="true">◎</span>
+                <span class="media-placeholder__label">PyTorch training hooks</span>
+                <span class="media-placeholder__sub">DDP-ready trajectory datasets</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-prev" aria-label="Previous slide"></div>
+          <div class="swiper-button-next" aria-label="Next slide"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -270,81 +331,40 @@
     <div class="row resume-timeline resume-timeline--research">
       <div class="col-twelve resume-header">
         <h2>Research experience</h2>
+        <p class="resume-cards-lead">Click any card for the full Problem–Solution–Outcome–Learning breakdown.</p>
       </div>
       <div class="col-twelve">
-        <div class="timeline-wrap">
-          <div class="timeline-block">
-            <div class="timeline-ico"><i class="fa fa-briefcase"></i></div>
-            <div class="timeline-header">
-              <h3>Graduate Researcher</h3>
-              <h4><a class="link-external" href="https://sites.socsci.uci.edu/~jkrichma/CARL/" target="_blank" rel="noopener noreferrer">CARL Lab</a>, UC Irvine</h4>
-              <p>Sep 2021 – Jun 2025</p>
-            </div>
-            <div class="timeline-content timeline-content--stacked">
-              <div class="timeline-subentry">
-                <h4>ROS2 Multi-Robot Navigation Platform</h4>
-                <div class="proof-meta">Fleet infrastructure · <a class="link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-                <ul class="psol-list">
-                  <li><span class="psol-label">Problem:</span> Webots-only prototypes could not scale swarm size, sensor fidelity, or fleet telemetry needed to train navigation policies from human trajectory data.</li>
-                  <li><span class="psol-label">Solution:</span> Architected a ROS2 Humble simulation platform with SLAM Toolbox, Nav2, map_merge, frontier exploration, and C++/Python nodes for navigation, mapping, and high-rate state logging into PyTorch-ready datasets.</li>
-                  <li><span class="psol-label">Outcome:</span> Enabled larger multi-agent experiments with RViz live telemetry and quantified task efficiency, coverage, and cooperation across Route, Survey, and Mixed navigation strategies.</li>
-                  <li><span class="psol-label">Learning:</span> Reliable autonomy infrastructure must precede learning—telemetry fidelity and modular ROS2 graph design determine whether imitation learning and agentic planners can ship to sim-to-real.</li>
-                </ul>
-              </div>
-
-              <div class="timeline-subentry">
-                <h4>Communication-Aware Multi-Robot Coordination</h4>
-                <div class="proof-meta">Agentic hooks · LangGraph + LangChain</div>
-                <ul class="psol-list">
-                  <li><span class="psol-label">Problem:</span> Homogeneous navigation policies caused redundant exploration and coordination failures as team size grew.</li>
-                  <li><span class="psol-label">Solution:</span> Designed a communication-aware coordination layer for goal sharing and path deconfliction; integrated agentic planning hooks via LangGraph and LangChain for language-guided fleet decisions when classical policies stalled.</li>
-                  <li><span class="psol-label">Outcome:</span> Mixed human-inspired strategies delivered the strongest balance of exploration breadth and task completion time across disaster-response simulation scenarios.</li>
-                  <li><span class="psol-label">Learning:</span> Strategy diversity plus explicit inter-robot messaging beats monolithic policies for scalable team autonomy.</li>
-                </ul>
-              </div>
-
-              <div class="timeline-subentry">
-                <h4>Strategy Diversity in Robot Teams</h4>
-                <div class="proof-meta">Empirical multi-agent study · <a class="link-external" href="https://github.com/AmirMohaddesi/Benefits-of-Varying-Navigation-Strategies-in-Robots" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-                <ul class="psol-list">
-                  <li><span class="psol-label">Problem:</span> No empirical baseline existed for how heterogeneous navigation behaviors affect team-level efficiency in embodied multi-agent settings.</li>
-                  <li><span class="psol-label">Solution:</span> Built a Webots multi-agent testbed with Clearpath PR2 robots and a C++ obstacle-avoidance controller; ran controlled sweeps over Route, Survey, and Mixed strategy assignments.</li>
-                  <li><span class="psol-label">Outcome:</span> Published findings on strategy diversity at SAB 2024; demonstrated measurable gains in coverage and coordination effectiveness for exploration-style missions.</li>
-                  <li><span class="psol-label">Learning:</span> Heterogeneity is a controllable systems knob—treat strategy assignment as infrastructure, not an afterthought.</li>
-                </ul>
-              </div>
-
-              <div class="timeline-subentry">
-                <h4>Autonomous Telepresence Navigation</h4>
-                <div class="proof-meta">Human study · IEEE ICDL 2024</div>
-                <ul class="psol-list">
-                  <li><span class="psol-label">Problem:</span> Manual telepresence navigation imposed high cognitive load and degraded task performance during remote scavenger-hunt operations.</li>
-                  <li><span class="psol-label">Solution:</span> Shipped real-time SLAM navigation in ROS with a PyQt operator GUI and instrumentation for cognitive load, spatial awareness, and movement efficiency.</li>
-                  <li><span class="psol-label">Outcome:</span> Autonomous navigation reduced operator burden and improved usability; results presented at IEEE ICDL 2024.</li>
-                  <li><span class="psol-label">Learning:</span> Autonomy wins when telemetry-backed UX metrics prove reduced operator cost, not when autonomy is added for its own sake.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-block">
-            <div class="timeline-ico"><i class="fa fa-briefcase"></i></div>
-            <div class="timeline-header">
-              <h3>Research Assistant</h3>
-              <h4><a class="link-external" href="https://nmi-lab.org/" target="_blank" rel="noopener noreferrer">NMI Lab</a></h4>
-              <p>Jul 2020 – Jul 2021</p>
-            </div>
-            <div class="timeline-content">
-              <h4>Embedded ML Quantization</h4>
-              <div class="proof-meta">PyTorch · embedded inference</div>
-              <ul class="psol-list">
-                <li><span class="psol-label">Problem:</span> Full-precision spiking neural networks exceeded power budgets on embedded inference targets.</li>
-                <li><span class="psol-label">Solution:</span> Implemented 8-bit quantized SNNs in PyTorch with a custom quantization scheme for deployment-constrained hardware.</li>
-                <li><span class="psol-label">Outcome:</span> Cut energy use 12%–18% on MNIST/CIFAR benchmarks with only 3%–7% accuracy loss.</li>
-                <li><span class="psol-label">Learning:</span> Quantization trade-offs are systems decisions—profile accuracy, power, and latency jointly before picking a bit width.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="psol-cards-grid">
+          <article class="experience-card psol-card glass-card" data-psol-id="ros2-nav-platform" tabindex="0" role="button">
+            <span class="experience-card__period">CARL · 2021–2025</span>
+            <h3 class="experience-card__title">ROS2 Multi-Robot Navigation Platform</h3>
+            <p class="experience-card__teaser">Scaled swarm telemetry from Webots to ROS2 Humble with Nav2 and SLAM Toolbox.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
+          <article class="experience-card psol-card glass-card" data-psol-id="comm-aware-coordination" tabindex="0" role="button">
+            <span class="experience-card__period">CARL · 2021–2025</span>
+            <h3 class="experience-card__title">Communication-Aware Coordination</h3>
+            <p class="experience-card__teaser">Goal sharing, path deconfliction, and LangGraph agentic hooks at fleet scale.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
+          <article class="experience-card psol-card glass-card" data-psol-id="strategy-diversity" tabindex="0" role="button">
+            <span class="experience-card__period">CARL · SAB 2024</span>
+            <h3 class="experience-card__title">Strategy Diversity in Robot Teams</h3>
+            <p class="experience-card__teaser">Empirical study of Route, Survey, and Mixed navigation in multi-agent teams.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
+          <article class="experience-card psol-card glass-card" data-psol-id="telepresence-nav" tabindex="0" role="button">
+            <span class="experience-card__period">CARL · IEEE ICDL 2024</span>
+            <h3 class="experience-card__title">Autonomous Telepresence Navigation</h3>
+            <p class="experience-card__teaser">SLAM navigation with cognitive-load instrumentation for telepresence UX.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
+          <article class="experience-card psol-card glass-card" data-psol-id="embedded-quantization" tabindex="0" role="button">
+            <span class="experience-card__period">NMI Lab · 2020–2021</span>
+            <h3 class="experience-card__title">Embedded ML Quantization</h3>
+            <p class="experience-card__teaser">8-bit SNN quantization for power-constrained embedded inference.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
         </div>
       </div>
     </div>
@@ -354,57 +374,25 @@
         <h2>Selected projects</h2>
       </div>
       <div class="col-twelve">
-        <div class="timeline-wrap timeline-wrap--projects">
-          <div class="timeline-block">
-            <div class="timeline-ico"><i class="fa fa-code"></i></div>
-            <div class="timeline-header">
-              <h3>2025</h3>
-            </div>
-            <div class="timeline-content">
-              <h4>Policy-Aware Agentic Task Execution</h4>
-              <div class="proof-meta">LangGraph + LangChain · ROS2/Nav2</div>
-              <ul class="psol-list">
-                <li><span class="psol-label">Problem:</span> Multi-robot missions needed a governed execution layer that could translate high-level objectives into safe, auditable Nav2 actions without bypassing fleet policy constraints.</li>
-                <li><span class="psol-label">Solution:</span> Built a LangGraph and LangChain mission-execution orchestrator over ROS2/Nav2 with schema-validated tool calls, policy gates, and telemetry feedback loops for runtime state.</li>
-                <li><span class="psol-label">Outcome:</span> Delivered language-guided task execution that respects navigation boundaries while coordinating multi-robot goals in simulation.</li>
-                <li><span class="psol-label">Learning:</span> Agentic autonomy over real robot stacks requires explicit policy enforcement at every tool boundary—orchestration without guardrails is not production-ready.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-block">
-            <div class="timeline-ico"><i class="fa fa-code"></i></div>
-            <div class="timeline-header">
-              <h3>2025</h3>
-            </div>
-            <div class="timeline-content">
-              <h4>Career Conversation Agent</h4>
-              <div class="proof-meta"><a class="link-external" href="https://huggingface.co/spaces/AMIXXM/Career_Conversation" target="_blank" rel="noopener noreferrer">Hugging Face Demo</a></div>
-              <ul class="psol-list">
-                <li><span class="psol-label">Problem:</span> Static portfolios could not answer nuanced, context-dependent questions from recruiters and collaborators.</li>
-                <li><span class="psol-label">Solution:</span> Deployed a persona-grounded conversational agent in Python and Gradio with embedding-backed context retrieval and public Hugging Face Space integration.</li>
-                <li><span class="psol-label">Outcome:</span> Live demo embedded on this site; enables interactive career Q&amp;A without manual follow-up.</li>
-                <li><span class="psol-label">Learning:</span> Production agent UX requires tight retrieval boundaries—ground answers in verified profile data, not open-ended generation.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-block">
-            <div class="timeline-ico"><i class="fa fa-code"></i></div>
-            <div class="timeline-header">
-              <h3>2024</h3>
-            </div>
-            <div class="timeline-content">
-              <h4>ROS2 Distributed Multi-Robot Control Stack</h4>
-              <div class="proof-meta">CARL Lab · <a class="link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-              <ul class="psol-list">
-                <li><span class="psol-label">Problem:</span> Single-process simulators could not stress-test distributed mapping and frontier coordination under realistic ROS2 timing.</li>
-                <li><span class="psol-label">Solution:</span> Integrated SLAM Toolbox, Nav2, map_merge, and frontier exploration into a ROS2 Humble disaster-response scenario with DDP-ready PyTorch training hooks.</li>
-                <li><span class="psol-label">Outcome:</span> Delivered a reusable research platform for collaborative navigation, mapping, and fleet telemetry capture.</li>
-                <li><span class="psol-label">Learning:</span> Distributed ROS2 graphs expose race conditions early—design telemetry and merge policies before scaling agent count.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="psol-cards-grid psol-cards-grid--projects">
+          <article class="experience-card psol-card glass-card" data-psol-id="policy-aware-agentic" tabindex="0" role="button">
+            <span class="experience-card__period">2025</span>
+            <h3 class="experience-card__title">Policy-Aware Agentic Task Execution</h3>
+            <p class="experience-card__teaser">LangGraph orchestration over ROS2/Nav2 with policy gates.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
+          <article class="experience-card psol-card glass-card" data-psol-id="career-conversation-agent" tabindex="0" role="button">
+            <span class="experience-card__period">2025</span>
+            <h3 class="experience-card__title">Career Conversation Agent</h3>
+            <p class="experience-card__teaser">Persona-grounded Gradio agent on Hugging Face Spaces.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
+          <article class="experience-card psol-card glass-card" data-psol-id="ros2-distributed-stack" tabindex="0" role="button">
+            <span class="experience-card__period">2024</span>
+            <h3 class="experience-card__title">ROS2 Distributed Control Stack</h3>
+            <p class="experience-card__teaser">Distributed mapping, frontier exploration, DDP training hooks.</p>
+            <span class="psol-card__hint">View PSOL →</span>
+          </article>
         </div>
       </div>
     </div>
@@ -497,6 +485,24 @@
     <div id="loader"></div>
   </div>
 
+  <div class="psol-modal" id="psolModal" role="dialog" aria-modal="true" aria-labelledby="psolModalTitle" aria-hidden="true">
+    <div class="psol-modal__backdrop" tabindex="-1" aria-hidden="true"></div>
+    <div class="psol-modal__panel glass-panel">
+      <button type="button" class="psol-modal__close" aria-label="Close dialog">✕</button>
+      <div class="psol-modal__header">
+        <h2 class="psol-modal__title" id="psolModalTitle"></h2>
+        <p class="psol-modal__meta" id="psolModalMeta"></p>
+      </div>
+      <ul class="psol-list psol-modal__list" id="psolModalList"></ul>
+      <div class="psol-modal__diagram glass-panel" aria-label="Architecture diagram placeholder">
+        <span class="psol-modal__diagram-icon" aria-hidden="true">⬡</span>
+        <span class="psol-modal__diagram-label">Architecture diagram</span>
+        <span class="psol-modal__diagram-sub">Replace with system diagram or RViz capture</span>
+      </div>
+      <div class="psol-modal__footer" id="psolModalLink" hidden></div>
+    </div>
+  </div>
+
   <div class="chat-widget" id="chatWidget" aria-hidden="true">
     <div class="chat-header">
       <span>Career Assistant</span>
@@ -533,6 +539,9 @@
   <script src="js/jquery-2.1.3.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
 
 </html>
