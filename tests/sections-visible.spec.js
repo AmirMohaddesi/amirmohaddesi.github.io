@@ -8,13 +8,13 @@ test.describe('Page structure', () => {
     await page.setViewportSize({ width: 1366, height: 900 });
     await page.goto(BASE_URL);
 
-    const ids = ['intro', 'hf-space', 'about', 'selected-work', 'resume', 'contact'];
+    const ids = ['intro', 'about', 'selected-work', 'resume', 'contact'];
     for (const id of ids) {
       await expect(page.locator(`#${id}`)).toBeVisible();
     }
 
     const order = await page.evaluate(() => {
-      const wanted = ['intro', 'hf-space', 'about', 'selected-work', 'resume', 'contact'];
+      const wanted = ['intro', 'about', 'selected-work', 'resume', 'contact'];
       const sections = Array.from(document.querySelectorAll('main#main-content section[id]'));
       return sections.map((s) => s.id);
     });

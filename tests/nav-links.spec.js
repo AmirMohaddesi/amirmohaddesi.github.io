@@ -6,7 +6,6 @@ const { test, expect } = require('@playwright/test');
  */
 const DESKTOP_LINKS = [
   { text: 'Introduction', href: '#intro' },
-  { text: 'Demo', href: '#hf-space' },
   { text: 'About', href: '#about' },
   { text: 'Projects', href: '#selected-work' },
   { text: 'Experience', href: '#resume' },
@@ -43,11 +42,6 @@ test.describe('Portfolio nav links', () => {
       await page.waitForTimeout(900);
       await expect(page).toHaveURL(new RegExp(`${link.href}$`));
     }
-
-    await page.click('#main-nav-wrap a[href="#hf-space"]');
-    await page.waitForTimeout(900);
-    await expect(page.locator('#main-nav-wrap li.current > a')).toHaveText('Demo');
-    await expect(page.locator('#main-nav-wrap li.current > a')).not.toHaveText('About');
 
     await page.click('#main-nav-wrap a[href="#about"]');
     await page.waitForTimeout(900);

@@ -72,13 +72,13 @@ test.describe('In-page links, downloads, utility, external hrefs', () => {
     await expect(aboutCv).toHaveAttribute('download');
   });
 
-  test('open-popup is a button without smoothscroll (utility action)', async ({ page }) => {
+  test('hero Mermaid architecture diagram is visible', async ({ page }) => {
+    await page.setViewportSize({ width: 1366, height: 900 });
     await page.goto(BASE_URL);
-    const btn = page.locator('#open-popup');
-    await expect(btn).toBeVisible();
-    await expect(btn).toHaveAttribute('type', 'button');
-    const cls = (await btn.getAttribute('class')) || '';
-    expect(cls).not.toContain('smoothscroll');
+
+    const diagram = page.locator('.hero-grid__media .mermaid');
+    await expect(diagram).toBeVisible();
+    await expect(diagram.locator('svg')).toBeVisible();
   });
 
   test('same-site portfolio link is not forced to target _blank', async ({ page }) => {

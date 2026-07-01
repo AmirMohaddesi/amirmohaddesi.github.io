@@ -65,10 +65,15 @@
           </nav>
         </div>
         <div class="hero-grid__media">
-          <div class="hero-media-placeholder" aria-label="Foxglove telemetry video placeholder">
-            <span class="hero-media-placeholder__label">Foxglove Telemetry / Sim Loop</span>
-            <span class="hero-media-placeholder__sub">Video Placeholder</span>
-          </div>
+          <div class="mermaid" aria-label="Cascade Router system architecture diagram">flowchart TD
+    A[Client Request] -->|HTTP POST| B(Cascade C++ Proxy)
+    B --> C{16-Token WordPiece}
+    C -->|Vectorized| D[INT8 ONNX Runtime]
+    D -->|386-dim Logistic Reg.| E{Model Selector}
+    E -->|Fast Route| F[Small LLM]
+    E -->|Complex Route| G[Frontier LLM]
+    F --> H(JSON Rewrite &amp; Return)
+    G --> H</div>
         </div>
       </div>
     </div>
@@ -449,6 +454,19 @@
   <script src="js/jquery-2.1.3.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        darkMode: true,
+        primaryColor: '#00ffff',
+        primaryTextColor: '#ffffff',
+        lineColor: '#00ffff'
+      }
+    });
+  </script>
 </body>
 
 </html>
