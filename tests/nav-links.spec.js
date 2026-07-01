@@ -8,7 +8,8 @@ const DESKTOP_LINKS = [
   { text: 'Introduction', href: '#intro' },
   { text: 'Demo', href: '#hf-space' },
   { text: 'About', href: '#about' },
-  { text: 'Technical background', href: '#resume' },
+  { text: 'Projects', href: '#selected-work' },
+  { text: 'Experience', href: '#resume' },
   { text: 'Contact', href: '#contact' }
 ];
 
@@ -53,7 +54,7 @@ test.describe('Portfolio nav links', () => {
     await expect(page.locator('#main-nav-wrap li.current > a')).toHaveText('About');
   });
 
-  test('desktop: About / Technical background / Contact land at section tops', async ({ page }) => {
+  test('desktop: About / Experience / Contact land at section tops', async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 900 });
     await page.goto(BASE_URL);
     await page.waitForTimeout(200);

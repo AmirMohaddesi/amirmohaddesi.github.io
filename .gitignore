@@ -2,3 +2,7 @@
 *.bak
 *.bak*
 *~
+
+# Local archive (resume source, experiments, venvs — not for deployment)
+Archive/
+archive/
