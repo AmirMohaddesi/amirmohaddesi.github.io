@@ -8,6 +8,10 @@
   <meta name="author" content="Amirhosein Mohaddesi">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/vendor.css">
@@ -179,11 +183,15 @@
             <h3 class="psol-entry__title">Cascade Router</h3>
             <p class="psol-entry__meta">Predictive LLM Routing Proxy · <strong class="tech">C++20</strong> / <strong class="tech">ONNX INT8</strong></p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Frontier-model hardcoding and reactive fallbacks waste 60–75% of inference spend. Standard Python/SaaS routers add <span class="metric">65–180 ms</span> of latency, making them unusable for inline execution.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Engineered a bare-metal <strong class="tech">C++</strong> proxy routing pipeline: 16-token WordPiece → <strong class="tech">INT8 ONNX</strong> embedding → 386-dim logistic regression → upstream JSON rewrite to guarantee a <span class="metric">&lt;5 ms</span> routing SLA.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome">Achieved <span class="metric">4.6 ms</span> mean routing latency (<span class="metric">14× faster</span> than Python baselines). Delivered <span class="metric">75% fast-model eligibility</span> and 67.8% holdout accuracy across a 10K prompt corpus.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Sequence-length profiling drove the architecture. Distillation to INT8 ONNX and JSON weights made sub-5 ms VPC deployment a reality, proving that HTTP header hygiene matters as much as model selection.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Frontier-model hardcoding and reactive fallbacks waste 60–75% of inference spend. Standard Python/SaaS routers add <span class="metric">65–180 ms</span> of latency, making them unusable for inline execution.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Sequence-length profiling drove the architecture. Distillation to INT8 ONNX and JSON weights made sub-5 ms VPC deployment a reality, proving that HTTP header hygiene matters as much as model selection.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Engineered a bare-metal <strong class="tech">C++</strong> proxy routing pipeline: 16-token WordPiece → <strong class="tech">INT8 ONNX</strong> embedding → 386-dim logistic regression → upstream JSON rewrite to guarantee a <span class="metric">&lt;5 ms</span> routing SLA.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome">Achieved <span class="metric">4.6 ms</span> mean routing latency (<span class="metric">14× faster</span> than Python baselines). Delivered <span class="metric">75% fast-model eligibility</span> and 67.8% holdout accuracy across a 10K prompt corpus.</dd></div>
+            </div>
           </dl>
           <footer class="psol-entry__footer">
             <a class="link-external" href="https://github.com/Cascade-Router/cascade-router" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -197,11 +205,15 @@
             <h3 class="psol-entry__title">ROS2 Multi-Robot Navigation Platform</h3>
             <p class="psol-entry__meta"><strong class="tech">ROS2 Humble</strong> · <strong class="tech">C++</strong> / Python · <a class="link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Webots prototypes could not scale swarm telemetry bandwidth or sensor fidelity for <strong class="tech">PyTorch</strong> policy training.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Architected <strong class="tech">ROS2 Humble</strong> fleet graph with SLAM Toolbox, Nav2, map_merge, and <strong class="tech">C++</strong> high-rate state loggers feeding <strong class="tech">PyTorch</strong>-ready datasets.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">Maintained 500Hz telemetry logging</span> across multi-agent runs · quantified coverage and cooperation across Route, Survey, and Mixed strategies · Foxglove-ready fleet state streams.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Telemetry fidelity and modular ROS2 graph design must precede learning—otherwise sim-to-real imitation learning cannot ship.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Webots prototypes could not scale swarm telemetry bandwidth or sensor fidelity for <strong class="tech">PyTorch</strong> policy training.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Telemetry fidelity and modular ROS2 graph design must precede learning—otherwise sim-to-real imitation learning cannot ship.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Architected <strong class="tech">ROS2 Humble</strong> fleet graph with SLAM Toolbox, Nav2, map_merge, and <strong class="tech">C++</strong> high-rate state loggers feeding <strong class="tech">PyTorch</strong>-ready datasets.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Maintained 500Hz telemetry logging</span> across multi-agent runs · quantified coverage and cooperation across Route, Survey, and Mixed strategies · Foxglove-ready fleet state streams.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -210,11 +222,15 @@
             <h3 class="psol-entry__title">Communication-Aware Multi-Robot Coordination</h3>
             <p class="psol-entry__meta"><strong class="tech">C++</strong> controllers · <strong class="tech">ROS2 Humble</strong> · SAB 2024</p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Homogeneous navigation policies caused redundant exploration and coordination failures as team size grew.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Deployed inter-robot goal-sharing in <strong class="tech">ROS2 Humble</strong> with <strong class="tech">C++</strong> obstacle-avoidance controllers and LangGraph planning hooks when classical policies stalled.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">Mixed-strategy teams improved exploration–efficiency trade-off</span> vs. homogeneous fleets · published at SAB 2024 with measurable coverage gains.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Strategy diversity plus explicit inter-robot messaging beats monolithic policies for scalable team autonomy.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Homogeneous navigation policies caused redundant exploration and coordination failures as team size grew.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Strategy diversity plus explicit inter-robot messaging beats monolithic policies for scalable team autonomy.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Deployed inter-robot goal-sharing in <strong class="tech">ROS2 Humble</strong> with <strong class="tech">C++</strong> obstacle-avoidance controllers and LangGraph planning hooks when classical policies stalled.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Mixed-strategy teams improved exploration–efficiency trade-off</span> vs. homogeneous fleets · published at SAB 2024 with measurable coverage gains.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -276,11 +292,15 @@
             <h3 class="psol-entry__title">ROS2 Multi-Robot Navigation Platform</h3>
             <p class="psol-entry__meta">CARL · 2021–2025 · <a class="link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Webots-only prototypes could not scale swarm size, sensor fidelity, or fleet telemetry needed to train navigation policies from human trajectory data.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Architected <strong class="tech">ROS2 Humble</strong> simulation platform with SLAM Toolbox, Nav2, map_merge, and <strong class="tech">C++</strong> high-rate state loggers into <strong class="tech">PyTorch</strong>-ready datasets.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">Maintained 500Hz telemetry logging</span> · larger multi-agent experiments with quantified coverage and cooperation across navigation strategies.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Reliable autonomy infrastructure must precede learning—telemetry fidelity and modular ROS2 graph design determine whether imitation learning and agentic planners can ship to sim-to-real.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Webots-only prototypes could not scale swarm size, sensor fidelity, or fleet telemetry needed to train navigation policies from human trajectory data.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Reliable autonomy infrastructure must precede learning—telemetry fidelity and modular ROS2 graph design determine whether imitation learning and agentic planners can ship to sim-to-real.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Architected <strong class="tech">ROS2 Humble</strong> simulation platform with SLAM Toolbox, Nav2, map_merge, and <strong class="tech">C++</strong> high-rate state loggers into <strong class="tech">PyTorch</strong>-ready datasets.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Maintained 500Hz telemetry logging</span> · larger multi-agent experiments with quantified coverage and cooperation across navigation strategies.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -289,11 +309,15 @@
             <h3 class="psol-entry__title">Communication-Aware Multi-Robot Coordination</h3>
             <p class="psol-entry__meta">CARL · 2021–2025 · LangGraph + LangChain</p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Homogeneous navigation policies caused redundant exploration and coordination failures as team size grew.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Designed communication-aware goal sharing in <strong class="tech">ROS2 Humble</strong> with <strong class="tech">C++</strong> deconfliction and LangGraph hooks for stalled classical policies.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">Mixed-strategy fleets reduced redundant exploration</span> · strongest exploration–efficiency balance in disaster-response sim scenarios.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Strategy diversity plus explicit inter-robot messaging beats monolithic policies for scalable team autonomy.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Homogeneous navigation policies caused redundant exploration and coordination failures as team size grew.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Strategy diversity plus explicit inter-robot messaging beats monolithic policies for scalable team autonomy.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Designed communication-aware goal sharing in <strong class="tech">ROS2 Humble</strong> with <strong class="tech">C++</strong> deconfliction and LangGraph hooks for stalled classical policies.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Mixed-strategy fleets reduced redundant exploration</span> · strongest exploration–efficiency balance in disaster-response sim scenarios.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -302,11 +326,15 @@
             <h3 class="psol-entry__title">Strategy Diversity in Robot Teams</h3>
             <p class="psol-entry__meta">CARL · SAB 2024 · <a class="link-external" href="https://github.com/AmirMohaddesi/Benefits-of-Varying-Navigation-Strategies-in-Robots" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>No empirical baseline existed for how heterogeneous navigation behaviors affect team-level efficiency in embodied multi-agent settings.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Built Webots testbed with Clearpath PR2 robots and a <strong class="tech">C++</strong> obstacle-avoidance controller; swept Route, Survey, and Mixed strategy assignments.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">Published SAB 2024</span> · measurable coverage and coordination gains for heterogeneous strategy teams.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Heterogeneity is a controllable systems knob—treat strategy assignment as infrastructure, not an afterthought.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>No empirical baseline existed for how heterogeneous navigation behaviors affect team-level efficiency in embodied multi-agent settings.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Heterogeneity is a controllable systems knob—treat strategy assignment as infrastructure, not an afterthought.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Built Webots testbed with Clearpath PR2 robots and a <strong class="tech">C++</strong> obstacle-avoidance controller; swept Route, Survey, and Mixed strategy assignments.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Published SAB 2024</span> · measurable coverage and coordination gains for heterogeneous strategy teams.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -315,11 +343,15 @@
             <h3 class="psol-entry__title">Autonomous Telepresence Navigation</h3>
             <p class="psol-entry__meta">CARL · IEEE ICDL 2024</p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Manual telepresence navigation imposed high cognitive load and degraded task performance during remote scavenger-hunt operations.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Shipped real-time SLAM in ROS with <strong class="tech">C++</strong> navigation core and PyQt operator GUI with cognitive-load instrumentation.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">Reduced operator cognitive load vs. manual teleop</span> · IEEE ICDL 2024 human-study results on usability and efficiency.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Autonomy wins when telemetry-backed UX metrics prove reduced operator cost, not when autonomy is added for its own sake.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Manual telepresence navigation imposed high cognitive load and degraded task performance during remote scavenger-hunt operations.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Autonomy wins when telemetry-backed UX metrics prove reduced operator cost, not when autonomy is added for its own sake.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Shipped real-time SLAM in ROS with <strong class="tech">C++</strong> navigation core and PyQt operator GUI with cognitive-load instrumentation.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Reduced operator cognitive load vs. manual teleop</span> · IEEE ICDL 2024 human-study results on usability and efficiency.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -328,11 +360,15 @@
             <h3 class="psol-entry__title">Embedded ML Quantization</h3>
             <p class="psol-entry__meta">NMI Lab · 2020–2021 · PyTorch</p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Full-precision spiking neural networks exceeded power budgets on embedded inference targets.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Implemented 8-bit quantized SNNs in <strong class="tech">PyTorch</strong> with custom quantization and <strong class="tech">ONNX</strong> export path for embedded targets.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">12%–18% energy reduction</span> · <span class="metric">3%–7% accuracy loss</span> on MNIST/CIFAR embedded benchmarks.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Quantization trade-offs are systems decisions—profile accuracy, power, and latency jointly before picking a bit width.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Full-precision spiking neural networks exceeded power budgets on embedded inference targets.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Quantization trade-offs are systems decisions—profile accuracy, power, and latency jointly before picking a bit width.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Implemented 8-bit quantized SNNs in <strong class="tech">PyTorch</strong> with custom quantization and <strong class="tech">ONNX</strong> export path for embedded targets.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">12%–18% energy reduction</span> · <span class="metric">3%–7% accuracy loss</span> on MNIST/CIFAR embedded benchmarks.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -350,11 +386,15 @@
             <h3 class="psol-entry__title">ROS2 Distributed Multi-Robot Control Stack</h3>
             <p class="psol-entry__meta">2024 · <strong class="tech">ROS2 Humble</strong> · <a class="link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           </header>
-          <dl class="psol-spec">
-            <div class="psol-spec__row"><dt class="psol-label">Problem</dt><dd>Single-process simulators could not stress-test distributed mapping under realistic <strong class="tech">ROS2 Humble</strong> timing.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Solution</dt><dd>Integrated SLAM Toolbox, Nav2, map_merge, and frontier exploration with DDP-ready <strong class="tech">PyTorch</strong> training hooks and <strong class="tech">C++</strong> merge policies.</dd></div>
-            <div class="psol-spec__row psol-spec__row--outcome"><dt class="psol-label psol-label--outcome">Outcome</dt><dd class="psol-outcome"><span class="metric">Distributed ROS2 graph exposed race conditions pre-scale</span> · reusable platform for collaborative mapping and fleet telemetry capture.</dd></div>
-            <div class="psol-spec__row"><dt class="psol-label">Learning</dt><dd>Design telemetry and merge policies before scaling agent count—distributed graphs fail differently than monolithic sims.</dd></div>
+          <dl class="psol-layout">
+            <div class="psol-layout__col psol-layout__col--context">
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Single-process simulators could not stress-test distributed mapping under realistic <strong class="tech">ROS2 Humble</strong> timing.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Design telemetry and merge policies before scaling agent count—distributed graphs fail differently than monolithic sims.</dd></div>
+            </div>
+            <div class="psol-layout__col psol-layout__col--impact">
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Integrated SLAM Toolbox, Nav2, map_merge, and frontier exploration with DDP-ready <strong class="tech">PyTorch</strong> training hooks and <strong class="tech">C++</strong> merge policies.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Distributed ROS2 graph exposed race conditions pre-scale</span> · reusable platform for collaborative mapping and fleet telemetry capture.</dd></div>
+            </div>
           </dl>
         </article>
 
@@ -458,12 +498,14 @@
   <script>
     mermaid.initialize({
       startOnLoad: true,
-      theme: 'base',
+      theme: 'neutral',
       themeVariables: {
-        darkMode: true,
-        primaryColor: '#00ffff',
-        primaryTextColor: '#ffffff',
-        lineColor: '#00ffff'
+        primaryColor: '#f8f9fa',
+        primaryTextColor: '#111827',
+        primaryBorderColor: '#d1d5db',
+        lineColor: '#6b7280',
+        secondaryColor: '#ffffff',
+        tertiaryColor: '#f3f4f6'
       }
     });
   </script>
