@@ -327,78 +327,45 @@
 	});		
 
 	/*-----------------------------------------------------*/
-	/* Portfolio chrome: sticky nav drawer + Hugging Face chat
-	 * Runs after DOM ready; vanilla DOM for toggles (no plugin deps).
+	/* Portfolio: Escape closes mobile nav drawer
 	 *-----------------------------------------------------*/
-	var PORTFOLIO_CHAT_POPUP_W = 480;
-	var PORTFOLIO_HF_URL = 'https://amixxm-career-conversation.hf.space?embed=true';
-
 	$(function initPortfolioChrome() {
-		var launcher = document.getElementById('chatLauncher');
-		var widget = document.getElementById('chatWidget');
-		var closeBtn = document.getElementById('closeChat');
-		var popBtn = document.getElementById('openNewWindow');
-		var popupTrigger = document.getElementById('open-popup');
+		document.addEventListener('keydown', function (ev) {
+			if (ev.key === 'Escape') {
+				closePortfolioMobileNav();
+			}
+		});
+	});
 
-		function openChatWidget() {
-			if (!widget) return;
-			widget.classList.add('is-visible');
-			widget.setAttribute('aria-hidden', 'false');
-		}
+	/*-----------------------------------------------------*/
+	/* Scroll reveal — fade-in-up on section entry (once)
+	 *-----------------------------------------------------*/
+	$(function initFadeInUp() {
+		var fadeEls = document.querySelectorAll('.fade-in-up');
+		if (!fadeEls.length) return;
 
-		function closeChatWidget() {
-			if (!widget) return;
-			widget.classList.remove('is-visible');
-			widget.setAttribute('aria-hidden', 'true');
-		}
-
-		function openChatPopup(e) {
-			if (e) e.preventDefault();
-			var w = 420, h = 720;
-			var y = Math.max(0, (window.outerHeight - h) / 2);
-			var x = Math.max(0, (window.outerWidth - w) / 2);
-			window.open(
-				PORTFOLIO_HF_URL,
-				'hf_assistant',
-				'popup=yes,width=' + w + ',height=' + h + ',left=' + x + ',top=' + y + ',resizable=yes,scrollbars=yes'
-			);
-		}
-
-		if (launcher) {
-			launcher.addEventListener('click', function () {
-				if (window.innerWidth <= PORTFOLIO_CHAT_POPUP_W) {
-					openChatPopup();
-				} else {
-					openChatWidget();
-				}
+		function revealAll() {
+			fadeEls.forEach(function (el) {
+				el.classList.add('visible');
 			});
 		}
 
-		if (closeBtn) closeBtn.addEventListener('click', closeChatWidget);
-		if (popBtn) popBtn.addEventListener('click', openChatPopup);
-		if (popupTrigger) popupTrigger.addEventListener('click', openChatPopup);
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+			revealAll();
+			return;
+		}
 
-		document.addEventListener('click', function (ev) {
-			if (widget && launcher && widget.classList.contains('is-visible')) {
-				if (!widget.contains(ev.target) && ev.target !== launcher) {
-					var rect = widget.getBoundingClientRect();
-					var lRect = launcher.getBoundingClientRect();
-					var nearLauncher = ev.clientX >= lRect.left && ev.clientX <= lRect.right &&
-						ev.clientY >= lRect.top && ev.clientY <= lRect.bottom;
-					if (!nearLauncher &&
-						(ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom)) {
-						closeChatWidget();
-					}
+		var observer = new IntersectionObserver(function (entries, obs) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					obs.unobserve(entry.target);
 				}
-			}
+			});
+		}, { threshold: 0.1 });
 
-		});
-
-		document.addEventListener('keydown', function (ev) {
-			if (ev.key === 'Escape') {
-				closeChatWidget();
-				closePortfolioMobileNav();
-			}
+		fadeEls.forEach(function (el) {
+			observer.observe(el);
 		});
 	});
 
