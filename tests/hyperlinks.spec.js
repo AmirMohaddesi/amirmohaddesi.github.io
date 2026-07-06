@@ -64,19 +64,16 @@ test.describe('In-page links, downloads, utility, external hrefs', () => {
     await page.goto(BASE_URL);
 
     const heroCv = page.locator('#intro a.hero-link.link-cv-download[href="CV_Amirhosein.pdf"]');
-    const aboutCv = page.locator('#about .button-section a.link-cv-download[href="CV_Amirhosein.pdf"]');
 
     await expect(heroCv).toHaveCount(1);
-    await expect(aboutCv).toHaveCount(1);
     await expect(heroCv).toHaveAttribute('download');
-    await expect(aboutCv).toHaveAttribute('download');
   });
 
   test('hero Mermaid architecture diagram is visible', async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 900 });
     await page.goto(BASE_URL);
 
-    const diagram = page.locator('.hero-grid__media .mermaid');
+    const diagram = page.locator('.hero-media .mermaid');
     await expect(diagram).toBeVisible();
     await expect(diagram.locator('svg')).toBeVisible();
   });

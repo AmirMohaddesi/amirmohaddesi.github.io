@@ -58,7 +58,7 @@
   <section id="intro">
     <div class="intro-content">
       <div class="hero-grid">
-        <div class="hero-grid__copy">
+        <div class="hero-content">
           <p class="hero-eyebrow">Amirhosein Mohaddesi · C++/ROS2 Systems Architect (Ph.D.)</p>
           <h1 class="hero-value-prop">Scaling Multi-Robot Autonomy via ROS2 &amp; Agentic Infrastructure.</h1>
           <p class="hero-location">South San Francisco, CA · UC Irvine CARL</p>
@@ -68,7 +68,7 @@
             <a class="hero-link link-external" href="https://github.com/AmirMohaddesi" target="_blank" rel="noopener noreferrer">GitHub</a>
           </nav>
         </div>
-        <div class="hero-grid__media">
+        <div class="hero-media">
           <div class="mermaid" aria-label="Cascade Router system architecture diagram">flowchart TD
     A[Client Request] -->|HTTP POST| B(Cascade C++ Proxy)
     B --> C{16-Token WordPiece}
@@ -157,12 +157,6 @@
             </ul>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="row button-section">
-      <div class="col-twelve">
-        <a href="CV_Amirhosein.pdf" download title="Download CV (PDF)" class="button button-primary link-cv-download">Download CV (PDF)</a>
       </div>
     </div>
   </section>
@@ -501,7 +495,9 @@
     mermaid.initialize({
       startOnLoad: true,
       theme: 'neutral',
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
       themeVariables: {
+        fontSize: '13px',
         primaryColor: '#f8f9fa',
         primaryTextColor: '#111827',
         primaryBorderColor: '#d1d5db',
