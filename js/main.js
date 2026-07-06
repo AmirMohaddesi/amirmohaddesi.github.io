@@ -337,36 +337,19 @@
 		});
 	});
 
-	/*-----------------------------------------------------*/
-	/* Scroll reveal — fade-in-up on section entry (once)
-	 *-----------------------------------------------------*/
-	$(function initFadeInUp() {
-		var fadeEls = document.querySelectorAll('.fade-in-up');
-		if (!fadeEls.length) return;
-
-		function revealAll() {
-			fadeEls.forEach(function (el) {
-				el.classList.add('visible');
-			});
-		}
-
-		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-			revealAll();
-			return;
-		}
-
-		var observer = new IntersectionObserver(function (entries, obs) {
-			entries.forEach(function (entry) {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('visible');
-					obs.unobserve(entry.target);
-				}
-			});
-		}, { threshold: 0.1 });
-
-		fadeEls.forEach(function (el) {
-			observer.observe(el);
-		});
-	});
-
 })(jQuery);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    observer.observe(el);
+  });
+});
