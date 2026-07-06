@@ -202,19 +202,22 @@
 
         <article class="psol-entry">
           <header class="psol-entry__header">
-            <h3 class="psol-entry__title">ROS2 Multi-Robot Navigation Platform</h3>
-            <p class="psol-entry__meta"><strong class="tech">ROS2 Humble</strong> · <strong class="tech">C++</strong> / Python · <a class="link-external" href="https://github.com/AmirMohaddesi/Human-driven-navigation-strategies-in-a-ROS2-environment" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <h3 class="psol-entry__title">ROS2 Distributed Multi-Robot Control Stack</h3>
+            <p class="psol-entry__meta">Agentic Mission Orchestration &amp; Decentralized SLAM · <strong class="tech">ROS2 Humble</strong> / <strong class="tech">LangGraph</strong></p>
           </header>
           <dl class="psol-layout">
             <div class="psol-layout__col psol-layout__col--context">
-              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Webots prototypes could not scale swarm telemetry bandwidth or sensor fidelity for <strong class="tech">PyTorch</strong> policy training.</dd></div>
-              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Telemetry fidelity and modular ROS2 graph design must precede learning—otherwise sim-to-real imitation learning cannot ship.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Problem</dt><dd>Multi-robot disaster response simulations require centralized mission orchestration without violating the decentralized safety constraints of individual agent navigation stacks.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Learning</dt><dd>Centralized map merging is inherently bounded by the publish rate of the slowest SLAM node. Scaling beyond the current architecture requires strict DDS-level QoS tuning and live telemetry instrumentation.</dd></div>
             </div>
             <div class="psol-layout__col psol-layout__col--impact">
-              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Architected <strong class="tech">ROS2 Humble</strong> fleet graph with SLAM Toolbox, Nav2, map_merge, and <strong class="tech">C++</strong> high-rate state loggers feeding <strong class="tech">PyTorch</strong>-ready datasets.</dd></div>
-              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome"><span class="metric">Maintained 500Hz telemetry logging</span> across multi-agent runs · quantified coverage and cooperation across Route, Survey, and Mixed strategies · Foxglove-ready fleet state streams.</dd></div>
+              <div class="psol-row"><dt class="psol-label">Solution</dt><dd>Engineered a dual-namespace <strong class="tech">ROS2 Humble</strong> and <strong class="tech">Gazebo</strong> environment. Deployed decentralized <strong class="tech">Nav2</strong> controllers operating at <span class="metric">20 Hz</span> and <strong class="tech">SLAM Toolbox</strong> instances publishing at <span class="metric">2 Hz</span>, unified by an event-driven map-merging node and a <strong class="tech">LangGraph</strong> mission bridge.</dd></div>
+              <div class="psol-row psol-row--outcome"><dt class="psol-label">Outcome</dt><dd class="psol-outcome">Successfully orchestrated concurrent multi-agent navigation missions via a 4-endpoint service bridge. Integrated an <strong class="tech">OpenCV DNN YOLOv3</strong> vision node (416×416 input) while maintaining stable asynchronous SLAM map updates across independent hardware namespaces.</dd></div>
             </div>
           </dl>
+          <footer class="psol-entry__footer">
+            <a class="link-external" href="https://github.com/Amirhosein-Mohaddesi/multi_robot_mission_stack" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </footer>
         </article>
 
         <article class="psol-entry">
